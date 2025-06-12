@@ -2,130 +2,149 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Charts Demo - Chart.js Example</title>
-  <!-- Chart.js CDN -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Brooks Financial Group | Onboarding Portal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      background: #f5f5f5;
-      color: #222;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    .chart-container {
-      background: white;
-      border-radius: 8px;
-      padding: 1rem 2rem 2rem;
-      margin-bottom: 2.5rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    canvas {
-      /* ensure canvas fits container */
-      max-width: 100%;
-      height: 300px;
-    }
+    body { font-family: Arial, sans-serif; padding-top: 60px; }
+    .chart-container { width: 100%; max-width: 800px; margin: 40px auto; }
+    h2, h3 { margin-top: 30px; }
+    footer { margin-top: 60px; padding: 20px 0; background-color: #f8f9fa; }
   </style>
 </head>
 <body>
+  <div class="container">
+    <header class="mb-4">
+      <h1 class="text-center">Brooks Financial Group Onboarding Site</h1>
+      <p class="text-center">Intern Project by Jaden Dahan & James London | June 30, 2025</p>
+    </header>
 
-  <h1>Data Visualization with Chart.js</h1>
+    <section id="summary">
+      <h2>Executive Summary</h2>
+      <p>We evaluated Strategic, Tactical, and Core/Satellite investment strategies using FCMS data and insights. This site serves as a knowledge hub for onboarding new members into Brooks Financial Group’s approach to portfolio construction and performance evaluation.</p>
+    </section>
 
-  <div class="chart-container">
-    <h2>Bar Chart: Monthly Sales</h2>
-    <canvas id="barChart"></canvas>
-  </div>
+    <section id="strategies">
+      <h2>Investment Strategy Overview</h2>
+      <h3>Strategic</h3>
+      <p>Buy-and-hold allocation model with fixed targets. Simple and effective long-term but lacks adaptability during market downturns.</p>
+      <h3>Tactical</h3>
+      <p>Flexible, actively-managed model aiming to exploit short-term market conditions. Offers high upside but increased complexity and cost.</p>
+      <h3>Core/Satellite</h3>
+      <p>Balanced approach blending Strategic and Tactical. A passive “core” anchors the portfolio while “satellites” chase growth opportunities.</p>
+    </section>
 
-  <div class="chart-container">
-    <h2>Pie Chart: Market Share</h2>
-    <canvas id="pieChart"></canvas>
-  </div>
+    <section>
+      <h2>Core/Satellite Portfolio Allocation</h2>
+      <div class="chart-container">
+        <canvas id="coreSatellitePie"></canvas>
+      </div>
+    </section>
 
-  <div class="chart-container">
-    <h2>Line Chart: Website Visitors</h2>
-    <canvas id="lineChart"></canvas>
+    <section id="returns">
+      <h2>5-Year Average Returns by Strategy</h2>
+      <p>This chart compares average returns across FCMS portfolios from 2020 to 2025.</p>
+      <div class="chart-container">
+        <canvas id="returnBarChart"></canvas>
+      </div>
+    </section>
+
+    <section>
+      <h2>Risk Evaluations</h2>
+      <h3>Strategic Risks</h3>
+      <ul>
+        <li>Limited responsiveness during downturns</li>
+        <li>Behavioral drag (panic-selling in drawdowns)</li>
+        <li>Allocation drift over time</li>
+      </ul>
+
+      <h3>Tactical Risks</h3>
+      <ul>
+        <li>Requires expert management and market timing</li>
+        <li>Higher transaction and tax costs</li>
+        <li>Emotional and decision fatigue</li>
+      </ul>
+
+      <h3>Core/Satellite Risks</h3>
+      <ul>
+        <li>Overexposure to volatile satellite positions</li>
+        <li>Operational demands (monitoring and rebalancing)</li>
+        <li>Misalignment of risk profile if poorly executed</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Recommendations</h2>
+      <ul>
+        <li>Use Core/Satellite as the default framework with FCMS support</li>
+        <li>Deploy Tactical strategies within satellites to capture short-term gains</li>
+        <li>Apply Strategic allocation for conservative clients prioritizing long-term capital preservation</li>
+      </ul>
+    </section>
+
+    <footer class="text-center">
+      <p>&copy; 2025 Brooks Financial Group. All rights reserved.</p>
+    </footer>
   </div>
 
   <script>
-    // Bar Chart Data & Config
-    const barCtx = document.getElementById('barChart').getContext('2d');
-    const barChart = new Chart(barCtx, {
-      type: 'bar',
+    const pieCtx = document.getElementById('coreSatellitePie').getContext('2d');
+    const coreSatellitePie = new Chart(pieCtx, {
+      type: 'pie',
       data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        labels: ['Core - Strategic', 'Satellite - Tactical', 'Satellite - Alternatives', 'Cash Reserve'],
         datasets: [{
-          label: 'Sales ($)',
-          data: [12000, 19000, 3000, 5000, 20000, 30000],
-          backgroundColor: 'rgba(54, 162, 235, 0.7)',
-          borderColor: 'rgba(54, 162, 235, 1)',
-          borderWidth: 1
+          label: 'Allocation',
+          data: [60, 25, 10, 5],
+          backgroundColor: ['#0d6efd', '#20c997', '#ffc107', '#6c757d']
         }]
       },
       options: {
         responsive: true,
-        scales: {
-          y: {
-            beginAtZero: true
+        plugins: {
+          legend: { position: 'bottom' },
+          title: {
+            display: true,
+            text: 'Sample Core/Satellite Portfolio Allocation'
           }
         }
       }
     });
 
-    // Pie Chart Data & Config
-    const pieCtx = document.getElementById('pieChart').getContext('2d');
-    const pieChart = new Chart(pieCtx, {
-      type: 'pie',
+    const barCtx = document.getElementById('returnBarChart').getContext('2d');
+    const returnBarChart = new Chart(barCtx, {
+      type: 'bar',
       data: {
-        labels: ['Product A', 'Product B', 'Product C', 'Product D'],
+        labels: [
+          'Core Series',
+          'Core ETF Series',
+          'Tax-Aware Series',
+          'Sustainable Series',
+          'Tactical Allocation',
+          'Protected Growth',
+          'Institutional Equity'
+        ],
         datasets: [{
-          label: 'Market Share',
-          data: [35, 25, 20, 20],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.7)',
-            'rgba(255, 206, 86, 0.7)',
-            'rgba(75, 192, 192, 0.7)',
-            'rgba(153, 102, 255, 0.7)'
-          ],
-          borderColor: 'white',
-          borderWidth: 2
+          label: '5-Year Avg Return (%)',
+          data: [6.0, 5.0, 4.5, 6.0, 7.4, 4.5, 10.0],
+          backgroundColor: '#0d6efd'
         }]
       },
       options: {
-        responsive: true
-      }
-    });
-
-    // Line Chart Data & Config
-    const lineCtx = document.getElementById('lineChart').getContext('2d');
-    const lineChart = new Chart(lineCtx, {
-      type: 'line',
-      data: {
-        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
-        datasets: [{
-          label: 'Visitors',
-          data: [500, 700, 800, 1200, 1500],
-          fill: false,
-          borderColor: 'rgba(255, 159, 64, 1)',
-          backgroundColor: 'rgba(255, 159, 64, 0.5)',
-          tension: 0.3
-        }]
-      },
-      options: {
-        responsive: true,
+        indexAxis: 'y',
         scales: {
-          y: {
-            beginAtZero: true
+          x: { beginAtZero: true }
+        },
+        plugins: {
+          legend: { display: false },
+          title: {
+            display: true,
+            text: '5-Year Average Returns by FCMS Strategy (2020–2025)'
           }
         }
       }
     });
   </script>
-  
 </body>
 </html>
