@@ -528,18 +528,35 @@
         <div class="chart-label">Aggressive Accumulation led Liberty 5-year returns, with income strategies offering steady growth.</div>
       </div>
     </div>
-    <!-- Liberty Strategies Variance Chart -->
+   <!-- Liberty Strategies Variance Line Graph -->
 <div class="chart-col">
   <div class="chart-title">5-Year Annualized Return Variance by Liberty Series</div>
   <svg width="600" height="300">
-    <rect x="50" y="70" width="80" height="180" fill="#6c8998"></rect>
-    <text x="90" y="65" fill="#233954" font-size="1rem" text-anchor="middle">12%</text>
-    <rect x="150" y="110" width="80" height="140" fill="#b9c4a8"></rect>
-    <text x="190" y="105" fill="#233954" font-size="1rem" text-anchor="middle">10%</text>
-    <rect x="250" y="140" width="80" height="110" fill="#e3d984"></rect>
-    <text x="290" y="135" fill="#233954" font-size="1rem" text-anchor="middle">8%</text>
-    <rect x="350" y="170" width="80" height="80" fill="#57CC99"></rect>
-    <text x="390" y="165" fill="#233954" font-size="1rem" text-anchor="middle">6%</text>
+    <!-- Axes -->
+    <line x1="50" y1="250" x2="550" y2="250" stroke="#888" stroke-width="2"/>
+    <line x1="50" y1="50" x2="50" y2="250" stroke="#888" stroke-width="2"/>
+    <!-- Data Lines -->
+    <path d="M 50 200 C 150 180, 250 190, 350 170" fill="none" stroke="#6c8998" stroke-width="3" />
+    <path d="M 50 220 C 150 200, 250 180, 350 160" fill="none" stroke="#b9c4a8" stroke-width="3" />
+    <path d="M 50 230 C 150 210, 250 200, 350 190" fill="none" stroke="#e3d984" stroke-width="3" />
+    <path d="M 50 240 C 150 230, 250 210, 350 200" fill="none" stroke="#57CC99" stroke-width="3" />
+    <!-- Data Points -->
+    <circle cx="50" cy="200" r="4" fill="#6c8998" />
+    <circle cx="150" cy="180" r="4" fill="#6c8998" />
+    <circle cx="250" cy="190" r="4" fill="#6c8998" />
+    <circle cx="350" cy="170" r="4" fill="#6c8998" />
+    <circle cx="50" cy="220" r="4" fill="#b9c4a8" />
+    <circle cx="150" cy="200" r="4" fill="#b9c4a8" />
+    <circle cx="250" cy="180" r="4" fill="#b9c4a8" />
+    <circle cx="350" cy="160" r="4" fill="#b9c4a8" />
+    <circle cx="50" cy="230" r="4" fill="#e3d984" />
+    <circle cx="150" cy="210" r="4" fill="#e3d984" />
+    <circle cx="250" cy="200" r="4" fill="#e3d984" />
+    <circle cx="350" cy="190" r="4" fill="#e3d984" />
+    <circle cx="50" cy="240" r="4" fill="#57CC99" />
+    <circle cx="150" cy="230" r="4" fill="#57CC99" />
+    <circle cx="250" cy="210" r="4" fill="#57CC99" />
+    <circle cx="350" cy="200" r="4" fill="#57CC99" />
   </svg>
   <div class="chart-legend">
     <div class="legend-item"><span class="legend-color" style="background:#6c8998"></span> Aggressive Accumulation</div>
@@ -547,13 +564,8 @@
     <div class="legend-item"><span class="legend-color" style="background:#e3d984"></span> Moderate G+I</div>
     <div class="legend-item"><span class="legend-color" style="background:#57CC99"></span> RM Allocation</div>
   </div>
-  <div class="chart-label">Liberty strategies display a spectrum of variances, reflecting diverse risk exposures.</div>
+  <div class="chart-label">Liberty strategies' variance over 5 years via a line graph representation.</div>
 </div>
-  </div>
-
-  <!-- Risk Evaluation -->
-  <div class="page" id="risk-evaluation">
-    <h2>Risk Evaluation</h2>
   <!-- Risk Evaluation -->
 <div class="page" id="risk-evaluation">
   <h2>Risk Evaluation: Strategic, Tactical, and Core-Satellite Approaches</h2>
