@@ -566,116 +566,82 @@
   </div>
   <div class="chart-label">Liberty strategies' variance over 5 years via a line graph representation.</div>
 </div>
-  <!-- Risk Evaluation -->
+<!-- Liberty Strategies Evaluation -->
+<div class="page" id="liberty-strategies">
+  <h2>Liberty Strategies Evaluation</h2>
+  <div class="table-caption">5-Year Variance by Liberty Series</div>
+  <svg width="700" height="300" aria-label="5-Year Variance Line Chart">
+    <!-- Axes -->
+    <line x1="50" y1="250" x2="650" y2="250" stroke="#888" stroke-width="2"/> <!-- X-axis -->
+    <line x1="50" y1="50" x2="50" y2="250" stroke="#888" stroke-width="2"/> <!-- Y-axis -->
+
+    <!-- Data Lines for Liberty Variance -->
+    <polyline fill="none" stroke="#6c8998" stroke-width="3" points="50,160 150,140 250,150 350,130 450,120 550,110 650,100"/> <!-- Aggressive Accumulation -->
+    <polyline fill="none" stroke="#b9c4a8" stroke-width="3" points="50,190 150,170 250,180 350,160 450,150 550,140 650,130"/> <!-- Growth Accumulation -->
+    <polyline fill="none" stroke="#e3d984" stroke-width="3" points="50,210 150,200 250,195 350,185 450,175 550,165 650,155"/> <!-- Moderate G+I -->
+    <polyline fill="none" stroke="#57CC99" stroke-width="3" points="50,230 150,220 250,215 350,205 450,195 550,185 650,175"/> <!-- RM Allocation -->
+
+    <!-- Data Points -->
+    <circle cx="50" cy="160" r="4" fill="#6c8998" />
+    <circle cx="150" cy="140" r="4" fill="#6c8998" />
+    <circle cx="250" cy="150" r="4" fill="#6c8998" />
+    <circle cx="350" cy="130" r="4" fill="#6c8998" />
+    <circle cx="450" cy="120" r="4" fill="#6c8998" />
+    <circle cx="550" cy="110" r="4" fill="#6c8998" />
+    <circle cx="650" cy="100" r="4" fill="#6c8998" />
+
+    <circle cx="50" cy="190" r="4" fill="#b9c4a8" />
+    <circle cx="150" cy="170" r="4" fill="#b9c4a8" />
+    <circle cx="250" cy="180" r="4" fill="#b9c4a8" />
+    <circle cx="350" cy="160" r="4" fill="#b9c4a8" />
+    <circle cx="450" cy="150" r="4" fill="#b9c4a8" />
+    <circle cx="550" cy="140" r="4" fill="#b9c4a8" />
+    <circle cx="650" cy="130" r="4" fill="#b9c4a8" />
+
+    <circle cx="50" cy="210" r="4" fill="#e3d984" />
+    <circle cx="150" cy="200" r="4" fill="#e3d984" />
+    <circle cx="250" cy="195" r="4" fill="#e3d984" />
+    <circle cx="350" cy="185" r="4" fill="#e3d984" />
+    <circle cx="450" cy="175" r="4" fill="#e3d984" />
+    <circle cx="550" cy="165" r="4" fill="#e3d984" />
+    <circle cx="650" cy="155" r="4" fill="#e3d984" />
+
+    <circle cx="50" cy="230" r="4" fill="#57CC99" />
+    <circle cx="150" cy="220" r="4" fill="#57CC99" />
+    <circle cx="250" cy="215" r="4" fill="#57CC99" />
+    <circle cx="350" cy="205" r="4" fill="#57CC99" />
+    <circle cx="450" cy="195" r="4" fill="#57CC99" />
+    <circle cx="550" cy="185" r="4" fill="#57CC99" />
+    <circle cx="650" cy="175" r="4" fill="#57CC99" />
+  </svg>
+  <div class="chart-legend">
+    <div class="legend-item"><span class="legend-color" style="background:#6c8998"></span> Aggressive Accumulation</div>
+    <div class="legend-item"><span class="legend-color" style="background:#b9c4a8"></span> Growth Accumulation</div>
+    <div class="legend-item"><span class="legend-color" style="background:#e3d984"></span> Moderate G+I</div>
+    <div class="legend-item"><span class="legend-color" style="background:#57CC99"></span> RM Allocation</div>
+  </div>
+  <div class="chart-label">Liberty strategies show distinct variance in performance over a 5-year period.</div>
+</div>
+
+<!-- Risk Evaluation -->
 <div class="page" id="risk-evaluation">
-  <h2>Risk Evaluation: Strategic, Tactical, and Core-Satellite Approaches</h2>
-
-  <section>
-    <h3>Strategic Asset Allocation (SAA)</h3>
-    <p><strong>Overview:</strong> SAA is a long-term investment strategy that maintains a fixed asset allocation, regardless of market conditions.</p>
-    <ul>
-      <li><strong>Fixed Exposure:</strong> Portfolios remain invested in predetermined asset classes, potentially underperforming during market downturns.</li>
-      <li><strong>Missed Opportunities:</strong> Inflexibility may result in missed opportunities in emerging sectors or asset classes.</li>
-      <li><strong>Allocation Drift:</strong> Over time, asset allocations may deviate from targets due to market movements, requiring manual rebalancing.</li>
-      <li><strong>Behavioral Risk:</strong> Investors may abandon the strategy during market volatility, undermining long-term objectives.</li>
-      <li><strong>Liquidity Constraints:</strong> Difficulty in integrating assets that hedge against inflation or provide liquidity during crises.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h3>Tactical Asset Allocation (TAA)</h3>
-    <p><strong>Overview:</strong> TAA involves actively adjusting asset allocations based on short-term market forecasts and economic conditions.</p>
-    <ul>
-      <li><strong>Transaction Costs:</strong> Frequent adjustments can lead to higher transaction fees and tax implications.</li>
-      <li><strong>Market Timing Risk:</strong> Incorrect predictions can result in significant losses, especially in volatile markets.</li>
-      <li><strong>Emotional Bias:</strong> Active management may be influenced by short-term market sentiments, leading to suboptimal decisions.</li>
-      <li><strong>Complex Management:</strong> Requires continuous research and monitoring, increasing the complexity of portfolio management.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h3>Core-Satellite Strategy (C/S)</h3>
-    <p><strong>Overview:</strong> Combines a stable, passive core portfolio with actively managed satellite positions to enhance returns.</p>
-    <ul>
-      <li><strong>Balance Challenge:</strong> Overweighting satellite positions can increase portfolio volatility and risk.</li>
-      <li><strong>Investment Selection Risk:</strong> Poor selection of satellite investments can negatively impact overall portfolio performance.</li>
-      <li><strong>Operational Burden:</strong> Requires frequent monitoring and rebalancing, demanding significant time and resources.</li>
-      <li><strong>Tool Limitations:</strong> Risk assessment tools may not fully capture the nuanced risks associated with satellite investments.</li>
-      <li><strong>Support Advantage:</strong> With the backing of FCMS, Brooks Financial Group can effectively manage the complexities of the C/S strategy.</li>
-    </ul>
-  </section>
-
+  <h2>Risk Evaluation</h2>
+  <ul>
+    <li><strong>Strategic Risks:</strong> Fixed allocation can lead to challenges during market downturns.</li>
+    <li><strong>Tactical Risks:</strong> Requires attentive management, may incur higher costs.</li>
+    <li><strong>Core/Satellite Risks:</strong> Needs balance and continuous oversight to ensure performance.</li>
+  </ul>
   <section>
     <h3>Market Context and Recent Developments</h3>
     <p>Recent economic events have highlighted the importance of understanding and mitigating investment risks:</p>
     <ul>
-      <li><strong>Inflation Concerns:</strong> Despite recent declines, inflation remains a significant concern. The S&P 500 has recovered from earlier shocks and is trading at elevated levels, but pessimism lingers, with concerns that rising inflation could deter the Federal Reserve from implementing anticipated interest-rate cuts. Companies grappling with tariff costs may resort to job cuts if they can't raise prices, which could hinder economic growth. Market leaders like BlackRock and the OECD have warned that current trade measures may accelerate inflation and slow growth. Investment strategies are shifting accordingly, with some firms moving away from bank stocks and toward tech companies amid growing economic uncertainty and potentially overvalued stock prices. <cite>Source: The Wall Street Journal</cite></li>
-      <li><strong>Trade Tensions:</strong> Ongoing trade tensions, particularly between the U.S. and China, have introduced additional market volatility. On June 12, 2025, U.S. financial markets displayed mixed signals despite stocks edging higher, with the dollar dropping to its lowest level since April 2022. Markets responded to multiple macroeconomic and geopolitical factors, including subdued U.S. inflation data, rising tensions in the Middle East, and ongoing uncertainty about trade policy with China. Consumer and producer inflation remained muted due to declining prices in gasoline, cars, housing, and airfares, though economists expect inflation may rise as new U.S. tariffs take effect. <cite>Source: Reuters</cite></li>
-      <li><strong>Economic Outlook:</strong> JPMorgan Chase CEO Jamie Dimon has cautioned about the potential for stagflation—a combination of stagnant economic growth, high inflation, and high unemployment. Speaking at the Global China Summit in Shanghai, Dimon expressed skepticism about current optimism in the U.S. economy, stating that he does not believe the country is in a "sweet spot." His warning comes amid persistent concerns over inflation, ongoing trade tensions with China, and growing uncertainties on Wall Street. Additionally, doubts about the U.S. dollar and fiscal deficit are contributing to the economic unease. <cite>Source: The Economic Times</cite></li>
+      <li><strong>Inflation Concerns:</strong> Despite recent declines, inflation remains a significant concern. The S&P 500 has recovered from earlier shocks and is trading at elevated levels, but pessimism lingers, with concerns that rising inflation could deter the Federal Reserve from implementing anticipated interest-rate cuts.</li>
+      <li><strong>Trade Tensions:</strong> Ongoing trade tensions, particularly between the U.S. and China, have introduced additional market volatility.</li>
+      <li><strong>Economic Outlook:</strong> Persistent concerns over inflation, ongoing trade tensions with China, and growing uncertainties on Wall Street.</li>
     </ul>
   </section>
-
-  <section>
-    <h3>Strategy Comparison</h3>
-    <table border="1" cellpadding="8" cellspacing="0">
-      <thead>
-        <tr>
-          <th>Strategy</th>
-          <th>Flexibility</th>
-          <th>Risk Level</th>
-          <th>Management Effort</th>
-          <th>Best Suited For</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Strategic (SAA)</td>
-          <td>Low</td>
-          <td>Moderate</td>
-          <td>Low</td>
-          <td>Long-term investors</td>
-        </tr>
-        <tr>
-          <td>Tactical (TAA)</td>
-          <td>High</td>
-          <td>High</td>
-          <td>High</td>
-          <td>Active traders</td>
-        </tr>
-        <tr>
-          <td>Core-Satellite (C/S)</td>
-          <td>Moderate</td>
-          <td>Moderate</td>
-          <td>Moderate</td>
-          <td>Balanced strategy seekers</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <section>
-    <h3>Conclusion</h3>
-<div class="chart-col">
-  <div class="chart-title">Overall Success Comparison: Liberty vs. Freedom</div>
-  <svg width="600" height="300">
-    <!-- Liberty Success -->
-    <rect x="50" y="50" width="100" height="200" fill="#6c8998"></rect>
-    <text x="100" y="45" fill="#233954" font-size="1rem" text-anchor="middle">75%</text>
-    <text x="100" y="260" fill="#233954" font-size="1rem" text-anchor="middle">Liberty</text>
-    <!-- Freedom Success -->
-    <rect x="250" y="80" width="100" height="170" fill="#b9c4a8"></rect>
-    <text x="300" y="75" fill="#233954" font-size="1rem" text-anchor="middle">70%</text>
-    <text x="300" y="260" fill="#233954" font-size="1rem" text-anchor="middle">Freedom</text>
-  </svg>
-  <div class="chart-legend">
-    <div class="legend-item"><span class="legend-color" style="background:#6c8998"></span> Liberty Success Rate</div>
-    <div class="legend-item"><span class="legend-color" style="background:#b9c4a8"></span> Freedom Success Rate</div>
-  </div>
-  <div class="chart-label">Comparison highlights Liberty's relative performance advantage over Freedom in overall success metrics.</div>
 </div>
-    <p>Each investment strategy—SAA, TAA, and C/S—offers distinct advantages and challenges. The choice of strategy should align with the investor's financial goals, risk tolerance, and investment horizon. Recent economic developments underscore the importance of adapting investment strategies to navigate the evolving market landscape effectively.</p>
-  </section>
-</div>
+
 <!-- Recommendations & Final Thoughts -->
 <div class="page" id="recommendations">
   <h2>Recommendations & Final Thoughts</h2>
@@ -690,15 +656,15 @@
   </div>
 </div>
 
-  <!-- References -->
-  <div class="page" id="references">
-    <h2>References</h2>
-    <ul style="font-size:1rem; color:#233954;">
-      <li>BlackRock Insights, FCMS Library, SharePoint & University Resources</li>
-      <li>Morningstar Indexes, S&P 500, Dow Jones, Russell 2000, MSCI EAFE, Bloomberg US Aggregate Bond</li>
-      <li>Project Research by James London &amp; Jaden Dahan</li>
-    </ul>
-    <div class="authors">
-      &mdash; Jaden Dahan &amp; James London, 2025
-    </div>
+<!-- References -->
+<div class="page" id="references">
+  <h2>References</h2>
+  <ul style="font-size:1rem; color:#233954;">
+    <li>BlackRock Insights, FCMS Library, SharePoint & University Resources</li>
+    <li>Morningstar Indexes, S&P 500, Dow Jones, Russell 2000, MSCI EAFE, Bloomberg US Aggregate Bond</li>
+    <li>Project Research by James London &amp; Jaden Dahan</li>
+  </ul>
+  <div class="authors">
+    &mdash; Jaden Dahan &amp; James London, 2025
   </div>
+</div>
