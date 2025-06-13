@@ -14,20 +14,20 @@
       --bfg-sky: #dde5e9;
     }
     html { scroll-behavior: smooth; }
-    body { 
-      font-family: 'Segoe UI', Arial, sans-serif; 
-      margin: 0; padding: 0; 
-      line-height: 1.7; 
-      color: var(--bfg-navy); 
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0; padding: 0;
+      line-height: 1.7;
+      color: var(--bfg-navy);
       background-color: var(--bfg-cream);
     }
-    header { 
-      background: var(--bfg-navy); 
-      color: var(--bfg-gold); 
-      padding: 20px 0; 
-      text-align: center; 
-      box-shadow: 0 2px 10px rgba(35,57,84,0.13); 
-      border-bottom: 7px solid var(--bfg-gold); 
+    header {
+      background: var(--bfg-navy);
+      color: var(--bfg-gold);
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(35,57,84,0.13);
+      border-bottom: 7px solid var(--bfg-gold);
       position: relative;
     }
     header img {
@@ -36,138 +36,136 @@
       width: 120px;
       height: auto;
     }
-    header h1 { font-size: 2.17rem; margin-bottom: 0; letter-spacing: 1px; }
+    header h1 { font-size: 2.17rem; margin-bottom: 0; }
     header p { font-size: 1.13rem; margin-top: 7px; color: var(--bfg-green);}
-    nav.toc { 
-      background: var(--bfg-sky); 
-      border-radius: 12px; 
-      padding: 18px 35px; 
-      font-size: 1.18rem; 
-      max-width: 1000px; 
-      margin: 30px auto 35px auto; 
-      box-shadow: 0 1px 7px #dde5e9; 
-      border: 1.5px solid var(--bfg-gold); 
-      display: flex; 
-      flex-wrap: wrap; 
+    nav.toc {
+      background: var(--bfg-sky);
+      border-radius: 12px;
+      padding: 18px 35px;
+      font-size: 1.18rem;
+      max-width: 1000px;
+      margin: 30px auto 35px auto;
+      box-shadow: 0 1px 7px #dde5e9;
+      border: 1.5px solid var(--bfg-gold);
+      display: flex;
+      flex-wrap: wrap;
       justify-content: center;
     }
-    nav.toc a { 
-      color: var(--bfg-navy); 
-      text-decoration: none; 
-      margin: 0 24px; 
-      padding: 9px 22px; 
-      border-radius: 8px; 
-      transition: background 0.2s, color 0.2s; 
-      font-weight: 600; 
-      background: #fff; 
-      border: 1px solid var(--bfg-gold); 
-      margin-bottom: 10px; 
-      box-shadow: 0 1px 7px #dde5e9; 
+    nav.toc a {
+      color: var(--bfg-navy);
+      text-decoration: none;
+      margin: 0 24px;
+      padding: 9px 22px;
+      border-radius: 8px;
+      transition: background 0.2s, color 0.2s;
+      font-weight: 600;
+      background: #fff;
+      border: 1px solid var(--bfg-gold);
+      margin-bottom: 10px;
+      box-shadow: 0 1px 7px #dde5e9;
     }
-    nav.toc a:hover, nav.toc a.active { 
-      background: var(--bfg-gold); 
-      color: var(--bfg-navy); 
+    nav.toc a:hover, nav.toc a.active {
+      background: var(--bfg-gold);
+      color: var(--bfg-navy);
       border: 1.5px solid var(--bfg-navy);
     }
-    .page { 
-      display: none; 
-      width: 98%; 
-      max-width: 1400px; 
-      margin: 0 auto 32px; 
-      padding: 40px 36px 30px; 
-      background: var(--bfg-cream); 
-      border-radius: 18px; 
-      box-shadow: 0 6px 32px rgba(35,57,84,0.12); 
-      position: relative; 
-      z-index: 10; 
-      min-height: 400px; 
+    .page {
+      display: none;
+      width: 98%;
+      max-width: 1400px;
+      margin: 0 auto 32px;
+      padding: 40px 36px 30px;
+      background: var(--bfg-cream);
+      border-radius: 18px;
+      box-shadow: 0 6px 32px rgba(35,57,84,0.12);
+      position: relative;
+      z-index: 10;
+      min-height: 400px;
       animation: fadeIn 0.4s;
     }
     .page.active { display: block; animation: fadeIn 0.4s;}
-    @keyframes fadeIn { 
-      from { opacity: 0; transform: translateY(20px);} 
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
       to { opacity: 1; transform: translateY(0);}
     }
-    h2 { 
-      color: var(--bfg-navy); 
-      font-size: 1.44rem; 
-      border-bottom: 2px solid var(--bfg-gold); 
-      margin-bottom: 18px; 
-      padding-bottom: 6px; 
-      margin-top: 44px; 
+    h2 {
+      color: var(--bfg-navy);
+      font-size: 1.44rem;
+      border-bottom: 2px solid var(--bfg-gold);
+      margin-bottom: 18px;
+      padding-bottom: 6px;
+      margin-top: 44px;
       letter-spacing: 0.5px;
     }
     .table-caption { font-size: 1.09rem; color: var(--bfg-navy); margin-bottom: 8px; font-weight: 600; margin-top: 25px;}
-    table { 
-      width: 100%; 
-      border-collapse: collapse; 
-      margin: 32px 0 36px; 
-      font-size: 1.08rem; 
-      background: #fdfcf7; 
-      border-radius: 12px; 
-      overflow: hidden; 
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 32px 0 36px;
+      font-size: 1.08rem;
+      background: #fdfcf7;
+      border-radius: 12px;
+      overflow: hidden;
       box-shadow: 0 2px 12px #dde5e9;
     }
-    th, td { 
-      padding: 12px 15px; 
-      border: 1px solid var(--bfg-gold); 
-      text-align: left; 
+    th, td {
+      padding: 12px 15px;
+      border: 1px solid var(--bfg-gold);
+      text-align: left;
       vertical-align: top;
     }
-    th { 
-      background: var(--bfg-navy); 
-      color: var(--bfg-gold); 
-      font-weight: 600; 
-      font-size: 1.09rem; 
-      border-bottom: 3px solid var(--bfg-gold); 
+    th {
+      background: var(--bfg-navy);
+      color: var(--bfg-gold);
+      font-weight: 600;
+      font-size: 1.09rem;
+      border-bottom: 3px solid var(--bfg-gold);
       letter-spacing: .5px;
     }
     tr:nth-child(even) td { background: var(--bfg-sky); }
     tr:hover td { background: #f9f7ed; transition: background 0.15s; }
-    .chart-group { 
-      display: flex; 
-      flex-wrap: wrap; 
-      gap: 120px; 
-      justify-content: center; 
-      align-items: flex-start; 
+    .chart-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 120px;
+      justify-content: center;
+      align-items: flex-start;
       margin: 80px 0;
     }
-    .chart-col { 
-      flex: 1 1 800px; 
-      background: var(--bfg-sky); 
-      border-radius: 18px; 
+    .chart-col {
+      flex: 1 1 800px;
+      background: var(--bfg-sky);
+      border-radius: 18px;
       padding: 38px;
-      box-shadow: 0 2px 12px #dde5e9; 
-      min-width: 300px; 
-      max-width: 100%;
-      text-align: center; 
-      margin: 0 20px; 
+      box-shadow: 0 2px 12px #dde5e9;
+      text-align: center;
+      margin: 0 20px;
       border: 1.5px solid var(--bfg-gold);
     }
     .chart-title { margin: 0 0 15px 0; font-size: 1.18rem; font-weight: 600; color: var(--bfg-navy);}
     .chart-label { font-size: 1.09rem; margin-top: 20px; color: var(--bfg-blue); min-height: 36px;}
+    .chart-legend { display: flex; flex-wrap: wrap; justify-content: center; font-size: 1.12em; color: #233954; }
+    .legend-item { display: flex; align-items: center; margin: 10px; }
+    .legend-color { width: 30px; height: 20px; border-radius: 4px; margin-right: 10px; display: inline-block; }
     .authors { text-align: right; color: #888; font-size: 1.08rem; margin-top: 18px;}
-    footer { 
-      background: var(--bfg-navy); 
-      color: var(--bfg-gold); 
-      text-align: center; 
-      padding: 15px 0 10px; 
-      margin-top: 60px; 
-      font-size: 1.12rem; 
-      letter-spacing: 0.5px; 
-      box-shadow: 0 -2px 8px rgba(35,57,84,0.06); 
-      position: relative; 
-      width: 100%; 
+    footer {
+      background: var(--bfg-navy);
+      color: var(--bfg-gold);
+      text-align: center;
+      padding: 15px 0 10px;
+      margin-top: 60px;
+      font-size: 1.12rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 -2px 8px rgba(35,57,84,0.06);
+      position: relative;
+      width: 100%;
       border-top: 5px solid var(--bfg-gold);
     }
-    @media (max-width: 1400px) { 
-      .page, .chart-col { max-width: 98vw; min-width: 0;} 
-      .chart-group { gap: 50px; } 
+    @media (max-width: 1400px) {
+      .page, .chart-col { max-width: 98vw; min-width: 0;}
     }
-    @media (max-width: 900px) { 
-      .page, .chart-col { padding: 8vw 2vw; } 
-      .chart-col { min-width: 0; } 
-      .chart-group { flex-direction: column; gap: 40px; margin: 20px 0;}
+    @media (max-width: 900px) {
+      .page, .chart-col { padding: 8vw 2vw; }
     }
   </style>
   <script>
@@ -205,7 +203,6 @@
     <a href="#executive-summary" data-page="executive-summary">Executive Summary</a>
     <a href="#overview" data-page="overview">Overview of Investment Strategies</a>
     <a href="#fcms-portfolio" data-page="fcms-portfolio">FCMS Portfolio Translation</a>
-    <a href="#historical-performance" data-page="historical-performance">Historical Performance Analysis</a>
     <a href="#freedom-strategies" data-page="freedom-strategies">Freedom Strategies</a>
     <a href="#liberty-strategies" data-page="liberty-strategies">Liberty Strategies</a>
     <a href="#risk-evaluation" data-page="risk-evaluation">Risk Evaluation</a>
@@ -233,62 +230,278 @@
   <!-- FCMS Portfolio Translation -->
   <div class="page" id="fcms-portfolio">
     <h2>FCMS Portfolio Translation</h2>
-    <div class="subsection">Freedom Portfolio</div>
-    <p>Freedom, unlike Liberty, houses multiple strategies and incorporates both into a single portfolio. This flexibility benefits both the relationship and the advisor by catering to specific desires and risks.</p>
-    <div class="subsection">Foundation Series</div>
-    <ul>
-      <li><strong>Core Series:</strong> Delivers risk-adjusted returns through active funds tailored to the degree of market efficiency in each asset class.</li>
-      <li><strong>Core ETF Series:</strong> Provides cost-effective market exposure by allocating to low-cost, passively managed ETFs.</li>
-      <li><strong>Tax-Aware Series:</strong> Utilizes tax-aware rebalancing, focusing on investments like ETFs and municipal bonds for improved tax-adjusted outcomes.</li>
-      <li><strong>Sustainable Investing Series:</strong> Incorporates ESG principles, investing in funds that consider environmental, social, and corporate governance factors.</li>
-    </ul>
-    <div class="subsection">Dynamic</div>
-    <p>Active strategies in the Dynamic series add value through TAA, stock selection, and risk mitigation, subdivided into:</p>
-    <ul>
-      <li><strong>Managed Risk Series:</strong> Incorporates Low Volatility Equity, Hedged Equity, Long/Short Equity, and Tactical Allocation.</li>
-      <li><strong>Protected Growth Series:</strong> Uses buffer ETFs for capital preservation with capped upside.</li>
-      <li><strong>Tactical Allocation Series:</strong> Employs objective, evidence-based processes to reduce emotional bias.</li>
-      <li><strong>Global Allocation Series:</strong> Focuses on short-term global opportunities.</li>
-      <li><strong>Institutional Equity Series:</strong> In-depth stock selection aimed at adding value through research.</li>
-      <li><strong>Alternative Strategies:</strong> Offers diversified alternative investments less correlated with traditional markets, such as Absolute Return and Real Assets strategies.</li>
-    </ul>
-  </div>
-
-  <!-- Historical Performance Analysis -->
-  <div class="page" id="historical-performance">
-    <h2>Historical Performance Analysis</h2>
-    <div class="subsection">Foundation Series</div>
-    <p>The Foundation Series combines passive and active management to deliver steady growth with risk mitigation across various asset allocations:</p>
-    <ul>
-      <li><strong>Core Series:</strong> Moderate average returns of about 6% over five years. Offers a stable performance structure favoring capital preservation.</li>
-      <li><strong>Core ETF Series:</strong> Focuses on cost-effectiveness with a 5% average over five years, appealing to those favoring managed ETFs.</li>
-      <li><strong>Tax-Aware Series:</strong> Maintains consistent performance with a focus on tax efficiency, suitable for low-variance seekers.</li>
-      <li><strong>Sustainable Series:</strong> Achieves about 6% over five years with a focus on ethical values and sustainability practices.</li>
-    </ul>
+    <table>
+      <tr>
+        <th>Series</th>
+        <th>Purpose</th>
+        <th>Strategies</th>
+      </tr>
+      <tr>
+        <td>Management Risk Series</td>
+        <td>Risk mitigation seeking long term growth with enhanced downside protection</td>
+        <td>
+          <ul>
+            <li>Low Volatility Equity</li>
+            <li>Hedged Equity</li>
+            <li>Long/Short Equity</li>
+            <li>Tactical Allocation</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Protected Growth Series</td>
+        <td>Provide growth potential while reducing downside risk using ETFs</td>
+        <td>
+          <ul>
+            <li>US Protected Growth</li>
+            <li>US Protected Growth Moderate</li>
+            <li>US Protected Growth Conservative</li>
+            <li>Global Protected Growth Moderate</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Tactical Allocation Series</td>
+        <td>Managed via research to reduce emotional bias</td>
+        <td>
+          <ul>
+            <li>Tactical US Sector Equity ETF</li>
+            <li>Tactical US Sector Equity ETF with Stop Loss</li>
+            <li>Tactical Allocation ETF</li>
+            <li>Tactical Fixed Income ETF</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Global Allocation Series</td>
+        <td>Capitalize on short-term global opportunities</td>
+        <td>
+          <ul>
+            <li>Global Focused ETF</li>
+            <li>Global Growth ETF</li>
+            <li>Global Moderate ETF</li>
+            <li>Global Conservative ETF</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Institutional Equity Series</td>
+        <td>Value addition through in-depth research</td>
+        <td>
+          <ul>
+            <li>US Core Dividend</li>
+            <li>US Growth Equity</li>
+            <li>US Multi Cap Equity</li>
+            <li>Global Value Dividend</li>
+            <li>International Growth Equity</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Freedom Alternative</td>
+        <td>Includes Absolute Return and Real Assets strategies</td>
+        <td>
+          <ul>
+            <li>Risk profile like fixed income</li>
+            <li>Risk profile like equities</li>
+          </ul>
+        </td>
+      </tr>
+    </table>
   </div>
 
   <!-- Freedom Strategies Evaluation -->
   <div class="page" id="freedom-strategies">
     <h2>Freedom Strategies Evaluation</h2>
-    <p>Freedom Strategies feature a combination of risk mitigation, tactical allocation, and growth-oriented approaches:</p>
-    <ul>
-      <li><strong>Managed Risk:</strong> Averages a 6.36% return, focusing on risk mitigation for conservative investors.</li>
-      <li><strong>Tactical Allocation:</strong> Offers a 7.4% return with higher risks but potential rewards, engaging investors in market dynamics.</li>
-      <li><strong>Protected Growth:</strong> Balances risk-reduction with equity market engagement, yielding 4.5% over five years.</li>
-      <li><strong>Global Allocation:</strong> Adapts to global opportunities with returns reduced over recent years, appealing to speculative investors.</li>
-      <li><strong>Institutional Equity:</strong> Achieves a strong return of 10%, emphasizing thorough stock research.</li>
-    </ul>
+    <div class="table-caption">Freedom Strategies Breakdown</div>
+    <table>
+      <tr>
+        <th>Series</th>
+        <th>Purpose</th>
+        <th>Strategies</th>
+      </tr>
+      <tr>
+        <td>Management Risk Series</td>
+        <td>Risk mitigation seeking long term growth with enhanced downside protection</td>
+        <td>
+          <ul>
+            <li>Low Volatility Equity</li>
+            <li>Hedged Equity</li>
+            <li>Long/Short Equity</li>
+            <li>Tactical Allocation</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Protected Growth Series</td>
+        <td>Provide growth potential while reducing downside risk using ETFs</td>
+        <td>
+          <ul>
+            <li>US Protected Growth</li>
+            <li>US Protected Growth Moderate</li>
+            <li>US Protected Growth Conservative</li>
+            <li>Global Protected Growth Moderate</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Tactical Allocation Series</td>
+        <td>Tactical strategies managed through objective research</td>
+        <td>
+          <ul>
+            <li>Tactical US Sector Equity ETF</li>
+            <li>Tactical US Sector Equity ETF with Stop Loss</li>
+            <li>Tactical Allocation ETF</li>
+            <li>Tactical Fixed Income ETF</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Global Allocation Series</td>
+        <td>Capitalize on short-term global opportunities</td>
+        <td>
+          <ul>
+            <li>Global Focused ETF</li>
+            <li>Global Growth ETF</li>
+            <li>Global Moderate ETF</li>
+            <li>Global Conservative ETF</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Institutional Equity Series</td>
+        <td>Value addition through in-depth research</td>
+        <td>
+          <ul>
+            <li>US Core Dividend</li>
+            <li>US Growth Equity</li>
+            <li>US Multi Cap Equity</li>
+            <li>Global Value Dividend</li>
+            <li>International Growth Equity</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Freedom Alternative</td>
+        <td>Includes Absolute Return and Real Assets strategies</td>
+        <td>
+          <ul>
+            <li>Risk profile like fixed income</li>
+            <li>Risk profile like equities</li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+    <div class="chart-group">
+      <div class="chart-col">
+        <div class="chart-title">5-Year Annualized Return by Freedom Series</div>
+        <svg width="600" height="300">
+          <rect x="50" y="80" width="80" height="200" fill="#6c8998"></rect>
+          <text x="90" y="75" fill="#233954" font-size="1rem" text-anchor="middle">8.7%</text>
+          <rect x="150" y="120" width="80" height="160" fill="#b9c4a8"></rect>
+          <text x="190" y="115" fill="#233954" font-size="1rem" text-anchor="middle">7.4%</text>
+          <rect x="250" y="140" width="80" height="140" fill="#e3d984"></rect>
+          <text x="290" y="135" fill="#233954" font-size="1rem" text-anchor="middle">7.1%</text>
+          <rect x="350" y="180" width="80" height="100" fill="#57CC99"></rect>
+          <text x="390" y="175" fill="#233954" font-size="1rem" text-anchor="middle">6.7%</text>
+          <rect x="450" y="240" width="80" height="40" fill="#a6a6a6"></rect>
+          <text x="490" y="235" fill="#233954" font-size="1rem" text-anchor="middle">3.7%</text>
+        </svg>
+        <div class="chart-legend">
+          <div class="legend-item"><span class="legend-color" style="background:#6c8998"></span> Core Series</div>
+          <div class="legend-item"><span class="legend-color" style="background:#b9c4a8"></span> Dynamic Series</div>
+          <div class="legend-item"><span class="legend-color" style="background:#e3d984"></span> Tactical Series</div>
+          <div class="legend-item"><span class="legend-color" style="background:#57CC99"></span> Sustainable</div>
+          <div class="legend-item"><span class="legend-color" style="background:#a6a6a6"></span> Alternative</div>
+        </div>
+        <div class="chart-label">Core Series led Freedom 5-year returns, with alternatives offering diversification.</div>
+      </div>
+    </div>
   </div>
 
   <!-- Liberty Strategies Evaluation -->
   <div class="page" id="liberty-strategies">
     <h2>Liberty Strategies Evaluation</h2>
-    <p>The Liberty Strategies consist of accumulation, growth, and income, incorporating varying risk levels:</p>
-    <ul>
-      <li><strong>Accumulation Series:</strong> High volatility and high reward, suited for risk-tolerant individuals over long horizons.</li>
-      <li><strong>Growth & Income Series:</strong> Balances growth with income, targeting those with some risk tolerance.</li>
-      <li><strong>Multi-Asset Income Series:</strong> Emphasizes stability over high yields, favoring older or low-risk investors.</li>
-    </ul>
+    <div class="table-caption">Liberty Strategies Breakdown</div>
+    <table>
+      <tr>
+        <th>Series</th>
+        <th>Portfolio Name</th>
+        <th>Description</th>
+        <th>Equity Allocation</th>
+        <th>Bond Allocation</th>
+        <th>Risk Score</th>
+        <th>Core/Satellite Split</th>
+        <th>Notes</th>
+        <th>Why Use This Portfolio?</th>
+      </tr>
+      <tr>
+        <td>Accumulation Series</td>
+        <td>Aggressive Accumulation</td>
+        <td>Equity-centered long term growth</td>
+        <td>Very High (98.8%)</td>
+        <td>None</td>
+        <td>80</td>
+        <td>60% core / 40% satellite</td>
+        <td>Heavy equity tilt; top-heavy holdings; no bonds</td>
+        <td>Ideal for younger investors seeking capital appreciation.</td>
+      </tr>
+      <tr>
+        <td>Growth & Income Series</td>
+        <td>Moderate G+I</td>
+        <td>Combines capital appreciation with income</td>
+        <td>Moderately High (62.8%)</td>
+        <td>Low (19.7%)</td>
+        <td>60</td>
+        <td>65% Core / 35% Satellite</td>
+        <td>Balanced growth with moderate income</td>
+        <td>Balanced choice for growth seekers with income interests.</td>
+      </tr>
+      <tr>
+        <td>Risk-Mitigation Series</td>
+        <td>RM Allocation</td>
+        <td>Reduced risk with equity exposure</td>
+        <td>High (84.4%)</td>
+        <td>Low (9.7%)</td>
+        <td>60</td>
+        <td>60% Core / 25% Hedged / 15% Stop-Loss Satellite</td>
+        <td>Includes hedging mechanisms</td>
+        <td>For equity-focused investors looking for downside protection.</td>
+      </tr>
+      <tr>
+        <td>Multi-Asset Income</td>
+        <td>Aggressive Income</td>
+        <td>High income through satellite exposure</td>
+        <td>Low (26.7%)</td>
+        <td>Moderate (55.9%)</td>
+        <td>40</td>
+        <td>20% Core / 80% Satellite</td>
+        <td>Heavy satellite exposure</td>
+        <td>For income-seekers who can handle volatility.</td>
+      </tr>
+    </table>
+    <div class="chart-group">
+      <div class="chart-col">
+        <div class="chart-title">5-Year Annualized Return by Liberty Series</div>
+        <svg width="600" height="300">
+          <rect x="50" y="80" width="80" height="220" fill="#6c8998"></rect>
+          <text x="90" y="75" fill="#233954" font-size="1rem" text-anchor="middle">9.5%</text>
+          <rect x="150" y="140" width="80" height="160" fill="#b9c4a8"></rect>
+          <text x="190" y="135" fill="#233954" font-size="1rem" text-anchor="middle">7.0%</text>
+          <rect x="250" y="180" width="80" height="120" fill="#e3d984"></rect>
+          <text x="290" y="175" fill="#233954" font-size="1rem" text-anchor="middle">4.0%</text>
+          <rect x="350" y="200" width="80" height="100" fill="#57CC99"></rect>
+          <text x="390" y="195" fill="#233954" font-size="1rem" text-anchor="middle">3.9%</text>
+        </svg>
+        <div class="chart-legend">
+          <div class="legend-item"><span class="legend-color" style="background:#6c8998"></span> Aggressive Accumulation</div>
+          <div class="legend-item"><span class="legend-color" style="background:#b9c4a8"></span> Growth Accumulation</div>
+          <div class="legend-item"><span class="legend-color" style="background:#e3d984"></span> Aggressive Income</div>
+          <div class="legend-item"><span class="legend-color" style="background:#57CC99"></span> Conservative Income</div>
+        </div>
+        <div class="chart-label">Aggressive Accumulation led Liberty 5-year returns, with income strategies offering steady growth.</div>
+      </div>
+    </div>
   </div>
 
   <!-- Risk Evaluation -->
@@ -306,10 +519,10 @@
     <h2>Recommendations & Final Thoughts</h2>
     <div class="summary-box">
       <ul>
-        <li><b>Strategic:</b> Best for stability and long-term growth. Suits risk-averse investors.</li>
+        <li><b>Strategic:</b> Best for stability and long-term growth, suitable for risk-averse investors.</li>
         <li><b>Tactical:</b> Ideal for those seeking active strategies with higher potential returns and oversight.</li>
-        <li><b>Core/Satellite:</b> Effective for balancing safety and growth through active management. Requires diligent monitoring.</li>
-        <li><b>Overall Advice:</b> Align your strategy with specific goals and risk tolerances for diversified results.</li>
+        <li><b>Core/Satellite:</b> Effective for balancing safety and growth through active management, diligence needed.</li>
+        <li>Align strategy selection with specific goals and risk tolerances for diversified results.</li>
       </ul>
     </div>
   </div>
@@ -318,9 +531,8 @@
   <div class="page" id="references">
     <h2>References</h2>
     <ul style="font-size:1rem; color:#233954;">
-      <li>BlackRock Insights, FCMS Library, SharePoint & University Resources</li>
-      <li>Morningstar Indexes, S&P 500, Dow Jones, Russell 2000, MSCI EAFE, Bloomberg US Aggregate Bond</li>
-      <li>Project Research by James London &amp; Jaden Dahan, 2025</li>
+      <li>Information derived from FCMS Reports, Industry Insights, and Market Analysis.</li>
+      <li>Research compiled by Jaden Dahan &amp; James London, 2025.</li>
     </ul>
     <div class="authors">
       &mdash; Jaden Dahan &amp; James London, 2025
