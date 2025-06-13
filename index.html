@@ -39,7 +39,7 @@
     header h1 { font-size: 2.17rem; margin-bottom: 0; letter-spacing: 1px; }
     header p { font-size: 1.13rem; margin-top: 7px; color: var(--bfg-green);}
     nav.toc { 
-      background: var(--bfg-sky);
+      background: var(--bfg-sky); 
       border-radius: 12px; 
       padding: 18px 35px; 
       font-size: 1.18rem; 
@@ -97,7 +97,7 @@
       margin-top: 44px; 
       letter-spacing: 0.5px;
     }
-    .table-caption { font-size: 1.09em; color: var(--bfg-navy); margin-bottom: 8px; font-weight: 600; margin-top: 25px;}
+    .table-caption { font-size: 1.09rem; color: var(--bfg-navy); margin-bottom: 8px; font-weight: 600; margin-top: 25px;}
     table { 
       width: 100%; 
       border-collapse: collapse; 
@@ -118,7 +118,7 @@
       background: var(--bfg-navy); 
       color: var(--bfg-gold); 
       font-weight: 600; 
-      font-size: 1.09em; 
+      font-size: 1.09rem; 
       border-bottom: 3px solid var(--bfg-gold); 
       letter-spacing: .5px;
     }
@@ -146,9 +146,6 @@
     }
     .chart-title { margin: 0 0 15px 0; font-size: 1.18rem; font-weight: 600; color: var(--bfg-navy);}
     .chart-label { font-size: 1.09rem; margin-top: 20px; color: var(--bfg-blue); min-height: 36px;}
-    .chart-legend { display: flex; flex-wrap: wrap; justify-content: center; font-size: 1.12em; color: #233954; }
-    .legend-item { display: flex; align-items: center; margin: 10px; }
-    .legend-color { width: 30px; height: 20px; border-radius: 4px; margin-right: 10px; display: inline-block; }
     .authors { text-align: right; color: #888; font-size: 1.08rem; margin-top: 18px;}
     footer { 
       background: var(--bfg-navy); 
@@ -200,17 +197,17 @@
 </head>
 <body>
   <header>
-    <img src="path/to/logo.png" alt="Brooks Financial Group Logo">
     <h1>Brooks Financial Group Intern Project One</h1>
-    <p><b>Evaluation of Strategic, Tactical, and Core-Satellite Asset Allocation Portfolios</b></p>
+    <p>Evaluation of Strategic, Tactical, and Core-Satellite Asset Allocation Portfolios</p>
     <div style="font-size:1rem; margin-top:6px;">Jaden Dahan and James London &middot; June 30, 2025</div>
   </header>
   <nav class="toc">
     <a href="#executive-summary" data-page="executive-summary">Executive Summary</a>
-    <a href="#overview" data-page="overview">Overview</a>
+    <a href="#overview" data-page="overview">Overview of Investment Strategies</a>
+    <a href="#fcms-portfolio" data-page="fcms-portfolio">FCMS Portfolio Translation</a>
+    <a href="#historical-performance" data-page="historical-performance">Historical Performance Analysis</a>
     <a href="#freedom-strategies" data-page="freedom-strategies">Freedom Strategies</a>
     <a href="#liberty-strategies" data-page="liberty-strategies">Liberty Strategies</a>
-    <a href="#comparison-metrics" data-page="comparison-metrics">Comparison Metrics</a>
     <a href="#risk-evaluation" data-page="risk-evaluation">Risk Evaluation</a>
     <a href="#recommendations" data-page="recommendations">Recommendations</a>
     <a href="#references" data-page="references">References</a>
@@ -219,146 +216,88 @@
   <!-- Executive Summary -->
   <div class="page" id="executive-summary">
     <h2>Executive Summary</h2>
-    <div class="summary-box">
-      Mr. Chris DePietro tasked us with researching tactical, strategic, and core/satellite investment strategies. We conducted an in-depth review of historical performance, risk characteristics, and practical applications tailored to FCMS by consulting the FCMS SharePoint platform and Mr. Brian Zabora. Evaluating these strategies, we looked at their benefits and drawbacks concerning volatility, economic shifts, and investment behavior, factoring in fees, turnover, and taxes.
-    </div>
+    <p>Mr. Chris DePietro tasked us with researching tactical, strategic, and core/satellite investment strategies. We have conducted an in-depth review of historical performance, risk characteristics, and practical applications that further differentiate the strategies specific to FCMS by reviewing the FCMS SharePoint platform and consulting with Mr. Brian Zabora. We also evaluated the benefits and drawbacks regarding volatility, economic shifts, and investment behavior considering fees, turnover, and taxes.</p>
   </div>
 
   <!-- Overview of Investment Strategies -->
   <div class="page" id="overview">
     <h2>Overview of Investment Strategies</h2>
+    <div class="subsection">Tactical</div>
+    <p>Tactical Asset Allocation is a strategy involving active management to adjust a portfolio's asset basket, capitalize on short-term opportunities, and generate income based on market conditions and economic trends.</p>
+    <div class="subsection">Strategic</div>
+    <p>Strategic Asset Allocation involves setting target allocations for securities and periodically/passively rebalancing the portfolio to maintain those targets, focusing on long-term goals by managing risk and return based on specific investor tolerance.</p>
+    <div class="subsection">Core/Satellite</div>
+    <p>Core/Satellite Asset Allocation balances stability and growth potential by combining a diversified core portfolio with actively managed satellite positions aimed at generating high yield and profitability.</p>
+  </div>
+
+  <!-- FCMS Portfolio Translation -->
+  <div class="page" id="fcms-portfolio">
+    <h2>FCMS Portfolio Translation</h2>
+    <div class="subsection">Freedom Portfolio</div>
+    <p>Freedom, unlike Liberty, houses multiple strategies and incorporates both into a single portfolio. This flexibility benefits both the relationship and the advisor by catering to specific desires and risks.</p>
+    <div class="subsection">Foundation Series</div>
     <ul>
-      <li><strong>Tactical Asset Allocation:</strong> Involves actively managing portfolio components to benefit from shorter-term opportunities and respond to economic changes.</li>
-      <li><strong>Strategic Asset Allocation:</strong> Focuses on long-term target allocations, periodically rebalancing to maintain these targets, catering to specific risk tolerance and goals.</li>
-      <li><strong>Core/Satellite Asset Allocation:</strong> Combines a stable core with actively managed satellite positions to generate growth and yield.</li>
+      <li><strong>Core Series:</strong> Delivers risk-adjusted returns through active funds tailored to the degree of market efficiency in each asset class.</li>
+      <li><strong>Core ETF Series:</strong> Provides cost-effective market exposure by allocating to low-cost, passively managed ETFs.</li>
+      <li><strong>Tax-Aware Series:</strong> Utilizes tax-aware rebalancing, focusing on investments like ETFs and municipal bonds for improved tax-adjusted outcomes.</li>
+      <li><strong>Sustainable Investing Series:</strong> Incorporates ESG principles, investing in funds that consider environmental, social, and corporate governance factors.</li>
+    </ul>
+    <div class="subsection">Dynamic</div>
+    <p>Active strategies in the Dynamic series add value through TAA, stock selection, and risk mitigation, subdivided into:</p>
+    <ul>
+      <li><strong>Managed Risk Series:</strong> Incorporates Low Volatility Equity, Hedged Equity, Long/Short Equity, and Tactical Allocation.</li>
+      <li><strong>Protected Growth Series:</strong> Uses buffer ETFs for capital preservation with capped upside.</li>
+      <li><strong>Tactical Allocation Series:</strong> Employs objective, evidence-based processes to reduce emotional bias.</li>
+      <li><strong>Global Allocation Series:</strong> Focuses on short-term global opportunities.</li>
+      <li><strong>Institutional Equity Series:</strong> In-depth stock selection aimed at adding value through research.</li>
+      <li><strong>Alternative Strategies:</strong> Offers diversified alternative investments less correlated with traditional markets, such as Absolute Return and Real Assets strategies.</li>
     </ul>
   </div>
 
-  <!-- Freedom Strategies -->
+  <!-- Historical Performance Analysis -->
+  <div class="page" id="historical-performance">
+    <h2>Historical Performance Analysis</h2>
+    <div class="subsection">Foundation Series</div>
+    <p>The Foundation Series combines passive and active management to deliver steady growth with risk mitigation across various asset allocations:</p>
+    <ul>
+      <li><strong>Core Series:</strong> Moderate average returns of about 6% over five years. Offers a stable performance structure favoring capital preservation.</li>
+      <li><strong>Core ETF Series:</strong> Focuses on cost-effectiveness with a 5% average over five years, appealing to those favoring managed ETFs.</li>
+      <li><strong>Tax-Aware Series:</strong> Maintains consistent performance with a focus on tax efficiency, suitable for low-variance seekers.</li>
+      <li><strong>Sustainable Series:</strong> Achieves about 6% over five years with a focus on ethical values and sustainability practices.</li>
+    </ul>
+  </div>
+
+  <!-- Freedom Strategies Evaluation -->
   <div class="page" id="freedom-strategies">
     <h2>Freedom Strategies Evaluation</h2>
-    <div class="table-caption">Trailing Returns of Freedom Strategies as of April 30, 2025</div>
-    <table>
-      <tr>
-        <th>Series</th>
-        <th>1 Month</th>
-        <th>3 Month</th>
-        <th>1 Year</th>
-        <th>3 Year Annualized</th>
-        <th>5 Year Annualized</th>
-      </tr>
-      <tr>
-        <td>Core Aggressive</td>
-        <td>-0.8</td>
-        <td>-5.2</td>
-        <td>5.7%</td>
-        <td>57%</td>
-        <td>8.7%</td>
-      </tr>
-      <tr>
-        <td>Core Growth</td>
-        <td>-0.6</td>
-        <td>-3.9</td>
-        <td>5.8%</td>
-        <td>49%</td>
-        <td>7.0%</td>
-      </tr>
-      <tr>
-        <td>Moderate Growth</td>
-        <td>-0.5</td>
-        <td>-2.9</td>
-        <td>6.0%</td>
-        <td>5.4%</td>
-        <td>5.6%</td>
-      </tr>
-      <!-- Uncomment and add additional data as needed -->
-    </table>
+    <p>Freedom Strategies feature a combination of risk mitigation, tactical allocation, and growth-oriented approaches:</p>
+    <ul>
+      <li><strong>Managed Risk:</strong> Averages a 6.36% return, focusing on risk mitigation for conservative investors.</li>
+      <li><strong>Tactical Allocation:</strong> Offers a 7.4% return with higher risks but potential rewards, engaging investors in market dynamics.</li>
+      <li><strong>Protected Growth:</strong> Balances risk-reduction with equity market engagement, yielding 4.5% over five years.</li>
+      <li><strong>Global Allocation:</strong> Adapts to global opportunities with returns reduced over recent years, appealing to speculative investors.</li>
+      <li><strong>Institutional Equity:</strong> Achieves a strong return of 10%, emphasizing thorough stock research.</li>
+    </ul>
   </div>
 
-  <!-- Liberty Strategies -->
+  <!-- Liberty Strategies Evaluation -->
   <div class="page" id="liberty-strategies">
     <h2>Liberty Strategies Evaluation</h2>
-    <div class="table-caption">Calendar Year Returns of Liberty Strategies</div>
-    <table>
-      <tr>
-        <th>Series</th>
-        <th>2024</th>
-        <th>2023</th>
-        <th>2022</th>
-        <th>2021</th>
-        <th>2020</th>
-        <th>2019</th>
-      </tr>
-      <tr>
-        <td>Aggressive Accumulation</td>
-        <td>9.9%</td>
-        <td>18.0%</td>
-        <td>-18.9%</td>
-        <td>12.2%</td>
-        <td>13.0%</td>
-        <td>23.5%</td>
-      </tr>
-      <tr>
-        <td>Growth Accumulation</td>
-        <td>8.1%</td>
-        <td>16.1%</td>
-        <td>-18.4%</td>
-        <td>9.5%</td>
-        <td>11.3%</td>
-        <td>21.2%</td>
-      </tr>
-      <tr>
-        <td>Moderate G+I</td>
-        <td>9.3%</td>
-        <td>11.8%</td>
-        <td>-16.2%</td>
-        <td>12.2%</td>
-        <td>6.2%</td>
-        <td>15.7%</td>
-      </tr>
-      <!-- Uncomment and add additional data as needed -->
-    </table>
-  </div>
-
-  <!-- Comparison Metrics -->
-  <div class="page" id="comparison-metrics">
-    <h2>Comparison Metrics</h2>
-    <div class="table-caption">Performance Comparison Metrics</div>
-    <table>
-      <tr>
-        <th>Index</th>
-        <th>5 Year Annualized</th>
-        <th>10 Year Annualized</th>
-      </tr>
-      <tr>
-        <td>S&P 500</td>
-        <td>12.2%</td>
-        <td>15.6%</td>
-      </tr>
-      <tr>
-        <td>Dow Jones</td>
-        <td>10.4%</td>
-        <td>14.3%</td>
-      </tr>
-      <tr>
-        <td>Russell 2000</td>
-        <td>9.5%</td>
-        <td>13.1%</td>
-      </tr>
-      <!-- Uncomment and add additional data as needed -->
-    </table>  
+    <p>The Liberty Strategies consist of accumulation, growth, and income, incorporating varying risk levels:</p>
+    <ul>
+      <li><strong>Accumulation Series:</strong> High volatility and high reward, suited for risk-tolerant individuals over long horizons.</li>
+      <li><strong>Growth & Income Series:</strong> Balances growth with income, targeting those with some risk tolerance.</li>
+      <li><strong>Multi-Asset Income Series:</strong> Emphasizes stability over high yields, favoring older or low-risk investors.</li>
+    </ul>
   </div>
 
   <!-- Risk Evaluation -->
   <div class="page" id="risk-evaluation">
     <h2>Risk Evaluation</h2>
-    <div class="summary-box">
-      <p>The evaluation of risk associated with strategic, tactical, and core/satellite allocations highlights different profiles and consideration points. Understanding these is essential for aligning investment goals with risk appetite.</p>
-    </div>
     <ul>
-      <li><b>Strategic Allocations:</b> Fixed allocation may lead to underperformance due to market changes.</li>
-      <li><b>Tactical Allocations:</b> Requires active management, implying more costs and potential missteps in timing.</li>
-      <li><b>Core/Satellite Allocations:</b> Balance is critical to optimize returns and manage risks.</li>
+      <li><strong>Strategic Risks:</strong> Fixed allocation can lead to challenges during market downturns.</li>
+      <li><strong>Tactical Risks:</strong> Requires attentive management and may incur higher costs.</li>
+      <li><strong>Core/Satellite Risks:</strong> Needs balance and continuous oversight to ensure performance.</li>
     </ul>
   </div>
 
@@ -367,10 +306,10 @@
     <h2>Recommendations & Final Thoughts</h2>
     <div class="summary-box">
       <ul>
-        <li><b>Strategic:</b> Best suited for stable growth and risk-averse investors.</li>
-        <li><b>Tactical:</b> Ideal for those seeking aggressive growth managed with oversight.</li>
-        <li><b>Core/Satellite:</b> Effective for balancing growth and stability through active rebalancing.</li>
-        <li><b>Overall Advice:</b> Choose strategies aligning with specific goals and risk thresholds for diversified outcomes.</li>
+        <li><b>Strategic:</b> Best for stability and long-term growth. Suits risk-averse investors.</li>
+        <li><b>Tactical:</b> Ideal for those seeking active strategies with higher potential returns and oversight.</li>
+        <li><b>Core/Satellite:</b> Effective for balancing safety and growth through active management. Requires diligent monitoring.</li>
+        <li><b>Overall Advice:</b> Align your strategy with specific goals and risk tolerances for diversified results.</li>
       </ul>
     </div>
   </div>
@@ -379,9 +318,9 @@
   <div class="page" id="references">
     <h2>References</h2>
     <ul style="font-size:1rem; color:#233954;">
-      <li>Performance Reports and Data Analysis from FCMS Documents</li>
-      <li>Integration with Market Index References: S&P 500, Dow Jones, Russell 2000</li>
-      <li>Project Insights by Jaden Dahan & James London, 2025</li>
+      <li>BlackRock Insights, FCMS Library, SharePoint & University Resources</li>
+      <li>Morningstar Indexes, S&P 500, Dow Jones, Russell 2000, MSCI EAFE, Bloomberg US Aggregate Bond</li>
+      <li>Project Research by James London &amp; Jaden Dahan, 2025</li>
     </ul>
     <div class="authors">
       &mdash; Jaden Dahan &amp; James London, 2025
