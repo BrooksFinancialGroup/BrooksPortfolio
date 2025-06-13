@@ -565,43 +565,55 @@
 <!-- Recommendations & Final Thoughts -->
 <div class="page" id="recommendations">
   <h2>Recommendations & Final Thoughts</h2>
-  
+<!-- Investment Success Matrix Section -->
+<div class="page" id="investment-success-matrix">
+  <h3>Investment Success Matrix</h2>
 
-<h3>Investment Success Matrix</h2>
-
-<div class="matrix-container">
-  <div class="matrix-graphic">
-    <svg width="500" height="250">
-      <!-- Liberty -->
-      <rect x="60" y="100" width="100" height="50" fill="#6c8998"></rect>
-      <text x="110" y="130" fill="#fff" font-size="1.3rem" text-anchor="middle">Liberty: 0.325</text>
-      
-      <!-- Freedom -->
-      <rect x="200" y="120" width="100" height="50" fill="#b9c4a8"></rect>
-      <text x="250" y="150" fill="#fff" font-size="1.3rem" text-anchor="middle">Freedom: 0.27</text>
-      
-      <!-- S&P 500 -->
-      <rect x="340" y="60" width="100" height="50" fill="#ffb347"></rect>
-      <text x="390" y="90" fill="#fff" font-size="1.3rem" text-anchor="middle">S&P 500: 0.41</text>
-    </svg>
+  <div class="matrix-container">
+    <div class="matrix-graphic">
+      <svg width="450" height="300">
+        <!-- Liberty -->
+        <rect x="20" y="100" width="100" height="100" fill="#6c8998"></rect>
+        <text x="70" y="160" fill="#fff" font-size="1.2rem" text-anchor="middle">Liberty</text>
+        <text x="70" y="180" fill="#fff" font-size="1rem" text-anchor="middle">Score: 0.325</text>
+        
+        <!-- Freedom -->
+        <rect x="170" y="120" width="100" height="80" fill="#b9c4a8"></rect>
+        <text x="220" y="160" fill="#fff" font-size="1.2rem" text-anchor="middle">Freedom</text>
+        <text x="220" y="180" fill="#fff" font-size="1rem" text-anchor="middle">Score: 0.27</text>
+        
+        <!-- S&P 500 -->
+        <rect x="320" y="60" width="100" height="140" fill="#ffb347"></rect>
+        <text x="370" y="130" fill="#fff" font-size="1.2rem" text-anchor="middle">S&P 500</text>
+        <text x="370" y="150" fill="#fff" font-size="1rem" text-anchor="middle">Score: 0.41</text>
+      </svg>
+    </div>
+    
+    <div class="legend">
+      <div class="legend-item"><span class="legend-color" style="background-color:#6c8998"></span> Liberty</div>
+      <div class="legend-item"><span class="legend-color" style="background-color:#b9c4a8"></span> Freedom</div>
+      <div class="legend-item"><span class="legend-color" style="background-color:#ffb347"></span> S&P 500</div>
+    </div>
   </div>
 
   <div class="matrix-description">
-    <p>The matrix above visualizes the composite success scores of the Liberty, Freedom, and S&P 500 portfolios. Success scores are averaged, considering both normalized returns and the inverse of variance for each portfolio.</p>
+    <h3>Matrix Explanation</h3>
+    <p>This matrix illustrates the composite success scores by comparing normalized returns and inverse variances for Liberty, Freedom, and the S&P 500. Scores integrate performance (returns) and risk (variance), giving a balanced view.</p>
   </div>
-  
+
   <div class="calculation-container">
+    <h3>Calculation Details</h3>
     <div class="calculation-step">
       <strong>Step 1: Normalize Returns</strong><br>
-      - Liberty: 9.54% / 28.04% = 0.34<br>
-      - Freedom: 7.5% / 28.04% = 0.27<br>
-      - S&P 500: 11.0% / 28.04% = 0.39
+      - Liberty: 9.54% / 28.04% ≈ 0.34<br>
+      - Freedom: 7.5% / 28.04% ≈ 0.27<br>
+      - S&P 500: 11.0% / 28.04% ≈ 0.39
     </div>
     <div class="calculation-step">
       <strong>Step 2: Normalize Inverse Variance</strong><br>
-      - Liberty: (1/8) / (1/8 + 1/9.5 + 1/7) = 0.31<br>
-      - Freedom: (1/9.5) / (1/8 + 1/9.5 + 1/7) = 0.27<br>
-      - S&P 500: (1/7) / (1/8 + 1/9.5 + 1/7) = 0.43
+      - Liberty: (1/8.0) / (1/8.0 + 1/9.5 + 1/7.0) ≈ 0.31<br>
+      - Freedom: (1/9.5) / (1/8.0 + 1/9.5 + 1/7.0) ≈ 0.27<br>
+      - S&P 500: (1/7.0) / (1/8.0 + 1/9.5 + 1/7.0) ≈ 0.43
     </div>
     <div class="calculation-step">
       <strong>Step 3: Composite Score</strong><br>
@@ -610,7 +622,6 @@
       - S&P 500: (0.39 + 0.43) / 2 = 0.41
     </div>
   </div>
-
 </div>
 
   <!-- Recommendations Content -->
