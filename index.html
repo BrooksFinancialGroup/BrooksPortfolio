@@ -528,58 +528,23 @@
         <div class="chart-label">Aggressive Accumulation led Liberty 5-year returns, with income strategies offering steady growth.</div>
       </div>
     </div>
-  <div class="table-caption">5-Year Variance by Liberty Series</div>
-  <svg width="700" height="300" aria-label="5-Year Variance Line Chart">
-    <!-- Axes -->
-    <line x1="50" y1="250" x2="650" y2="250" stroke="#888" stroke-width="2"/> <!-- X-axis -->
-    <line x1="50" y1="50" x2="50" y2="250" stroke="#888" stroke-width="2"/> <!-- Y-axis -->
-
-    <!-- Data Lines for Liberty Variance -->
-    <polyline fill="none" stroke="#6c8998" stroke-width="3" points="50,160 150,140 250,150 350,130 450,120 550,110 650,100"/> <!-- Aggressive Accumulation -->
-    <polyline fill="none" stroke="#b9c4a8" stroke-width="3" points="50,190 150,170 250,180 350,160 450,150 550,140 650,130"/> <!-- Growth Accumulation -->
-    <polyline fill="none" stroke="#e3d984" stroke-width="3" points="50,210 150,200 250,195 350,185 450,175 550,165 650,155"/> <!-- Moderate G+I -->
-    <polyline fill="none" stroke="#57CC99" stroke-width="3" points="50,230 150,220 250,215 350,205 450,195 550,185 650,175"/> <!-- RM Allocation -->
-
-    <!-- Data Points -->
-    <circle cx="50" cy="160" r="4" fill="#6c8998" />
-    <circle cx="150" cy="140" r="4" fill="#6c8998" />
-    <circle cx="250" cy="150" r="4" fill="#6c8998" />
-    <circle cx="350" cy="130" r="4" fill="#6c8998" />
-    <circle cx="450" cy="120" r="4" fill="#6c8998" />
-    <circle cx="550" cy="110" r="4" fill="#6c8998" />
-    <circle cx="650" cy="100" r="4" fill="#6c8998" />
-
-    <circle cx="50" cy="190" r="4" fill="#b9c4a8" />
-    <circle cx="150" cy="170" r="4" fill="#b9c4a8" />
-    <circle cx="250" cy="180" r="4" fill="#b9c4a8" />
-    <circle cx="350" cy="160" r="4" fill="#b9c4a8" />
-    <circle cx="450" cy="150" r="4" fill="#b9c4a8" />
-    <circle cx="550" cy="140" r="4" fill="#b9c4a8" />
-    <circle cx="650" cy="130" r="4" fill="#b9c4a8" />
-
-    <circle cx="50" cy="210" r="4" fill="#e3d984" />
-    <circle cx="150" cy="200" r="4" fill="#e3d984" />
-    <circle cx="250" cy="195" r="4" fill="#e3d984" />
-    <circle cx="350" cy="185" r="4" fill="#e3d984" />
-    <circle cx="450" cy="175" r="4" fill="#e3d984" />
-    <circle cx="550" cy="165" r="4" fill="#e3d984" />
-    <circle cx="650" cy="155" r="4" fill="#e3d984" />
-
-    <circle cx="50" cy="230" r="4" fill="#57CC99" />
-    <circle cx="150" cy="220" r="4" fill="#57CC99" />
-    <circle cx="250" cy="215" r="4" fill="#57CC99" />
-    <circle cx="350" cy="205" r="4" fill="#57CC99" />
-    <circle cx="450" cy="195" r="4" fill="#57CC99" />
-    <circle cx="550" cy="185" r="4" fill="#57CC99" />
-    <circle cx="650" cy="175" r="4" fill="#57CC99" />
+<div class="chart-col">
+  <div class="chart-title">5-Year Variance by Liberty Series</div>
+  <svg width="600" height="300">
+    <!-- Calculated variance for each series over the last 5 years -->
+    <rect x="50" y="130" width="80" height="170" fill="#6c8998"></rect>
+    <text x="90" y="125" fill="#233954" font-size="1rem" text-anchor="middle">56.13</text> <!-- Accumulation Series Variance -->
+    <rect x="150" y="170" width="80" height="130" fill="#b9c4a8"></rect>
+    <text x="190" y="165" fill="#233954" font-size="1rem" text-anchor="middle">41.66</text> <!-- Growth and Income Series Variance -->
+    <rect x="250" y="220" width="80" height="80" fill="#e3d984"></rect>
+    <text x="290" y="215" fill="#233954" font-size="1rem" text-anchor="middle">12.56</text> <!-- Multi-Asset Income Series Variance -->
   </svg>
   <div class="chart-legend">
-    <div class="legend-item"><span class="legend-color" style="background:#6c8998"></span> Aggressive Accumulation</div>
-    <div class="legend-item"><span class="legend-color" style="background:#b9c4a8"></span> Growth Accumulation</div>
-    <div class="legend-item"><span class="legend-color" style="background:#e3d984"></span> Moderate G+I</div>
-    <div class="legend-item"><span class="legend-color" style="background:#57CC99"></span> RM Allocation</div>
+    <div class="legend-item"><span class="legend-color" style="background:#6c8998"></span> Accumulation Series</div>
+    <div class="legend-item"><span class="legend-color" style="background:#b9c4a8"></span> Growth and Income Series</div>
+    <div class="legend-item"><span class="legend-color" style="background:#e3d984"></span> Multi-Asset Income Series</div>
   </div>
-  <div class="chart-label">Liberty strategies show distinct variance in performance over a 5-year period.</div>
+  <div class="chart-label">Variance calculated based on recent 5-year performance for each series, representing fluctuation intensity.</div>
 </div>
 
 <!-- Risk Evaluation -->
