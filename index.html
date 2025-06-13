@@ -445,109 +445,76 @@
     </script>
   </div>
 
-  <!-- Liberty Strategies Evaluation -->
-  <div class="page" id="liberty-strategies">
-    <h2>Liberty Strategies Evaluation</h2>
-    <div class="table-caption">Liberty Strategies Breakdown</div>
-    <table>
-      <tr>
-        <th>Series</th>
-        <th>Portfolio Name</th>
-        <th>Description</th>
-        <th>Equity Allocation</th>
-        <th>Bond Allocation</th>
-        <th>Risk Score</th>
-        <th>Core/Satellite Split</th>
-        <th>Notes</th>
-        <th>Why Use This Portfolio?</th>
-      </tr>
-      <tr>
-        <td>Accumulation Series</td>
-        <td>Aggressive Accumulation</td>
-        <td>Equity-centered long term growth</td>
-        <td>Very High (98.8%)</td>
-        <td>None</td>
-        <td>80</td>
-        <td>60% core / 40% satellite</td>
-        <td>Heavy equity tilt; top-heavy holdings; no bonds</td>
-        <td>Ideal for younger investors seeking capital appreciation.</td>
-      </tr>
-      <tr>
-        <td>Growth & Income Series</td>
-        <td>Moderate G+I</td>
-        <td>Combines capital appreciation with income</td>
-        <td>Moderately High (62.8%)</td>
-        <td>Low (19.7%)</td>
-        <td>60</td>
-        <td>65% Core / 35% Satellite</td>
-        <td>Balanced growth with moderate income</td>
-        <td>Balanced choice for growth seekers with income interests.</td>
-      </tr>
-      <tr>
-        <td>Risk-Mitigation Series</td>
-        <td>RM Allocation</td>
-        <td>Reduced risk with equity exposure</td>
-        <td>High (84.4%)</td>
-        <td>Low (9.7%)</td>
-        <td>60</td>
-        <td>60% Core / 25% Hedged / 15% Stop-Loss Satellite</td>
-        <td>Includes hedging mechanisms</td>
-        <td>For equity-focused investors looking for downside protection.</td>
-      </tr>
-      <tr>
-        <td>Multi-Asset Income</td>
-        <td>Aggressive Income</td>
-        <td>High income through satellite exposure</td>
-        <td>Low (26.7%)</td>
-        <td>Moderate (55.9%)</td>
-        <td>40</td>
-        <td>20% Core / 80% Satellite</td>
-        <td>Heavy satellite exposure</td>
-        <td>For income-seekers who can handle volatility.</td>
-      </tr>
-    </table>
-    <div class="chart-group">
-      <div class="chart-col">
-        <div class="chart-title">5-Year Annualized Return by Liberty Series</div>
-        <svg width="600" height="300">
-          <rect x="50" y="80" width="80" height="220" fill="#6c8998"></rect>
-          <text x="90" y="75" fill="#233954" font-size="1rem" text-anchor="middle">9.5%</text>
-          <rect x="150" y="140" width="80" height="160" fill="#b9c4a8"></rect>
-          <text x="190" y="135" fill="#233954" font-size="1rem" text-anchor="middle">7.0%</text>
-          <rect x="250" y="180" width="80" height="120" fill="#e3d984"></rect>
-          <text x="290" y="175" fill="#233954" font-size="1rem" text-anchor="middle">4.0%</text>
-          <rect x="350" y="200" width="80" height="100" fill="#57CC99"></rect>
-          <text x="390" y="195" fill="#233954" font-size="1rem" text-anchor="middle">3.9%</text>
-        </svg>
-        <div class="chart-legend">
-          <div class="legend-item"><span class="legend-color" style="background:#6c8998"></span> Aggressive Accumulation</div>
-          <div class="legend-item"><span class="legend-color" style="background:#b9c4a8"></span> Growth Accumulation</div>
-          <div class="legend-item"><span class="legend-color" style="background:#e3d984"></span> Aggressive Income</div>
-          <div class="legend-item"><span class="legend-color" style="background:#57CC99"></span> Conservative Income</div>
-        </div>
-        <div class="chart-label">Aggressive Accumulation led Liberty 5-year returns, with income strategies offering steady growth.</div>
+<!-- Liberty Strategies Evaluation -->
+<div class="page" id="liberty-strategies">
+  <h2>Liberty Strategies Evaluation</h2>
+  <div class="table-caption">Liberty Strategies Breakdown</div>
+  <table>
+    <tr>
+      <th>Series</th>
+      <th>Portfolio Name</th>
+      <th>Description</th>
+      <th>Equity Allocation</th>
+      <th>Bond Allocation</th>
+      <th>Risk Score</th>
+      <th>Core/Satellite Split</th>
+      <th>Notes</th>
+      <th>Why Use This Portfolio?</th>
+    </tr>
+    <tr>
+      <td>Accumulation Series</td>
+      <td>Aggressive Accumulation</td>
+      <td>Equity-centered long term growth</td>
+      <td>Very High (98.8%)</td>
+      <td>None</td>
+      <td>80</td>
+      <td>60% core / 40% satellite</td>
+      <td>Heavy equity tilt; top-heavy holdings; no bonds</td>
+      <td>Ideal for younger investors seeking capital appreciation.</td>
+    </tr>
+    <tr>
+      <td>Growth and Income Series</td>
+      <td>Moderate G+I</td>
+      <td>Combines capital appreciation with income</td>
+      <td>Moderately High (62.8%)</td>
+      <td>Low (19.7%)</td>
+      <td>60</td>
+      <td>65% Core / 35% Satellite</td>
+      <td>Balanced growth with moderate income</td>
+      <td>Balanced choice for growth seekers with income interests.</td>
+    </tr>
+    <tr>
+      <td>Multi-Asset Income</td>
+      <td>Aggressive Income</td>
+      <td>High income through satellite exposure</td>
+      <td>Low (26.7%)</td>
+      <td>Moderate (55.9%)</td>
+      <td>40</td>
+      <td>20% Core / 80% Satellite</td>
+      <td>Heavy satellite exposure</td>
+      <td>For income-seekers who can handle volatility.</td>
+    </tr>
+  </table>
+  <div class="chart-group">
+    <div class="chart-col">
+      <div class="chart-title">5-Year Average Annual Return by Liberty Series</div>
+      <svg width="600" height="300">
+        <!-- Calculated average returns for each series over the last 5 years -->
+        <rect x="50" y="90" width="80" height="210" fill="#6c8998"></rect>
+        <text x="90" y="85" fill="#233954" font-size="1rem" text-anchor="middle">11.54%</text> <!-- Accumulation Series Average -->
+        <rect x="150" y="110" width="80" height="190" fill="#b9c4a8"></rect>
+        <text x="190" y="105" fill="#233954" font-size="1rem" text-anchor="middle">10.32%</text> <!-- Growth and Income Series Average -->
+        <rect x="250" y="150" width="80" height="150" fill="#e3d984"></rect>
+        <text x="290" y="145" fill="#233954" font-size="1rem" text-anchor="middle">6.10%</text> <!-- Multi-Asset Income Series Average -->
+      </svg>
+      <div class="chart-legend">
+        <div class="legend-item"><span class="legend-color" style="background:#6c8998"></span> Accumulation Series</div>
+        <div class="legend-item"><span class="legend-color" style="background:#b9c4a8"></span> Growth and Income Series</div>
+        <div class="legend-item"><span class="legend-color" style="background:#e3d984"></span> Multi-Asset Income Series</div>
       </div>
+      <div class="chart-label">5-Year average annualized returns for each Liberty Series.</div>
     </div>
-<!-- Liberty Strategies Variance Chart -->
-<div class="chart-col">
-  <div class="chart-title">5-Year Variance by Liberty Series</div>
-  <svg width="600" height="300">
-    <rect x="50" y="120" width="80" height="180" fill="#6c8998"></rect>
-    <text x="90" y="115" fill="#233954" font-size="1rem" text-anchor="middle">12%</text>
-    <rect x="150" y="140" width="80" height="160" fill="#b9c4a8"></rect>
-    <text x="190" y="135" fill="#233954" font-size="1rem" text-anchor="middle">10%</text>
-    <rect x="250" y="170" width="80" height="130" fill="#e3d984"></rect>
-    <text x="290" y="165" fill="#233954" font-size="1rem" text-anchor="middle">8%</text>
-    <rect x="350" y="190" width="80" height="110" fill="#57CC99"></rect>
-    <text x="390" y="185" fill="#233954" font-size="1rem" text-anchor="middle">6%</text>
-  </svg>
-  <div class="chart-legend">
-    <div class="legend-item"><span class="legend-color" style="background:#6c8998"></span> Aggressive Accumulation</div>
-    <div class="legend-item"><span class="legend-color" style="background:#b9c4a8"></span> Growth Accumulation</div>
-    <div class="legend-item"><span class="legend-color" style="background:#e3d984"></span> Moderate G+I</div>
-    <div class="legend-item"><span class="legend-color" style="background:#57CC99"></span> RM Allocation</div>
   </div>
-  <div class="chart-label">Liberty strategies exhibit varying degrees of return variance based on risk exposure.</div>
 </div>
 
 <!-- Risk Evaluation -->
@@ -573,31 +540,31 @@
 <div class="page" id="recommendations">
   <h2>Recommendations & Final Thoughts</h2>
   <div class="chart-col">
-  <div class="chart-title">Overall Success Comparison: Liberty vs. Freedom</div>
-  <svg width="600" height="300">
-    <!-- Liberty Success -->
-    <rect x="50" y="50" width="100" height="200" fill="#6c8998"></rect>
-    <text x="100" y="45" fill="#233954" font-size="1rem" text-anchor="middle">75%</text>
-    <text x="100" y="260" fill="#233954" font-size="1rem" text-anchor="middle">Liberty</text>
-    <!-- Freedom Success -->
-    <rect x="250" y="80" width="100" height="170" fill="#b9c4a8"></rect>
-    <text x="300" y="75" fill="#233954" font-size="1rem" text-anchor="middle">70%</text>
-    <text x="300" y="260" fill="#233954" font-size="1rem" text-anchor="middle">Freedom</text>
-  </svg>
-  <div class="chart-legend">
-    <div class="legend-item"><span class="legend-color" style="background:#6c8998"></span> Liberty Success Rate</div>
-    <div class="legend-item"><span class="legend-color" style="background:#b9c4a8"></span> Freedom Success Rate</div>
+    <div class="chart-title">Overall Success Comparison: Liberty vs. Freedom</div>
+    <svg width="600" height="300">
+      <!-- Liberty Success -->
+      <rect x="50" y="50" width="100" height="200" fill="#6c8998"></rect>
+      <text x="100" y="45" fill="#233954" font-size="1rem" text-anchor="middle">75%</text>
+      <text x="100" y="260" fill="#233954" font-size="1rem" text-anchor="middle">Liberty</text>
+      <!-- Freedom Success -->
+      <rect x="250" y="80" width="100" height="170" fill="#b9c4a8"></rect>
+      <text x="300" y="75" fill="#233954" font-size="1rem" text-anchor="middle">70%</text>
+      <text x="300" y="260" fill="#233954" font-size="1rem" text-anchor="middle">Freedom</text>
+    </svg>
+    <div class="chart-legend">
+      <div class="legend-item"><span class="legend-color" style="background:#6c8998"></span> Liberty Success Rate</div>
+      <div class="legend-item"><span class="legend-color" style="background:#b9c4a8"></span> Freedom Success Rate</div>
+    </div>
+    <div class="chart-label">Comparison highlights Liberty's relative performance advantage over Freedom in overall success metrics.</div>
   </div>
-  <div class="chart-label">Comparison highlights Liberty's relative performance advantage over Freedom in overall success metrics.</div>
-</div>
   <div class="summary-box">
     <p>Our comprehensive analysis has led to several key recommendations tailored to different investment strategies. These insights are designed to guide investors in aligning their portfolio strategies with their individual financial goals and risk appetites:</p>
     <ul>
-      <li><b>Strategic Allocation:</b> This approach is ideal for investors prioritizing stability and capital preservation. It suits those with a long-term horizon and a low appetite for risk. By maintaining fixed allocations, strategic allocation minimizes the emotional and market timing risks. However, it may underperform in volatile markets. Regular reviews are essential to ensure the strategy remains aligned with life changes and financial goals.</li>
-      <li><b>Tactical Allocation:</b> Recommended for investors who are willing to actively manage their portfolios to seize short-term opportunities. This approach is optimal for those comfortable with volatility and a higher level of engagement in market analysis. Tactical allocation can potentially lead to higher returns by permitting flexibility to adjust allocations based on market conditions. However, it demands significant time commitment and may result in higher transaction costs.</li>
-      <li><b>Core/Satellite Strategy:</b> This balanced approach is excellent for investors looking to combine the safety of a core portfolio with the growth potential of satellite investments. It involves a core focused on broad, stable investments, while satellites target specific opportunities for additional gains. Suitable for those seeking a balance between risk and return, the strategy requires diligent monitoring to ensure satellites do not overly dominate the portfolio.</li>
+      <li><b>Strategic Allocation:</b> Ideal for investors prioritizing stability and capital preservation, with a long-term horizon and low risk tolerance. Regular strategy reviews ensure alignment with goals.</li>
+      <li><b>Tactical Allocation:</b> Recommended for those comfortable with volatility and active management to seize short-term opportunities. Can lead to higher returns, but requires more time and potentially higher costs.</li>
+      <li><b>Core/Satellite Strategy:</b> This approach balances safety with growth potential, suitable for investors seeking a risk-return equilibrium. It involves a stable core portfolio complemented by dynamic satellite investments.</li>
     </ul>
-    <p>Ultimately, investors should choose a strategy based on their unique risk tolerance, investment objectives, and time horizon. Blending different strategies can offer diversified benefits, harnessing the strengths of each approach to achieve comprehensive financial goals.</p>
+    <p>Investors should choose a strategy based on their risk tolerance, objectives, and time horizon. Blending different strategies can optimize benefits, harnessing each approach's strengths to achieve financial goals.</p>
   </div>
 </div>
 
