@@ -332,6 +332,96 @@
         </div>
         <div class="chart-label">Core Series led Freedom 5-year returns, with alternatives offering diversification.</div>
       </div>
+      import pandas as pd
+import matplotlib.pyplot as plt
+
+# Create a dictionary with the data for each series, assuming they are consistent in order.
+data = {
+    "Category": [
+        'Core Series', 'Core Series', 'Core Series', 'Core Series', 'Core Series', 'Core Series',
+        'Core Series ETF', 'Core Series ETF', 'Core Series ETF', 'Core Series ETF', 'Core Series ETF', 'Core Series ETF', 'Core Series ETF',
+        'Tax-Aware Series', 'Tax-Aware Series', 'Tax-Aware Series', 'Tax-Aware Series', 'Tax-Aware Series', 'Tax-Aware Series',
+        'Sustainable Series', 'Sustainable Series', 'Sustainable Series', 'Sustainable Series', 'Sustainable Series',
+        'Tactical Allocation Series', 'Tactical Allocation Series', 'Tactical Allocation Series', 'Tactical Allocation Series',
+        'Managed Risk', 'Managed Risk', 'Managed Risk',
+        'Protected Growth', 'Protected Growth', 'Protected Growth', 'Protected Growth',
+        'Global Allocation Series', 'Global Allocation Series', 'Global Allocation Series', 'Global Allocation Series',
+        'Institutional Equity Series', 'Institutional Equity Series', 'Institutional Equity Series', 'Institutional Equity Series', 'Institutional Equity Series',
+        'Freedom Alternative', 'Freedom Alternative'
+    ],
+    "Series": [
+        'Aggressive', 'Growth', 'Moderate Growth', 'Balanced', 'Conservative', 'Defensive',
+        'Aggressive', 'Growth', 'Moderate Growth', 'Balanced', 'Conservative', 'Defensive', 'U.S. Core Equity',
+        'Aggressive', 'Growth', 'Moderate Growth', 'Balanced', 'Conservative', 'Defensive',
+        'Aggressive', 'Growth', 'Moderate Growth', 'Balanced', 'Conservative',
+        'ETF', 'U.S. Sector Equity ETF', 'U.S. Sector Equity ETF w/ Stop Loss', 'Fixed Income ETF',
+        'Growth', 'Moderate Growth', 'Conservative Growth',
+        'U.S. Growth', 'U.S. Growth Moderate', 'Global Growth Moderate', 'U.S. Growth Conservative',
+        'Focused ETF', 'Growth ETF', 'Moderate ETF', 'Conservative ETF',
+        'U.S. Core Dividend', 'U.S. Growth Equity', 'U.S. MultiCap Equity', 'Global Value Dividend', 'International Growth Equity',
+        'Absolute Return', 'Real Assets'
+    ],
+    "1 Year": [
+        5.7, 5.8, 6.0, 6.1, 6.3, 6.3,
+        6.1, 6.4, 6.4, 6.4, 6.4, 6.6, 6.7,
+        5.5, 5.0, 4.7, 4.5, 3.4, 2.2,
+        5.3, 5.5, 5.9, 6.1, 6.2,
+        4.1, 9.2, 9.2, 5.5,
+        8.4, 8.1, 8.1,
+        5.0, 4.4, 4.3, 4.4,
+        4.5, 4.6, 4.8, 4.9,
+        11.2, 9.5, 8.2, 4.3, 11.5,
+        5.3, 9.3
+    ],
+    "3 Year Annualized": [
+        5.7, 4.9, 4.4, 3.9, 3.2, 1.9,
+        5.9, 5.1, 4.5, 3.7, 2.8, None, None,
+        6.0, 5.1, 4.4, 3.8, 2.6, 1.0,
+        5.4, 4.4, 3.9, 3.2, 2.5,
+        0.9, 8.4, 7.0, -0.1,
+        5.6, 4.0, 4.6,
+        None, None, None, None,
+        5.7, 5.0, 3.9, 2.5,
+        8.0, 13.1, 5.3, 3.2, 7.5,
+        3.2, 1.7
+    ],
+    "5 Year Annualized": [
+        9.7, 7.0, 5.5, 4.3, 2.6, 0.1,
+        9.4, 7.4, 5.6, 4.0, 1.8, None, None,
+        None, None, None, None, None, None,
+        8.5, 6.5, 5.0, 3.6, 1.6,
+        5.6, 13.4, 12.3, -1.7,
+        7.9, 6.0, 5.2,
+        None, None, None, None,
+        10.0, 8.3, 6.0, 3.3,
+        12.1, 12.2, 8.3, 8.1, 7.0,
+        3.7, 7.7
+    ],
+}
+
+# Convert to pandas DataFrame
+df = pd.DataFrame(data)
+
+# Calculate variance for each series
+df['Variance'] = df[['1 Year', '3 Year Annualized', '5 Year Annualized']].var(axis=1, skipna=True)
+
+# Plot variance for each category
+plt.figure(figsize=(12, 8))
+
+# Plot
+for category in df['Category'].unique():
+    subset = df[df['Category'] == category]
+    plt.plot(subset['Series'], subset['Variance'], label=category, marker='o')
+
+# Add graph details
+plt.title('Variance of Different Series')
+plt.xlabel('Series')
+plt.ylabel('Variance')
+plt.legend()
+plt.xticks(rotation=45)
+plt.grid(True)
+plt.tight_layout()
+plt.show()
     </div>
   </div>
 
@@ -422,49 +512,49 @@
 
  <!-- Risk Evaluation -->
 <div class="page" id="risk-evaluation">
-  <h2>🧭 Risk Evaluation: Understanding Asset Allocation Strategies</h2>
+  <h2> Risk Evaluation: Understanding Asset Allocation Strategies</h2>
 
   <!-- Strategic Asset Allocation -->
   <section>
-    <h3>📌 Strategic Asset Allocation (SAA)</h3>
+    <h3> Strategic Asset Allocation (SAA)</h3>
     <p><strong>Overview:</strong> A long-term, passive investment approach that maintains a fixed asset mix regardless of market conditions.</p>
     <ul>
-      <li>📉 <strong>Fixed Exposure:</strong> Portfolios stay invested in underperforming assets during downturns.</li>
-      <li>⏳ <strong>Missed Opportunities:</strong> Inflexible strategy fails to respond to short-term market trends.</li>
-      <li>🔄 <strong>Allocation Drift:</strong> Asset weightings shift unintentionally over time without rebalancing.</li>
-      <li>🧠 <strong>Behavioral Risk:</strong> Investors may abandon strategy during downturns due to emotional stress.</li>
-      <li>💧 <strong>Liquidity Constraints:</strong> Difficulty integrating inflation-hedging or real-asset classes.</li>
+      <li> <strong>Fixed Exposure:</strong> Portfolios stay invested in underperforming assets during downturns.</li>
+      <li> <strong>Missed Opportunities:</strong> Inflexible strategy fails to respond to short-term market trends.</li>
+      <li> <strong>Allocation Drift:</strong> Asset weightings shift unintentionally over time without rebalancing.</li>
+      <li> <strong>Behavioral Risk:</strong> Investors may abandon strategy during downturns due to emotional stress.</li>
+      <li> <strong>Liquidity Constraints:</strong> Difficulty integrating inflation-hedging or real-asset classes.</li>
     </ul>
   </section>
 
   <!-- Tactical Asset Allocation -->
   <section>
-    <h3>⚙️ Tactical Asset Allocation (TAA)</h3>
+    <h3> Tactical Asset Allocation (TAA)</h3>
     <p><strong>Overview:</strong> An active strategy that adjusts allocations based on short-term market forecasts and opportunities.</p>
     <ul>
-      <li>💸 <strong>Transaction Costs:</strong> Frequent trading leads to fees and possible tax impacts.</li>
-      <li>🎯 <strong>Market Timing Risk:</strong> Predicting short-term movements can backfire.</li>
-      <li>😓 <strong>Emotional Bias:</strong> Active management is vulnerable to poor, emotion-driven decisions.</li>
-      <li>📚 <strong>Complex Management:</strong> Requires continuous research and oversight.</li>
+      <li> <strong>Transaction Costs:</strong> Frequent trading leads to fees and possible tax impacts.</li>
+      <li> <strong>Market Timing Risk:</strong> Predicting short-term movements can backfire.</li>
+      <li> <strong>Emotional Bias:</strong> Active management is vulnerable to poor, emotion-driven decisions.</li>
+      <li> <strong>Complex Management:</strong> Requires continuous research and oversight.</li>
     </ul>
   </section>
 
   <!-- Core-Satellite Strategy -->
   <section>
-    <h3>🛰️ Core-Satellite Strategy (C/S)</h3>
+    <h3> Core-Satellite Strategy (C/S)</h3>
     <p><strong>Overview:</strong> Combines a passive “core” with actively managed “satellite” investments aimed at generating excess return.</p>
     <ul>
-      <li>⚖️ <strong>Balance Challenge:</strong> Overweighting satellites can increase volatility.</li>
-      <li>🔍 <strong>Investment Selection Risk:</strong> Selecting poor-performing active components skews portfolio performance.</li>
-      <li>📈 <strong>Operational Burden:</strong> Requires frequent monitoring, rebalancing, and resources.</li>
-      <li>🧪 <strong>Tool Limitations:</strong> Tools like Nitrogen may not fully capture nuanced risk profiles.</li>
-      <li>🏗️ <strong>Support Advantage:</strong> With FCMS support, Brooks Financial Group can manage the strategy effectively.</li>
+      <li> <strong>Balance Challenge:</strong> Overweighting satellites can increase volatility.</li>
+      <li> <strong>Investment Selection Risk:</strong> Selecting poor-performing active components skews portfolio performance.</li>
+      <li> <strong>Operational Burden:</strong> Requires frequent monitoring, rebalancing, and resources.</li>
+      <li> <strong>Tool Limitations:</strong> Tools like Nitrogen may not fully capture nuanced risk profiles.</li>
+      <li> <strong>Support Advantage:</strong> With FCMS support, Brooks Financial Group can manage the strategy effectively.</li>
     </ul>
   </section>
 
   <!-- Comparison Table -->
   <section>
-    <h3>📊 Strategy Comparison</h3>
+    <h3> Strategy Comparison</h3>
     <table border="1" cellpadding="8" cellspacing="0">
       <thead>
         <tr>
@@ -503,7 +593,7 @@
 
   <!-- Conclusion -->
   <section>
-    <h3>🧠 Final Thoughts</h3>
+    <h3> Final Thoughts</h3>
     <p>Each strategy offers unique strengths and weaknesses. Your choice should reflect your time horizon, risk tolerance, and available resources. For Brooks Financial Group, leveraging the support of FCMS ensures more effective implementation of advanced strategies like Core-Satellite in today’s rapidly evolving environment.</p>
   </section>
 </div>
