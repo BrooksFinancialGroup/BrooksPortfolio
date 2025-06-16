@@ -542,158 +542,171 @@
     </div>
   </details>
 </div>
-  <!-- Freedom Strategies Evaluation -->
-  <div class="page" id="freedom-strategies">
+<div class="page" id="freedom-strategies">
   <h2>Freedom Strategies Evaluation</h2>
-        <div class="chart-label">Core Series led Freedom 5-year returns, with alternatives offering diversification.</div>
+  <div class="chart-group">
+    <!-- 5-Year Annualized Return SVG Bar Chart -->
+    <div class="chart-col">
+      <div class="chart-title">5-Year Annualized Return by Freedom Series</div>
+      <svg width="600" height="300">
+        <rect x="50" y="80" width="80" height="200" fill="#6c8998"></rect>
+        <text x="90" y="75" fill="#233954" font-size="1rem" text-anchor="middle">8.7%</text>
+        <rect x="150" y="120" width="80" height="160" fill="#b9c4a8"></rect>
+        <text x="190" y="115" fill="#233954" font-size="1rem" text-anchor="middle">7.4%</text>
+        <rect x="250" y="140" width="80" height="140" fill="#e3d984"></rect>
+        <text x="290" y="135" fill="#233954" font-size="1rem" text-anchor="middle">7.1%</text>
+        <rect x="350" y="180" width="80" height="100" fill="#57CC99"></rect>
+        <text x="390" y="175" fill="#233954" font-size="1rem" text-anchor="middle">6.7%</text>
+        <rect x="450" y="240" width="80" height="40" fill="#a6a6a6"></rect>
+        <text x="490" y="235" fill="#233954" font-size="1rem" text-anchor="middle">3.7%</text>
+      </svg>
+      <div class="chart-legend">
+        <div class="legend-item"><span class="legend-color" style="background:#6c8998"></span> Core Series</div>
+        <div class="legend-item"><span class="legend-color" style="background:#b9c4a8"></span> Dynamic Series</div>
+        <div class="legend-item"><span class="legend-color" style="background:#e3d984"></span> Tactical Series</div>
+        <div class="legend-item"><span class="legend-color" style="background:#57CC99"></span> Sustainable</div>
+        <div class="legend-item"><span class="legend-color" style="background:#a6a6a6"></span> Alternative</div>
       </div>
-      <div class="chart-col">
-        <div class="chart-title">Freedom Portfolio Volatility (Standard Deviation of Annual Returns)</div>
-        <div class="chart-container">
-          <canvas id="freedomChart" height="620"></canvas>
-          <div class="legend-box">
-            <div class="legend-item"><div class="legend-color" style="background:#23547b;"></div>Core Series</div>
-            <div class="legend-item"><div class="legend-color" style="background:#3a7ca5;"></div>Core ETF</div>
-            <div class="legend-item"><div class="legend-color" style="background:#b9c4a8;"></div>Tax-Aware</div>
-            <div class="legend-item"><div class="legend-color" style="background:#6c8998;"></div>Sustainable</div>
-            <div class="legend-item"><div class="legend-color" style="background:#e3d984;"></div>Tactical</div>
-            <div class="legend-item"><div class="legend-color" style="background:#57CC99;"></div>Managed Risk</div>
-            <div class="legend-item"><div class="legend-color" style="background:#a6a6a6;"></div>Other/Alternative</div>
-            <div class="legend-item"><div class="legend-color" style="background:#dddddd;"></div>Not enough information</div>
-          </div>
+      <div class="chart-label">Core Series led Freedom 5-year returns, with alternatives offering diversification.</div>
+    </div>
+    <!-- Volatility Chart (Chart.js) -->
+    <div class="chart-col">
+      <div class="chart-title">Freedom Portfolio Volatility (Standard Deviation of Annual Returns)</div>
+      <div class="chart-container">
+        <canvas id="freedomChart" height="620"></canvas>
+        <div class="legend-box">
+          <div class="legend-item"><div class="legend-color" style="background:#23547b;"></div>Core Series</div>
+          <div class="legend-item"><div class="legend-color" style="background:#3a7ca5;"></div>Core ETF</div>
+          <div class="legend-item"><div class="legend-color" style="background:#b9c4a8;"></div>Tax-Aware</div>
+          <div class="legend-item"><div class="legend-color" style="background:#6c8998;"></div>Sustainable</div>
+          <div class="legend-item"><div class="legend-color" style="background:#e3d984;"></div>Tactical</div>
+          <div class="legend-item"><div class="legend-color" style="background:#57CC99;"></div>Managed Risk</div>
+          <div class="legend-item"><div class="legend-color" style="background:#a6a6a6;"></div>Other/Alternative</div>
+          <div class="legend-item"><div class="legend-color" style="background:#dddddd;"></div>Not enough information</div>
         </div>
-        <script>
-          // Series color coding
-          const seriesColors = {
-            "Core": "#23547b",
-            "Core ETF": "#3a7ca5",
-            "Tax-Aware": "#b9c4a8",
-            "Sustainable": "#6c8998",
-            "Tactical": "#e3d984",
-            "Managed Risk": "#57CC99",
-            "Other": "#a6a6a6",
-            "Missing": "#dddddd"
-          };
-          // Data: [Series, Portfolio Name, StdDev (null = missing)]
-          const data = [
-            ["Core", "Aggressive", 1.885618083],
-            ["Core", "Growth", 0.860232527],
-            ["Core", "Moderate Growth", 0.668331255],
-            ["Core", "Balanced", 0.956846673],
-            ["Core", "Conservative", 1.621384868],
-            ["Core", "Defensive", 2.604269998],
-            ["Core ETF", "Aggressive", 1.604853749],
-            ["Core ETF", "Growth", 0.941629793],
-            ["Core ETF", "Moderate Growth", 0.778888096],
-            ["Core ETF", "Balanced", 1.208304597],
-            ["Core ETF", "Conservative", 1.975404319],
-            ["Core ETF", "Defensive", 0],
-            ["Core ETF", "US Core Equity", 0],
-            ["Tax-Aware", "Aggressive", 0.25],
-            ["Tax-Aware", "Growth", 0.05],
-            ["Tax-Aware", "Moderate Growth", 0.15],
-            ["Tax-Aware", "Balanced", 0.35],
-            ["Tax-Aware", "Conservative", 0.4],
-            ["Tax-Aware", "Defensive", 0.6],
-            ["Sustainable", "Aggressive", 1.48548533],
-            ["Sustainable", "Growth", 0.857645355],
-            ["Sustainable", "Moderate Growth", 0.817856276],
-            ["Sustainable", "Balanced", 1.283225104],
-            ["Sustainable", "Conservative", 1.99053315],
-            ["Tactical", "ETF", 1.960158724],
-            ["Tactical", "US Sector Equity ETF", 2.192917894],
-            ["Tactical", "US Sector Equity ETF w/ Stop Loss", 2.174089848],
-            ["Tactical", "Fixed Income ETF", 3.086889841],
-            ["Managed Risk", "Growth", 1.219289411],
-            ["Managed Risk", "Moderate Growth", 1.673983937],
-            ["Managed Risk", "Conservative Growth", 1.528252452],
-            ["Other", "Focused ETF", 2.361261433],
-            ["Other", "Growth ETF", 1.657977349],
-            ["Other", "Moderate ETF", 0.860232527],
-            ["Other", "Conservative ETF", 0.997775303],
-            ["Other", "US Core Dividend", 1.759419096],
-            ["Other", "US Growth Equity", 1.529705854],
-            ["Other", "US MultiCap Equity", 1.39124245],
-            ["Other", "Global Value Dividend", 2.099206199],
-            ["Other", "International Growth Equity", 2.013840996],
-            ["Other", "Absolute Return", 0.89566859],
-            ["Other", "Real Assets", 3.271425106]
-          ];
-          // Chart labels (Y axis)
-          const yLabels = data.map(([series, port]) => `${series}: ${port}`);
-          // Data values
-          const stddevs = data.map(d => d[2] === 0 ? null : d[2]);
-          // Background color per bar
-          const barColors = data.map(([series, _, val]) => (val === null || val === 0) ? seriesColors["Missing"] : seriesColors[series]);
-          // Custom plugin for portfolio name on bar
-          const barLabelPlugin = {
-            id: 'barLabelPlugin',
-            afterDatasetsDraw: chart => {
-              const {ctx, chartArea: area} = chart;
-              ctx.save();
-              chart.getDatasetMeta(0).data.forEach((bar, i) => {
-                const [series, port, val] = data[i];
-                const label = (val === null || val === 0)
-                  ? `${port}: Not enough information`
-                  : `${port}: ${parseFloat(val).toFixed(2)}%`;
-                ctx.font = "bold 13px Segoe UI, Arial";
-                ctx.textBaseline = "middle";
-                ctx.textAlign = "left";
-                ctx.fillStyle = "#1c2636";
-                let textX = bar.x + ((val === null || val === 0) ? 10 : 8);
-                let textY = bar.y;
-                ctx.fillText(label, textX, textY);
-              });
-              ctx.restore();
-            }
-          };
-          new Chart(document.getElementById('freedomChart').getContext('2d'), {
-            type: 'bar',
-            data: {
-              labels: yLabels,
-              datasets: [{
-                data: stddevs,
-                backgroundColor: barColors,
-                borderColor: '#fff',
-                borderWidth: 1.5,
-                borderRadius: 7,
-                barPercentage: 0.75,
-                categoryPercentage: 0.98,
-              }]
-            },
-            options: {
-              indexAxis: 'y',
-              plugins: {
-                legend: { display: false },
-                tooltip: {
-                  callbacks: {
-                    label: ctx => {
-                      const [series, port, val] = data[ctx.dataIndex];
-                      return (val === null || val === 0)
-                        ? `${port}: Not enough information`
-                        : `${port}: ${parseFloat(val).toFixed(2)}%`;
-                    }
+      </div>
+      <script>
+        // Series color coding
+        const seriesColors = {
+          "Core": "#23547b",
+          "Core ETF": "#3a7ca5",
+          "Tax-Aware": "#b9c4a8",
+          "Sustainable": "#6c8998",
+          "Tactical": "#e3d984",
+          "Managed Risk": "#57CC99",
+          "Other": "#a6a6a6",
+          "Missing": "#dddddd"
+        };
+        // Data: [Series, Portfolio Name, StdDev (null = missing)]
+        const data = [
+          ["Core", "Aggressive", 1.89],
+          ["Core", "Growth", 0.86],
+          ["Core", "Moderate Growth", 0.67],
+          ["Core", "Balanced", 0.96],
+          ["Core", "Conservative", 1.62],
+          ["Core", "Defensive", 2.60],
+          ["Core ETF", "Aggressive", 1.60],
+          ["Core ETF", "Growth", 0.94],
+          ["Core ETF", "Moderate Growth", 0.78],
+          ["Core ETF", "Balanced", 1.21],
+          ["Core ETF", "Conservative", 1.98],
+          ["Core ETF", "Defensive", null],
+          ["Core ETF", "US Core Equity", null],
+          ["Tax-Aware", "Aggressive", 0.25],
+          ["Tax-Aware", "Growth", 0.05],
+          ["Tax-Aware", "Moderate Growth", 0.15],
+          ["Tax-Aware", "Balanced", 0.35],
+          ["Tax-Aware", "Conservative", 0.40],
+          ["Tax-Aware", "Defensive", 0.60],
+          ["Sustainable", "Aggressive", 1.49],
+          ["Sustainable", "Growth", 0.86],
+          ["Sustainable", "Moderate Growth", 0.82],
+          ["Sustainable", "Balanced", 1.28],
+          ["Sustainable", "Conservative", 1.99],
+          ["Tactical", "ETF", 1.96],
+          ["Tactical", "US Sector Equity ETF", 2.19],
+          ["Tactical", "US Sector Equity ETF w/ Stop Loss", 2.17],
+          ["Tactical", "Fixed Income ETF", 3.09],
+          ["Managed Risk", "Growth", 1.22],
+          ["Managed Risk", "Moderate Growth", 1.67],
+          ["Managed Risk", "Conservative Growth", 1.53],
+          ["Other", "Focused ETF", 2.36],
+          ["Other", "Growth ETF", 1.66],
+          ["Other", "Moderate ETF", 0.86],
+          ["Other", "Conservative ETF", 1.00]
+        ];
+        // Chart labels (Y axis)
+        const yLabels = data.map(([series, port]) => `${series}: ${port}`);
+        // Data values
+        const stddevs = data.map(d => d[2]);
+        // Background color per bar
+        const barColors = data.map(([series, _, val]) => val == null ? seriesColors["Missing"] : seriesColors[series]);
+        // Custom plugin for portfolio name on bar
+        const barLabelPlugin = {
+          id: 'barLabelPlugin',
+          afterDatasetsDraw: chart => {
+            const {ctx} = chart;
+            ctx.save();
+            chart.getDatasetMeta(0).data.forEach((bar, i) => {
+              const [series, port, val] = data[i];
+              const label = val == null ? `${port}: Not enough information` : `${port}: ${val}%`;
+              ctx.font = "bold 13px Segoe UI, Arial";
+              ctx.textBaseline = "middle";
+              ctx.textAlign = "left";
+              ctx.fillStyle = "#1c2636";
+              let textX = bar.x + (val == null ? 10 : 8);
+              let textY = bar.y;
+              ctx.fillText(label, textX, textY);
+            });
+            ctx.restore();
+          }
+        };
+        new Chart(document.getElementById('freedomChart').getContext('2d'), {
+          type: 'bar',
+          data: {
+            labels: yLabels,
+            datasets: [{
+              data: stddevs,
+              backgroundColor: barColors,
+              borderColor: '#fff',
+              borderWidth: 1.5,
+              borderRadius: 7,
+              barPercentage: 0.75,
+              categoryPercentage: 0.98,
+            }]
+          },
+          options: {
+            indexAxis: 'y',
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: ctx => {
+                    const [series, port, val] = data[ctx.dataIndex];
+                    return val == null ? `${port}: Not enough information` : `${port}: ${val}%`;
                   }
-                }
-              },
-              scales: {
-                x: {
-                  beginAtZero: true,
-                  max: 4,
-                  title: { display: true, text: 'Standard Deviation (%)', font: { size: 14, weight: 'bold'} },
-                  ticks: { callback: v => v + '%' }
-                },
-                y: {
-                  ticks: { color: '#233954', font: { size: 13 } }
                 }
               }
             },
-            plugins: [barLabelPlugin]
-          });
-        </script>
-      </div>
+            scales: {
+              x: {
+                beginAtZero: true,
+                max: 4,
+                title: { display: true, text: 'Standard Deviation (%)', font: { size: 14, weight: 'bold'} },
+                ticks: { callback: v => v + '%' }
+              },
+              y: {
+                ticks: { color: '#233954', font: { size: 13 } }
+              }
+            }
+          },
+          plugins: [barLabelPlugin]
+        });
+      </script>
+      <div class="chart-label" style="margin-top:24px;">Standard deviation is a key measure of portfolio risk. Lower values indicate less volatility. Freedom's broad platform allows for solutions with varying risk levels across series.</div>
     </div>
   </div>
+</div>
 
   <!-- Liberty Strategies Evaluation -->
   <div class="page" id="liberty-strategies">
