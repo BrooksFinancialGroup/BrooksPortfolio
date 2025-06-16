@@ -142,24 +142,124 @@
     .legend-item { display: flex; align-items: center; margin: 10px; }
     .legend-color { width: 30px; height: 20px; border-radius: 4px; margin-right: 10px; display: inline-block; }
     .authors { text-align: right; color: #888; font-size: 1.08rem; margin-top: 18px;}
-    footer {
-      background: var(--bfg-navy);
-      color: var(--bfg-gold);
-      text-align: center;
-      padding: 15px 0 10px;
-      margin-top: 60px;
-      font-size: 1.12rem;
-      letter-spacing: 0.5px;
-      box-shadow: 0 -2px 8px rgba(35,57,84,0.06);
-      position: relative;
-      width: 100%;
-      border-top: 5px solid var(--bfg-gold);
+    /* Cards & Accordions */
+    .fcms-card-header {
+      max-width: 900px;
+      margin: 2em auto 1.5em auto;
+      background: linear-gradient(90deg, #23547b 0%, #5c9ee7 100%);
+      color: #fff;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(35,84,123,0.11);
+      padding: 2.1em 2em 1.3em 2em;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .fcms-card-header h3 {
+      color: #fff;
+      font-size: 1.43em;
+      font-weight: 700;
+      margin: 0 0 0.15em 0;
+      letter-spacing: 0.4px;
+    }
+    .fcms-card-header p {
+      margin: 0.2em 0 0 0;
+      font-size: 1.09em;
+      color: #e1eafd;
+      font-weight: 500;
+    }
+    .portfolio-accordion {
+      font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+      max-width: 900px;
+      margin: 0 auto 2.5em auto;
+    }
+    .blue-accordion {
+      background: #f5faff;
+      border-radius: 10px;
+      margin-bottom: 2em;
+      box-shadow: 0 3px 14px rgba(35,84,123,0.07);
+      border: 1.5px solid #23547b;
+    }
+    .blue-accordion summary {
+      padding: 1.18em 1.23em;
+      font-weight: bold;
+      font-size: 1.16em;
+      background: linear-gradient(90deg, #23547b 0%, #5c9ee7 100%);
+      color: #fff;
+      border-radius: 10px 10px 0 0;
+      cursor: pointer;
+      outline: none;
+      transition: background 0.2s;
+      letter-spacing: 0.6px;
+      box-shadow: 0 1px 9px rgba(35,84,123,0.07);
+      border-bottom: 2px solid #dde5e9;
+    }
+    .blue-accordion[open] summary {
+      background: linear-gradient(90deg, #5c9ee7 0%, #23547b 100%);
+      color: #fff;
+    }
+    .series-content {
+      padding: 1.3em 2.7em 1.4em 2.7em;
+      background: #f5faff;
+      border-radius: 0 0 10px 10px;
+    }
+    .inner-accordion {
+      background: #e9f1fb;
+      border-radius: 7px;
+      margin: 1.2em 0;
+      box-shadow: 0 1px 3px rgba(35,84,123,0.04);
+      border: 1px solid #c2d8ef;
+    }
+    .inner-accordion summary {
+      padding: 0.97em 1.28em;
+      font-size: 1.09em;
+      background: #2d4766;
+      color: #fff;
+      border-radius: 7px 7px 0 0;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+      letter-spacing: 0.15em;
+      border-bottom: 1.5px solid #dde5e9;
+    }
+    .series-def {
+      font-size: 1.03em;
+      color: #23547b;
+      background: #e3e8ef;
+      border-radius: 5px;
+      padding: 0.75em 1.1em;
+      margin: 1em 0 1.2em 0;
+      font-weight: 500;
+      border-left: 4px solid #5c9ee7;
+      border-top: 1px solid #c2d8ef;
+      border-bottom: 1px solid #c2d8ef;
+    }
+    .core-satellite-header {
+      font-weight: bold;
+      color: #1a314c;
+      margin: 0.85em 0 0.2em 0;
+      font-size: 1.08em;
+    }
+    .subtype-desc {
+      background: #dff0fe;
+      border-radius: 4px;
+      padding: 0.7em 1em;
+      margin-bottom: 1.1em;
+      color: #23415b;
+      font-size: 1.007em;
+      margin-top: 0.2em;
+      border-left: 4px solid #5c9ee7;
     }
     @media (max-width: 1400px) {
       .page, .chart-col { max-width: 98vw; min-width: 0;}
     }
     @media (max-width: 900px) {
       .page, .chart-col { padding: 8vw 2vw; }
+    }
+    @media (max-width: 700px) {
+      .portfolio-accordion {max-width: 99vw;}
+      .series-content {padding: 1em 0.7em;}
+      .fcms-card-header { padding: 1.2em 0.8em 1em 0.8em; }
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -221,492 +321,284 @@
     <div class="subsection"><strong>Core/Satellite</strong></div>
     <p>Core/Satellite Asset Allocation is a strategy that involves balancing the stability of SAA and the growth potential of TAA by combining a broadly diversified core portfolio with smaller actively managed satellite positions aimed to generate high yield and profitability.</p>
   </div>
- <div class="page" id="fcms-portfolio">
-  <h2>FCMS Portfolio Translation</h2>
- <style>
-/* Portfolio Card Styles */
-.fcms-card-header {
-  max-width: 900px;
-  margin: 2em auto 1.5em auto;
-  background: linear-gradient(90deg, #23547b 0%, #5c9ee7 100%);
-  color: #fff;
-  border-radius: 14px;
-  box-shadow: 0 4px 20px rgba(35,84,123,0.11);
-  padding: 2.1em 2em 1.3em 2em;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
 
-.fcms-card-header h3 {
-  color: #fff;
-  font-size: 1.43em;
-  font-weight: 700;
-  margin: 0 0 0.15em 0;
-  letter-spacing: 0.4px;
-}
-
-.fcms-card-header p {
-  margin: 0.2em 0 0 0;
-  font-size: 1.09em;
-  color: #e1eafd;
-  font-weight: 500;
-}
-
-@media (max-width: 700px) {
-  .fcms-card-header { padding: 1.2em 0.8em 1em 0.8em; }
-}
-
-/* Accordion Styles */
-.portfolio-accordion {
-  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-  max-width: 900px;
-  margin: 0 auto 2.5em auto;
-}
-.blue-accordion {
-  background: #f5faff;
-  border-radius: 10px;
-  margin-bottom: 2em;
-  box-shadow: 0 3px 14px rgba(35,84,123,0.07);
-  border: 1.5px solid #23547b;
-}
-.blue-accordion summary {
-  padding: 1.18em 1.23em;
-  font-weight: bold;
-  font-size: 1.16em;
-  background: linear-gradient(90deg, #23547b 0%, #5c9ee7 100%);
-  color: #fff;
-  border-radius: 10px 10px 0 0;
-  cursor: pointer;
-  outline: none;
-  transition: background 0.2s;
-  letter-spacing: 0.6px;
-  box-shadow: 0 1px 9px rgba(35,84,123,0.07);
-  border-bottom: 2px solid #dde5e9;
-}
-.blue-accordion[open] summary {
-  background: linear-gradient(90deg, #5c9ee7 0%, #23547b 100%);
-  color: #fff;
-}
-.series-content {
-  padding: 1.3em 2.7em 1.4em 2.7em;
-  background: #f5faff;
-  border-radius: 0 0 10px 10px;
-}
-.inner-accordion {
-  background: #e9f1fb;
-  border-radius: 7px;
-  margin: 1.2em 0;
-  box-shadow: 0 1px 3px rgba(35,84,123,0.04);
-  border: 1px solid #c2d8ef;
-}
-.inner-accordion summary {
-  padding: 0.97em 1.28em;
-  font-size: 1.09em;
-  background: #2d4766;
-  color: #fff;
-  border-radius: 7px 7px 0 0;
-  font-weight: 600;
-  cursor: pointer;
-  outline: none;
-  letter-spacing: 0.15em;
-  border-bottom: 1.5px solid #dde5e9;
-}
-.series-def {
-  font-size: 1.03em;
-  color: #23547b;
-  background: #e3e8ef;
-  border-radius: 5px;
-  padding: 0.75em 1.1em;
-  margin: 1em 0 1.2em 0;
-  font-weight: 500;
-  border-left: 4px solid #5c9ee7;
-  border-top: 1px solid #c2d8ef;
-  border-bottom: 1px solid #c2d8ef;
-}
-.core-satellite-header {
-  font-weight: bold;
-  color: #1a314c;
-  margin: 0.85em 0 0.2em 0;
-  font-size: 1.08em;
-}
-.subtype-desc {
-  background: #dff0fe;
-  border-radius: 4px;
-  padding: 0.7em 1em;
-  margin-bottom: 1.1em;
-  color: #23415b;
-  font-size: 1.007em;
-  margin-top: 0.2em;
-  border-left: 4px solid #5c9ee7;
-}
-@media (max-width: 700px) {
-  .portfolio-accordion {max-width: 99vw;}
-  .series-content {padding: 1em 0.7em;}
-}
-</style>
-
-<!-- FREEDOM CARD -->
-<div class="fcms-card-header">
-  <h3>Freedom Portfolios</h3>
-  <p>
-    The Freedom platform houses multiple strategies—Core, ETF, Tax-Aware, Sustainable, Tactical, Managed Risk, and Alternatives. This suite offers great flexibility, enabling both advisors and clients to customize risk, return, and philosophy to best fit their needs and goals.
-  </p>
-</div>
-<div class="portfolio-accordion">
-  <details class="blue-accordion" open>
-    <summary>Freedom Portfolio Series (Breakdown &amp; Core/Satellite Philosophy)</summary>
-    <div class="series-content">
-
-      <!-- Core Series -->
-      <details class="inner-accordion">
-        <summary>Core Series</summary>
-        <div class="series-def">
-          <b>Series Definition:</b> The Core Series focuses on globally diversified equities with a modest allocation to fixed income for stability.
+  <!-- FCMS Portfolio Translation -->
+  <div class="page" id="fcms-portfolio">
+    <h2>FCMS Portfolio Translation</h2>
+    <div class="fcms-card-header">
+      <h3>Freedom Portfolios</h3>
+      <p>
+        The Freedom platform houses multiple strategies—Core, ETF, Tax-Aware, Sustainable, Tactical, Managed Risk, and Alternatives. This suite offers great flexibility, enabling both advisors and clients to customize risk, return, and philosophy to best fit their needs and goals.
+      </p>
+    </div>
+    <div class="portfolio-accordion">
+      <details class="blue-accordion" open>
+        <summary>Freedom Portfolio Series (Breakdown &amp; Core/Satellite Philosophy)</summary>
+        <div class="series-content">
+          <details class="inner-accordion"><summary>Core Series</summary>
+            <div class="series-def"><b>Series Definition:</b> The Core Series focuses on globally diversified equities with a modest allocation to fixed income for stability.</div>
+            <div class="core-satellite-header">Core/Satellite Definition</div>
+            <div class="series-def">Core: Diversified global equities and some bonds.<br>Satellite: Targeted high-conviction active funds for alpha and diversification.</div>
+            <div class="subtype-desc"><b>Aggressive Core:</b> Focused on long-term capital appreciation using equities.</div>
+            <div class="subtype-desc"><b>Growth Core:</b> Growth-oriented with moderate risk.</div>
+          </details>
+          <details class="inner-accordion"><summary>Core ETF Series</summary>
+            <div class="series-def"><b>Series Definition:</b> Uses low-cost index ETFs as a base, adding specialized ETFs for tactical sector or factor tilts.</div>
+            <div class="core-satellite-header">Core/Satellite Definition</div>
+            <div class="series-def">Core: Low-cost index ETFs.<br>Satellite: Specialized ETFs for sector/factor tilts.</div>
+            <div class="subtype-desc"><b>Aggressive ETF:</b> Index-based, growth focused.</div>
+            <div class="subtype-desc"><b>Growth ETF:</b> Broad equity growth exposures.</div>
+          </details>
+          <details class="inner-accordion"><summary>Tax-Aware Series</summary>
+            <div class="series-def"><b>Series Definition:</b> Designed for after-tax efficiency, blending municipal bonds with tax-advantaged equity and active tax management.</div>
+            <div class="core-satellite-header">Core/Satellite Definition</div>
+            <div class="series-def">Core: Municipal bonds and tax-efficient equity.<br>Satellite: Active funds for tax harvesting/yield.</div>
+            <div class="subtype-desc"><b>Aggressive Tax-Aware:</b> After-tax growth focus.</div>
+            <div class="subtype-desc"><b>Growth Tax-Aware:</b> Blends equity and tax efficiency.</div>
+          </details>
+          <details class="inner-accordion"><summary>Sustainable Series</summary>
+            <div class="series-def"><b>Series Definition:</b> Prioritizes ESG and impact investing, with a sustainable equity core and focused satellite exposure.</div>
+            <div class="core-satellite-header">Core/Satellite Definition</div>
+            <div class="series-def">Core: Sustainable global equities.<br>Satellite: ESG/impact funds for targeted exposure.</div>
+            <div class="subtype-desc"><b>Aggressive Sustainable:</b> Growth with ESG criteria.</div>
+            <div class="subtype-desc"><b>Growth Sustainable:</b> Sustainable growth, moderate risk.</div>
+          </details>
+          <details class="inner-accordion"><summary>Tactical Series</summary>
+            <div class="series-def"><b>Series Definition:</b> Employs strategic tilts, sector/factor rotation, and cash overlays for risk management or opportunity.</div>
+            <div class="core-satellite-header">Core/Satellite Definition</div>
+            <div class="series-def">Core: Traditional diversified allocation.<br>Satellite: Tactical tilts/sectors/cash for opportunity or risk management.</div>
+            <div class="subtype-desc"><b>US Sector Equity ETF:</b> Sector tilts based on outlook.</div>
+            <div class="subtype-desc"><b>Fixed Income ETF:</b> Tactical bond exposure.</div>
+          </details>
+          <details class="inner-accordion"><summary>Managed Risk Series</summary>
+            <div class="series-def"><b>Series Definition:</b> Blends growth assets with overlays or built-in risk controls to help manage volatility and downside.</div>
+            <div class="core-satellite-header">Core/Satellite Definition</div>
+            <div class="series-def">Core: Balanced equity and bonds.<br>Satellite: Risk overlays/hedges for smoother outcomes.</div>
+            <div class="subtype-desc"><b>Growth Managed Risk:</b> Growth with risk control.</div>
+            <div class="subtype-desc"><b>Moderate Growth Managed Risk:</b> Growth and risk mitigation.</div>
+          </details>
+          <details class="inner-accordion"><summary>Alternative Strategies</summary>
+            <div class="series-def"><b>Series Definition:</b> Provides additional diversification and inflation protection through real assets, commodities, and absolute return strategies.</div>
+            <div class="core-satellite-header">Core/Satellite Definition</div>
+            <div class="series-def">Core: Diversified alternatives (REITs, commodities, market neutral).<br>Satellite: Specialized alt funds for further diversification.</div>
+            <div class="subtype-desc"><b>Real Assets:</b> Inflation-sensitive, diversifying.</div>
+            <div class="subtype-desc"><b>Absolute Return:</b> Seeks positive returns in any market.</div>
+          </details>
         </div>
-        <div class="core-satellite-header">Core/Satellite Definition</div>
-        <div class="series-def">
-          Core: Diversified global equities and some bonds.<br>
-          Satellite: Targeted high-conviction active funds for alpha and diversification.
-        </div>
-        <div class="subtype-desc"><b>Aggressive Core:</b> Focused on long-term capital appreciation using equities.</div>
-        <div class="subtype-desc"><b>Growth Core:</b> Growth-oriented with moderate risk.</div>
-      </details>
-
-      <!-- ETF Series -->
-      <details class="inner-accordion">
-        <summary>Core ETF Series</summary>
-        <div class="series-def">
-          <b>Series Definition:</b> Uses low-cost index ETFs as a base, adding specialized ETFs for tactical sector or factor tilts.
-        </div>
-        <div class="core-satellite-header">Core/Satellite Definition</div>
-        <div class="series-def">
-          Core: Low-cost index ETFs.<br>
-          Satellite: Specialized ETFs for sector/factor tilts.
-        </div>
-        <div class="subtype-desc"><b>Aggressive ETF:</b> Index-based, growth focused.</div>
-        <div class="subtype-desc"><b>Growth ETF:</b> Broad equity growth exposures.</div>
-      </details>
-
-      <!-- Tax-Aware Series -->
-      <details class="inner-accordion">
-        <summary>Tax-Aware Series</summary>
-        <div class="series-def">
-          <b>Series Definition:</b> Designed for after-tax efficiency, blending municipal bonds with tax-advantaged equity and active tax management.
-        </div>
-        <div class="core-satellite-header">Core/Satellite Definition</div>
-        <div class="series-def">
-          Core: Municipal bonds and tax-efficient equity.<br>
-          Satellite: Active funds for tax harvesting/yield.
-        </div>
-        <div class="subtype-desc"><b>Aggressive Tax-Aware:</b> After-tax growth focus.</div>
-        <div class="subtype-desc"><b>Growth Tax-Aware:</b> Blends equity and tax efficiency.</div>
-      </details>
-
-      <!-- Sustainable Series -->
-      <details class="inner-accordion">
-        <summary>Sustainable Series</summary>
-        <div class="series-def">
-          <b>Series Definition:</b> Prioritizes ESG and impact investing, with a sustainable equity core and focused satellite exposure.
-        </div>
-        <div class="core-satellite-header">Core/Satellite Definition</div>
-        <div class="series-def">
-          Core: Sustainable global equities.<br>
-          Satellite: ESG/impact funds for targeted exposure.
-        </div>
-        <div class="subtype-desc"><b>Aggressive Sustainable:</b> Growth with ESG criteria.</div>
-        <div class="subtype-desc"><b>Growth Sustainable:</b> Sustainable growth, moderate risk.</div>
-      </details>
-
-      <!-- Tactical Series -->
-      <details class="inner-accordion">
-        <summary>Tactical Series</summary>
-        <div class="series-def">
-          <b>Series Definition:</b> Employs strategic tilts, sector/factor rotation, and cash overlays for risk management or opportunity.
-        </div>
-        <div class="core-satellite-header">Core/Satellite Definition</div>
-        <div class="series-def">
-          Core: Traditional diversified allocation.<br>
-          Satellite: Tactical tilts/sectors/cash for opportunity or risk management.
-        </div>
-        <div class="subtype-desc"><b>US Sector Equity ETF:</b> Sector tilts based on outlook.</div>
-        <div class="subtype-desc"><b>Fixed Income ETF:</b> Tactical bond exposure.</div>
-      </details>
-
-      <!-- Managed Risk Series -->
-      <details class="inner-accordion">
-        <summary>Managed Risk Series</summary>
-        <div class="series-def">
-          <b>Series Definition:</b> Blends growth assets with overlays or built-in risk controls to help manage volatility and downside.
-        </div>
-        <div class="core-satellite-header">Core/Satellite Definition</div>
-        <div class="series-def">
-          Core: Balanced equity and bonds.<br>
-          Satellite: Risk overlays/hedges for smoother outcomes.
-        </div>
-        <div class="subtype-desc"><b>Growth Managed Risk:</b> Growth with risk control.</div>
-        <div class="subtype-desc"><b>Moderate Growth Managed Risk:</b> Growth and risk mitigation.</div>
-      </details>
-
-      <!-- Alternatives -->
-      <details class="inner-accordion">
-        <summary>Alternative Strategies</summary>
-        <div class="series-def">
-          <b>Series Definition:</b> Provides additional diversification and inflation protection through real assets, commodities, and absolute return strategies.
-        </div>
-        <div class="core-satellite-header">Core/Satellite Definition</div>
-        <div class="series-def">
-          Core: Diversified alternatives (REITs, commodities, market neutral).<br>
-          Satellite: Specialized alt funds for further diversification.
-        </div>
-        <div class="subtype-desc"><b>Real Assets:</b> Inflation-sensitive, diversifying.</div>
-        <div class="subtype-desc"><b>Absolute Return:</b> Seeks positive returns in any market.</div>
       </details>
     </div>
-  </details>
-</div>
 
-<!-- LIBERTY CARD -->
-<div class="fcms-card-header">
-  <h3>Liberty Portfolios</h3>
-  <p>
-    Liberty, as an FCMS sleeve, is a fully core/satellite portfolio suite. The Accumulation, Growth & Income, Risk Mitigation, and Multi-Asset Income series each target unique combinations of growth, income, and risk management through a blend of core and satellite investments.
-  </p>
-</div>
-<div class="portfolio-accordion">
-  <details class="blue-accordion" open>
-    <summary>Liberty Portfolio Series (Breakdown &amp; Core/Satellite Philosophy)</summary>
-    <div class="series-content">
-
-      <!-- Accumulation Series -->
-      <details class="inner-accordion">
-        <summary>Accumulation Series</summary>
-        <div class="series-def">
-          <b>Series Definition:</b> Designed for long-term growth, these portfolios center on equities with some fixed income for balance.
+    <div class="fcms-card-header">
+      <h3>Liberty Portfolios</h3>
+      <p>
+        Liberty, as an FCMS sleeve, is a fully core/satellite portfolio suite. The Accumulation, Growth & Income, Risk Mitigation, and Multi-Asset Income series each target unique combinations of growth, income, and risk management through a blend of core and satellite investments.
+      </p>
+    </div>
+    <div class="portfolio-accordion">
+      <details class="blue-accordion" open>
+        <summary>Liberty Portfolio Series (Breakdown &amp; Core/Satellite Philosophy)</summary>
+        <div class="series-content">
+          <details class="inner-accordion"><summary>Accumulation Series</summary>
+            <div class="series-def"><b>Series Definition:</b> Designed for long-term growth, these portfolios center on equities with some fixed income for balance.</div>
+            <div class="core-satellite-header">Core/Satellite Definition</div>
+            <div class="series-def">Core: Global equity, some fixed income.<br>Satellite: High-conviction active equity funds for diversification and enhanced return.</div>
+            <div class="subtype-desc"><b>Aggressive Accumulation:</b> Equity-centered, long-term compounding.</div>
+            <div class="subtype-desc"><b>Growth Accumulation:</b> Equity-centric, long-term compounding.</div>
+          </details>
+          <details class="inner-accordion"><summary>Growth &amp; Income Series</summary>
+            <div class="series-def"><b>Series Definition:</b> Blends capital appreciation and current income, using diversified equity and fixed income along with income-producing satellites.</div>
+            <div class="core-satellite-header">Core/Satellite Definition</div>
+            <div class="series-def">Core: Global equity and fixed income.<br>Satellite: Active funds for dividends, real estate, preferreds, convertibles.</div>
+            <div class="subtype-desc"><b>Moderate G+I:</b> Capital appreciation and income.</div>
+            <div class="subtype-desc"><b>Balanced G+I:</b> Capital appreciation and income.</div>
+          </details>
+          <details class="inner-accordion"><summary>Risk-Mitigation Series</summary>
+            <div class="series-def"><b>Series Definition:</b> Adds overlays or hedged equity to reduce drawdown risk, while keeping exposure to growth and/or income.</div>
+            <div class="core-satellite-header">Core/Satellite Definition</div>
+            <div class="series-def">Core: Diversified equity/fixed income.<br>Satellite: Hedged equity, stop-loss funds for downside risk protection.</div>
+            <div class="subtype-desc"><b>RM Allocation:</b> Lower risk, maintains equity exposure.</div>
+            <div class="subtype-desc"><b>RM G+I:</b> Lower risk, maintains growth/income focus.</div>
+          </details>
+          <details class="inner-accordion"><summary>Multi-Asset Income</summary>
+            <div class="series-def"><b>Series Definition:</b> Focuses on generating income from a combination of bonds, credit, and equity income strategies, with satellites adding yield and diversification.</div>
+            <div class="core-satellite-header">Core/Satellite Definition</div>
+            <div class="series-def">Core: Diversified core fixed income.<br>Satellite: Active credit/equity income (HY, preferreds, REITs).</div>
+            <div class="subtype-desc"><b>Aggressive Income:</b> High satellite income exposure.</div>
+            <div class="subtype-desc"><b>Moderate Income:</b> Blended, balanced income.</div>
+            <div class="subtype-desc"><b>Conservative Income:</b> Income and stability.</div>
+            <div class="subtype-desc"><b>Short-Term Income:</b> Capital preservation, short-term income.</div>
+          </details>
         </div>
-        <div class="core-satellite-header">Core/Satellite Definition</div>
-        <div class="series-def">
-          Core: Global equity, some fixed income.<br>
-          Satellite: High-conviction active equity funds for diversification and enhanced return.
-        </div>
-        <div class="subtype-desc"><b>Aggressive Accumulation:</b> Equity-centered, long-term compounding.</div>
-        <div class="subtype-desc"><b>Growth Accumulation:</b> Equity-centric, long-term compounding.</div>
-      </details>
-
-      <!-- Growth & Income Series -->
-      <details class="inner-accordion">
-        <summary>Growth &amp; Income Series</summary>
-        <div class="series-def">
-          <b>Series Definition:</b> Blends capital appreciation and current income, using diversified equity and fixed income along with income-producing satellites.
-        </div>
-        <div class="core-satellite-header">Core/Satellite Definition</div>
-        <div class="series-def">
-          Core: Global equity and fixed income.<br>
-          Satellite: Active funds for dividends, real estate, preferreds, convertibles.
-        </div>
-        <div class="subtype-desc"><b>Moderate G+I:</b> Capital appreciation and income.</div>
-        <div class="subtype-desc"><b>Balanced G+I:</b> Capital appreciation and income.</div>
-      </details>
-
-      <!-- Risk-Mitigation Series -->
-      <details class="inner-accordion">
-        <summary>Risk-Mitigation Series</summary>
-        <div class="series-def">
-          <b>Series Definition:</b> Adds overlays or hedged equity to reduce drawdown risk, while keeping exposure to growth and/or income.
-        </div>
-        <div class="core-satellite-header">Core/Satellite Definition</div>
-        <div class="series-def">
-          Core: Diversified equity/fixed income.<br>
-          Satellite: Hedged equity, stop-loss funds for downside risk protection.
-        </div>
-        <div class="subtype-desc"><b>RM Allocation:</b> Lower risk, maintains equity exposure.</div>
-        <div class="subtype-desc"><b>RM G+I:</b> Lower risk, maintains growth/income focus.</div>
-      </details>
-
-      <!-- Multi-Asset Income -->
-      <details class="inner-accordion">
-        <summary>Multi-Asset Income</summary>
-        <div class="series-def">
-          <b>Series Definition:</b> Focuses on generating income from a combination of bonds, credit, and equity income strategies, with satellites adding yield and diversification.
-        </div>
-        <div class="core-satellite-header">Core/Satellite Definition</div>
-        <div class="series-def">
-          Core: Diversified core fixed income.<br>
-          Satellite: Active credit/equity income (HY, preferreds, REITs).
-        </div>
-        <div class="subtype-desc"><b>Aggressive Income:</b> High satellite income exposure.</div>
-        <div class="subtype-desc"><b>Moderate Income:</b> Blended, balanced income.</div>
-        <div class="subtype-desc"><b>Conservative Income:</b> Income and stability.</div>
-        <div class="subtype-desc"><b>Short-Term Income:</b> Capital preservation, short-term income.</div>
       </details>
     </div>
-  </details>
-</div>
-<div class="page" id="freedom-strategies">
-  <h2>Freedom Strategies Evaluation</h2>
-  <div class="chart-group">
-    <!-- 5-Year Annualized Return SVG Bar Chart -->
-    <div class="chart-col">
-      <div class="chart-title">5-Year Annualized Return by Freedom Series</div>
-      <svg width="600" height="300">
-        <rect x="50" y="80" width="80" height="200" fill="#6c8998"></rect>
-        <text x="90" y="75" fill="#233954" font-size="1rem" text-anchor="middle">8.7%</text>
-        <rect x="150" y="120" width="80" height="160" fill="#b9c4a8"></rect>
-        <text x="190" y="115" fill="#233954" font-size="1rem" text-anchor="middle">7.4%</text>
-        <rect x="250" y="140" width="80" height="140" fill="#e3d984"></rect>
-        <text x="290" y="135" fill="#233954" font-size="1rem" text-anchor="middle">7.1%</text>
-        <rect x="350" y="180" width="80" height="100" fill="#57CC99"></rect>
-        <text x="390" y="175" fill="#233954" font-size="1rem" text-anchor="middle">6.7%</text>
-        <rect x="450" y="240" width="80" height="40" fill="#a6a6a6"></rect>
-        <text x="490" y="235" fill="#233954" font-size="1rem" text-anchor="middle">3.7%</text>
-      </svg>
-      <div class="chart-legend">
-        <div class="legend-item"><span class="legend-color" style="background:#6c8998"></span> Core Series</div>
-        <div class="legend-item"><span class="legend-color" style="background:#b9c4a8"></span> Dynamic Series</div>
-        <div class="legend-item"><span class="legend-color" style="background:#e3d984"></span> Tactical Series</div>
-        <div class="legend-item"><span class="legend-color" style="background:#57CC99"></span> Sustainable</div>
-        <div class="legend-item"><span class="legend-color" style="background:#a6a6a6"></span> Alternative</div>
+  </div>
+
+  <!-- Freedom Strategies Evaluation -->
+  <div class="page" id="freedom-strategies">
+    <h2>Freedom Strategies Evaluation</h2>
+    <div class="chart-group">
+      <!-- 5-Year Annualized Return SVG Bar Chart -->
+      <div class="chart-col">
+        <div class="chart-title">5-Year Annualized Return by Freedom Series</div>
+        <svg width="600" height="300">
+          <rect x="50" y="80" width="80" height="200" fill="#6c8998"></rect>
+          <text x="90" y="75" fill="#233954" font-size="1rem" text-anchor="middle">8.7%</text>
+          <rect x="150" y="120" width="80" height="160" fill="#b9c4a8"></rect>
+          <text x="190" y="115" fill="#233954" font-size="1rem" text-anchor="middle">7.4%</text>
+          <rect x="250" y="140" width="80" height="140" fill="#e3d984"></rect>
+          <text x="290" y="135" fill="#233954" font-size="1rem" text-anchor="middle">7.1%</text>
+          <rect x="350" y="180" width="80" height="100" fill="#57CC99"></rect>
+          <text x="390" y="175" fill="#233954" font-size="1rem" text-anchor="middle">6.7%</text>
+          <rect x="450" y="240" width="80" height="40" fill="#a6a6a6"></rect>
+          <text x="490" y="235" fill="#233954" font-size="1rem" text-anchor="middle">3.7%</text>
+        </svg>
+        <div class="chart-legend">
+          <div class="legend-item"><span class="legend-color" style="background:#6c8998"></span> Core Series</div>
+          <div class="legend-item"><span class="legend-color" style="background:#b9c4a8"></span> Dynamic Series</div>
+          <div class="legend-item"><span class="legend-color" style="background:#e3d984"></span> Tactical Series</div>
+          <div class="legend-item"><span class="legend-color" style="background:#57CC99"></span> Sustainable</div>
+          <div class="legend-item"><span class="legend-color" style="background:#a6a6a6"></span> Alternative</div>
+        </div>
+        <div class="chart-label">Core Series led Freedom 5-year returns, with alternatives offering diversification.</div>
       </div>
-      <div class="chart-label">Core Series led Freedom 5-year returns, with alternatives offering diversification.</div>
-    </div>
-    <!-- Volatility Chart (Chart.js) -->
-    <div class="chart-col">
-      <div class="chart-title">Freedom Portfolio Volatility (Standard Deviation of Annual Returns)</div>
-      <div class="chart-container">
-        <canvas id="freedomChart" height="620"></canvas>
-        <div class="legend-box">
-          <div class="legend-item"><div class="legend-color" style="background:#23547b;"></div>Core Series</div>
-          <div class="legend-item"><div class="legend-color" style="background:#3a7ca5;"></div>Core ETF</div>
-          <div class="legend-item"><div class="legend-color" style="background:#b9c4a8;"></div>Tax-Aware</div>
-          <div class="legend-item"><div class="legend-color" style="background:#6c8998;"></div>Sustainable</div>
-          <div class="legend-item"><div class="legend-color" style="background:#e3d984;"></div>Tactical</div>
-          <div class="legend-item"><div class="legend-color" style="background:#57CC99;"></div>Managed Risk</div>
-          <div class="legend-item"><div class="legend-color" style="background:#a6a6a6;"></div>Other/Alternative</div>
-          <div class="legend-item"><div class="legend-color" style="background:#dddddd;"></div>Not enough information</div>
+      <!-- Volatility Chart (Chart.js) -->
+      <div class="chart-col">
+        <div class="chart-title">Freedom Portfolio Volatility (Standard Deviation of Annual Returns)</div>
+        <div class="chart-container">
+          <canvas id="freedomChart" height="620"></canvas>
+          <div class="legend-box">
+            <div class="legend-item"><div class="legend-color" style="background:#23547b;"></div>Core Series</div>
+            <div class="legend-item"><div class="legend-color" style="background:#3a7ca5;"></div>Core ETF</div>
+            <div class="legend-item"><div class="legend-color" style="background:#b9c4a8;"></div>Tax-Aware</div>
+            <div class="legend-item"><div class="legend-color" style="background:#6c8998;"></div>Sustainable</div>
+            <div class="legend-item"><div class="legend-color" style="background:#e3d984;"></div>Tactical</div>
+            <div class="legend-item"><div class="legend-color" style="background:#57CC99;"></div>Managed Risk</div>
+            <div class="legend-item"><div class="legend-color" style="background:#a6a6a6;"></div>Other/Alternative</div>
+            <div class="legend-item"><div class="legend-color" style="background:#dddddd;"></div>Not enough information</div>
+          </div>
         </div>
-      </div>
-      <script>
-        // Series color coding
-        const seriesColors = {
-          "Core": "#23547b",
-          "Core ETF": "#3a7ca5",
-          "Tax-Aware": "#b9c4a8",
-          "Sustainable": "#6c8998",
-          "Tactical": "#e3d984",
-          "Managed Risk": "#57CC99",
-          "Other": "#a6a6a6",
-          "Missing": "#dddddd"
-        };
-        // Data: [Series, Portfolio Name, StdDev (null = missing)]
-        const data = [
-          ["Core", "Aggressive", 1.89],
-          ["Core", "Growth", 0.86],
-          ["Core", "Moderate Growth", 0.67],
-          ["Core", "Balanced", 0.96],
-          ["Core", "Conservative", 1.62],
-          ["Core", "Defensive", 2.60],
-          ["Core ETF", "Aggressive", 1.60],
-          ["Core ETF", "Growth", 0.94],
-          ["Core ETF", "Moderate Growth", 0.78],
-          ["Core ETF", "Balanced", 1.21],
-          ["Core ETF", "Conservative", 1.98],
-          ["Core ETF", "Defensive", null],
-          ["Core ETF", "US Core Equity", null],
-          ["Tax-Aware", "Aggressive", 0.25],
-          ["Tax-Aware", "Growth", 0.05],
-          ["Tax-Aware", "Moderate Growth", 0.15],
-          ["Tax-Aware", "Balanced", 0.35],
-          ["Tax-Aware", "Conservative", 0.40],
-          ["Tax-Aware", "Defensive", 0.60],
-          ["Sustainable", "Aggressive", 1.49],
-          ["Sustainable", "Growth", 0.86],
-          ["Sustainable", "Moderate Growth", 0.82],
-          ["Sustainable", "Balanced", 1.28],
-          ["Sustainable", "Conservative", 1.99],
-          ["Tactical", "ETF", 1.96],
-          ["Tactical", "US Sector Equity ETF", 2.19],
-          ["Tactical", "US Sector Equity ETF w/ Stop Loss", 2.17],
-          ["Tactical", "Fixed Income ETF", 3.09],
-          ["Managed Risk", "Growth", 1.22],
-          ["Managed Risk", "Moderate Growth", 1.67],
-          ["Managed Risk", "Conservative Growth", 1.53],
-          ["Other", "Focused ETF", 2.36],
-          ["Other", "Growth ETF", 1.66],
-          ["Other", "Moderate ETF", 0.86],
-          ["Other", "Conservative ETF", 1.00]
-        ];
-        // Chart labels (Y axis)
-        const yLabels = data.map(([series, port]) => `${series}: ${port}`);
-        // Data values
-        const stddevs = data.map(d => d[2]);
-        // Background color per bar
-        const barColors = data.map(([series, _, val]) => val == null ? seriesColors["Missing"] : seriesColors[series]);
-        // Custom plugin for portfolio name on bar
-        const barLabelPlugin = {
-          id: 'barLabelPlugin',
-          afterDatasetsDraw: chart => {
-            const {ctx} = chart;
-            ctx.save();
-            chart.getDatasetMeta(0).data.forEach((bar, i) => {
-              const [series, port, val] = data[i];
-              const label = val == null ? `${port}: Not enough information` : `${port}: ${val}%`;
-              ctx.font = "bold 13px Segoe UI, Arial";
-              ctx.textBaseline = "middle";
-              ctx.textAlign = "left";
-              ctx.fillStyle = "#1c2636";
-              let textX = bar.x + (val == null ? 10 : 8);
-              let textY = bar.y;
-              ctx.fillText(label, textX, textY);
-            });
-            ctx.restore();
-          }
-        };
-        new Chart(document.getElementById('freedomChart').getContext('2d'), {
-          type: 'bar',
-          data: {
-            labels: yLabels,
-            datasets: [{
-              data: stddevs,
-              backgroundColor: barColors,
-              borderColor: '#fff',
-              borderWidth: 1.5,
-              borderRadius: 7,
-              barPercentage: 0.75,
-              categoryPercentage: 0.98,
-            }]
-          },
-          options: {
-            indexAxis: 'y',
-            plugins: {
-              legend: { display: false },
-              tooltip: {
-                callbacks: {
-                  label: ctx => {
-                    const [series, port, val] = data[ctx.dataIndex];
-                    return val == null ? `${port}: Not enough information` : `${port}: ${val}%`;
+        <script>
+          // Series color coding
+          const seriesColors = {
+            "Core": "#23547b",
+            "Core ETF": "#3a7ca5",
+            "Tax-Aware": "#b9c4a8",
+            "Sustainable": "#6c8998",
+            "Tactical": "#e3d984",
+            "Managed Risk": "#57CC99",
+            "Other": "#a6a6a6",
+            "Missing": "#dddddd"
+          };
+          // Data: [Series, Portfolio Name, StdDev (null = missing)]
+          const data = [
+            ["Core", "Aggressive", 1.89],
+            ["Core", "Growth", 0.86],
+            ["Core", "Moderate Growth", 0.67],
+            ["Core", "Balanced", 0.96],
+            ["Core", "Conservative", 1.62],
+            ["Core", "Defensive", 2.60],
+            ["Core ETF", "Aggressive", 1.60],
+            ["Core ETF", "Growth", 0.94],
+            ["Core ETF", "Moderate Growth", 0.78],
+            ["Core ETF", "Balanced", 1.21],
+            ["Core ETF", "Conservative", 1.98],
+            ["Core ETF", "Defensive", null],
+            ["Core ETF", "US Core Equity", null],
+            ["Tax-Aware", "Aggressive", 0.25],
+            ["Tax-Aware", "Growth", 0.05],
+            ["Tax-Aware", "Moderate Growth", 0.15],
+            ["Tax-Aware", "Balanced", 0.35],
+            ["Tax-Aware", "Conservative", 0.40],
+            ["Tax-Aware", "Defensive", 0.60],
+            ["Sustainable", "Aggressive", 1.49],
+            ["Sustainable", "Growth", 0.86],
+            ["Sustainable", "Moderate Growth", 0.82],
+            ["Sustainable", "Balanced", 1.28],
+            ["Sustainable", "Conservative", 1.99],
+            ["Tactical", "ETF", 1.96],
+            ["Tactical", "US Sector Equity ETF", 2.19],
+            ["Tactical", "US Sector Equity ETF w/ Stop Loss", 2.17],
+            ["Tactical", "Fixed Income ETF", 3.09],
+            ["Managed Risk", "Growth", 1.22],
+            ["Managed Risk", "Moderate Growth", 1.67],
+            ["Managed Risk", "Conservative Growth", 1.53],
+            ["Other", "Focused ETF", 2.36],
+            ["Other", "Growth ETF", 1.66],
+            ["Other", "Moderate ETF", 0.86],
+            ["Other", "Conservative ETF", 1.00]
+          ];
+          // Chart labels (Y axis)
+          const yLabels = data.map(([series, port]) => `${series}: ${port}`);
+          // Data values
+          const stddevs = data.map(d => d[2]);
+          // Background color per bar
+          const barColors = data.map(([series, _, val]) => val == null ? seriesColors["Missing"] : seriesColors[series]);
+          // Custom plugin for portfolio name on bar
+          const barLabelPlugin = {
+            id: 'barLabelPlugin',
+            afterDatasetsDraw: chart => {
+              const {ctx} = chart;
+              ctx.save();
+              chart.getDatasetMeta(0).data.forEach((bar, i) => {
+                const [series, port, val] = data[i];
+                const label = val == null ? `${port}: Not enough information` : `${port}: ${val}%`;
+                ctx.font = "bold 13px Segoe UI, Arial";
+                ctx.textBaseline = "middle";
+                ctx.textAlign = "left";
+                ctx.fillStyle = "#1c2636";
+                let textX = bar.x + (val == null ? 10 : 8);
+                let textY = bar.y;
+                ctx.fillText(label, textX, textY);
+              });
+              ctx.restore();
+            }
+          };
+          new Chart(document.getElementById('freedomChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+              labels: yLabels,
+              datasets: [{
+                data: stddevs,
+                backgroundColor: barColors,
+                borderColor: '#fff',
+                borderWidth: 1.5,
+                borderRadius: 7,
+                barPercentage: 0.75,
+                categoryPercentage: 0.98,
+              }]
+            },
+            options: {
+              indexAxis: 'y',
+              plugins: {
+                legend: { display: false },
+                tooltip: {
+                  callbacks: {
+                    label: ctx => {
+                      const [series, port, val] = data[ctx.dataIndex];
+                      return val == null ? `${port}: Not enough information` : `${port}: ${val}%`;
+                    }
                   }
+                }
+              },
+              scales: {
+                x: {
+                  beginAtZero: true,
+                  max: 4,
+                  title: { display: true, text: 'Standard Deviation (%)', font: { size: 14, weight: 'bold'} },
+                  ticks: { callback: v => v + '%' }
+                },
+                y: {
+                  ticks: { color: '#233954', font: { size: 13 } }
                 }
               }
             },
-            scales: {
-              x: {
-                beginAtZero: true,
-                max: 4,
-                title: { display: true, text: 'Standard Deviation (%)', font: { size: 14, weight: 'bold'} },
-                ticks: { callback: v => v + '%' }
-              },
-              y: {
-                ticks: { color: '#233954', font: { size: 13 } }
-              }
-            }
-          },
-          plugins: [barLabelPlugin]
-        });
-      </script>
-      <div class="chart-label" style="margin-top:24px;">Standard deviation is a key measure of portfolio risk. Lower values indicate less volatility. Freedom's broad platform allows for solutions with varying risk levels across series.</div>
+            plugins: [barLabelPlugin]
+          });
+        </script>
+        <div class="chart-label" style="margin-top:24px;">Standard deviation is a key measure of portfolio risk. Lower values indicate less volatility. Freedom's broad platform allows for solutions with varying risk levels across series.</div>
+      </div>
     </div>
   </div>
-</div>
 
   <!-- Liberty Strategies Evaluation -->
   <div class="page" id="liberty-strategies">
@@ -750,15 +642,15 @@
           };
           // Data: [Series, Portfolio Name, Standard Deviation]
           const libertyData = [
-            ["Accumulation", "Aggressive", 12.45253209],
-            ["Accumulation", "Growth", 11.02770186],
-            ["Accumulation", "Risk Mitigated", 10.9838012],
-            ["Growth & Income", "Moderate", 9.289689625],
-            ["Growth & Income", "Balanced", 8.268497781],
-            ["Growth & Income", "Risk Mitigated", 8.705789102],
-            ["Multi-Asset Income", "Aggressive", 7.512434137],
-            ["Multi-Asset Income", "Moderate", 5.638428416],
-            ["Multi-Asset Income", "Conservative", 5.277013834]
+            ["Accumulation", "Aggressive", 12.45],
+            ["Accumulation", "Growth", 11.03],
+            ["Accumulation", "Risk Mitigated", 10.98],
+            ["Growth & Income", "Moderate", 9.29],
+            ["Growth & Income", "Balanced", 8.27],
+            ["Growth & Income", "Risk Mitigated", 8.71],
+            ["Multi-Asset Income", "Aggressive", 7.51],
+            ["Multi-Asset Income", "Moderate", 5.64],
+            ["Multi-Asset Income", "Conservative", 5.28]
           ];
           // Chart labels (Y axis)
           const libertyYLabels = libertyData.map(([series, port]) => `${series}: ${port}`);
@@ -835,6 +727,7 @@
       </div>
     </div>
   </div>
+
   <!-- Risk Evaluation -->
   <div class="page" id="risk-evaluation">
     <h2>Risk Evaluation</h2>
@@ -853,193 +746,188 @@
       </ul>
     </section>
   </div>
+
   <!-- Recommendations & Final Thoughts -->
   <div class="page" id="recommendations">
     <h2>Recommendations & Final Thoughts</h2>
-<div id="investment-success-matrix" style="margin-top:36px;">
-  <h3 style="font-size:1.35rem; color:#233954; letter-spacing:0.5px; margin-bottom:18px;">
-    Success Score Matrix: Risk-Adjusted Performance
-  </h3>
-  <div class="matrix-description" style="
-    margin-bottom:24px;
-    background: linear-gradient(90deg,#e3d984 0%, #dde5e9 100%);
-    padding:22px 32px;
-    border-radius:16px;
-    font-size:1.12rem;
-    box-shadow: 0 2px 10px #dde5e9;">
-    <b>How to understand this chart:</b><br>
-    Each bar shows the <b>Success Score</b> for a portfolio or benchmark, calculated as <code>5-year Annualized Return ÷ 5-year Volatility (Std Dev)</code>. 
-    <ul style="margin:8px 0 0 1.2em;">
-      <li><b>Returns</b> reflect annualized growth over 5 years.</li>
-      <li><b>Volatility</b> (standard deviation) quantifies the typical yearly ups and downs—lower is smoother, higher is bumpier.</li>
-      <li><b>Success Score</b> (higher is better): Indicates how much return is generated per unit of risk. This is a key measure of risk-adjusted performance.</li>
+    <div id="investment-success-matrix" style="margin-top:36px;">
+      <h3 style="font-size:1.35rem; color:#233954; letter-spacing:0.5px; margin-bottom:18px;">
+        Success Score Matrix: Risk-Adjusted Performance
+      </h3>
+      <div class="matrix-description" style="
+        margin-bottom:24px;
+        background: linear-gradient(90deg,#e3d984 0%, #dde5e9 100%);
+        padding:22px 32px;
+        border-radius:16px;
+        font-size:1.12rem;
+        box-shadow: 0 2px 10px #dde5e9;">
+        <b>How to understand this chart:</b><br>
+        Each bar shows the <b>Success Score</b> for a portfolio or benchmark, calculated as <code>5-year Annualized Return ÷ 5-year Volatility (Std Dev)</code>. 
+        <ul style="margin:8px 0 0 1.2em;">
+          <li><b>Returns</b> reflect annualized growth over 5 years.</li>
+          <li><b>Volatility</b> (standard deviation) quantifies the typical yearly ups and downs—lower is smoother, higher is bumpier.</li>
+          <li><b>Success Score</b> (higher is better): Indicates how much return is generated per unit of risk. This is a key measure of risk-adjusted performance.</li>
+        </ul>
+        Compare your own strategy to a wide range of industry benchmarks and BFG solution styles, from aggressive growth to conservative income.
+      </div>
+      <div style="max-width:690px; margin:0 auto 36px auto; background: #fcfcfa; border-radius:18px; box-shadow: 0 2px 14px #dde5e9; padding:28px 22px;">
+        <div style="font-weight:700; font-size:1.11rem; color:#233954; margin-bottom:20px;">
+          <span style="font-size:1.16rem;">Risk-Adjusted Success: Core/Satellite, Tactical, Strategic, and Benchmarks</span>
+          <br>
+          <span style="font-size:0.96rem; color:#777;">(Representative 5-year data, as of 2025. Higher Success Score = better risk/reward.)</span>
+        </div>
+        <table style="border-collapse:collapse; width:100%; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 1px 7px #e6e6e6; font-size:1.09rem;">
+          <tr style="background:#e3d984; color:#233954; font-weight:700;">
+            <th style="padding:9px 12px; text-align:left;">Portfolio / Benchmark</th>
+            <th style="padding:9px 12px;">5-Year Return</th>
+            <th style="padding:9px 12px;">Volatility (Std Dev)</th>
+            <th style="padding:9px 12px;">Success Score</th>
+          </tr>
+          <tr style="background:#f8f8ee;">
+            <td style="color:#b9c4a8; font-weight:600;">Core/Satellite</td>
+            <td>9.54%</td>
+            <td>8.0%</td>
+            <td><b>1.19</b></td>
+          </tr>
+          <tr>
+            <td style="color:#e3d984; font-weight:600;">Tactical Allocation</td>
+            <td>7.10%</td>
+            <td>3.09%</td>
+            <td><b>2.30</b></td>
+          </tr>
+          <tr style="background:#f8f8ee;">
+            <td style="color:#233954; font-weight:600;">Strategic (Core Series)</td>
+            <td>8.70%</td>
+            <td>1.89%</td>
+            <td><b>4.60</b></td>
+          </tr>
+          <tr>
+            <td style="color:#0059b2; font-weight:600;">Morningstar Aggressive</td>
+            <td>12.2%</td>
+            <td>8.5%</td>
+            <td><b>1.44</b></td>
+          </tr>
+          <tr style="background:#f8f8ee;">
+            <td style="color:#1a7e55; font-weight:600;">Morningstar Moderate</td>
+            <td>7.5%</td>
+            <td>4.25%</td>
+            <td><b>1.77</b></td>
+          </tr>
+          <tr>
+            <td style="color:#336699; font-weight:600;">Morningstar Conservative</td>
+            <td>2.4%</td>
+            <td>0.81%</td>
+            <td><b>2.95</b></td>
+          </tr>
+        </table>
+        <div style="font-size:1.01rem; color:#888; margin-top:18px;">
+          <b>Note:</b> Core/Satellite, Tactical, and Strategic scores are representative composites. Morningstar benchmarks show typical risk/return at each risk level.
+        </div>
+      </div>
+      <div style="max-width:900px; margin:0 auto 28px auto; background: #fcfcfa; border-radius:20px; box-shadow: 0 2px 16px #dde5e9; padding:30px 18px;">
+        <div style="font-weight:700; font-size:1.09rem; color:#233954; margin-bottom:20px;">
+          <span style="font-size:1.16rem;">Top Performing Portfolios by Style</span>
+          <br>
+          <span style="font-size:0.96rem; color:#777;">(Best risk-adjusted scores from BFG, Liberty, and market indexes. All data 5-year annualized as of 2025.)</span>
+        </div>
+        <table style="border-collapse:collapse; width:100%; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 1px 7px #e6e6e6; font-size:1.09rem;">
+          <tr style="background:#e3d984; color:#233954; font-weight:700;">
+            <th style="padding:9px 12px; text-align:left;">Portfolio</th>
+            <th style="padding:9px 12px;">5-Year Return</th>
+            <th style="padding:9px 12px;">Volatility (Std Dev)</th>
+            <th style="padding:9px 12px;">Success Score</th>
+          </tr>
+          <tr style="background:#f8f8ee;">
+            <td style="color:#b9c4a8; font-weight:600;">BFG Accumulation Aggressive</td>
+            <td>9.7%</td>
+            <td>12.45%</td>
+            <td><b>0.78</b></td>
+          </tr>
+          <tr>
+            <td style="color:#e3d984; font-weight:600;">BFG Accumulation Growth</td>
+            <td>7.0%</td>
+            <td>11.03%</td>
+            <td><b>0.63</b></td>
+          </tr>
+          <tr style="background:#f8f8ee;">
+            <td style="color:#233954; font-weight:600;">BFG Growth & Income Moderate</td>
+            <td>5.5%</td>
+            <td>8.27%</td>
+            <td><b>0.67</b></td>
+          </tr>
+          <tr>
+            <td style="color:#b9c4a8; font-weight:600;">BFG Multi-Asset Income Aggressive</td>
+            <td>5.6%</td>
+            <td>7.51%</td>
+            <td><b>0.75</b></td>
+          </tr>
+          <tr style="background:#f8f8ee;">
+            <td style="color:#e3d984; font-weight:600;">BFG Dynamic US Sector ETF</td>
+            <td>13.4%</td>
+            <td>6.12%</td>
+            <td><b>2.19</b></td>
+          </tr>
+          <tr>
+            <td style="color:#233954; font-weight:600;">BFG Institutional US Core Dividend</td>
+            <td>12.1%</td>
+            <td>6.88%</td>
+            <td><b>1.76</b></td>
+          </tr>
+          <tr style="background:#f8f8ee;">
+            <td style="color:#b9c4a8; font-weight:600;">BFG Dynamic Global Focused ETF</td>
+            <td>10.0%</td>
+            <td>4.24%</td>
+            <td><b>2.36</b></td>
+          </tr>
+          <tr>
+            <td style="color:#e3d984; font-weight:600;">BFG Real Assets (Alt)</td>
+            <td>7.7%</td>
+            <td>2.35%</td>
+            <td><b>3.27</b></td>
+          </tr>
+          <tr style="background:#f8f8ee;">
+            <td style="color:#233954; font-weight:600;">S&amp;P 500 Index</td>
+            <td>15.6%</td>
+            <td>9.6%</td>
+            <td><b>1.63</b></td>
+          </tr>
+          <tr>
+            <td style="color:#233954; font-weight:600;">Dow Jones Industrials</td>
+            <td>13.1%</td>
+            <td>7.6%</td>
+            <td><b>1.72</b></td>
+          </tr>
+        </table>
+        <div style="font-size:1.01rem; color:#888; margin-top:22px;">
+          <b>Note:</b> Top portfolios are selected for each style as best-in-class examples from the BFG, Liberty, and major index universes. All scores use latest 5-year data as of 2025.
+        </div>
+      </div>
+      <div style="
+          background: var(--bfg-sky);
+          border-radius:12px;
+          padding:17px 25px;
+          font-size:1.08rem;
+          box-shadow:0 2px 12px #dde5e9;
+          color:#233954;
+          max-width:610px; margin:0 auto;">
+        <h3 style="margin-top:0; font-size:1.11rem; color:#233954; margin-bottom:7px;">About the Success Score</h3>
+        <ul style="margin:10px 0 0 1.2em;">
+          <li><b>Success Score = 5-Year Return ÷ 5-Year Standard Deviation (Volatility)</b></li>
+          <li>This ratio helps investors compare different portfolios by showing how much return they get for each unit of risk.</li>
+          <li>Higher scores mean greater efficiency: more return for the same risk, or less risk for the same return.</li>
+          <li>Mixing composite strategies and benchmarks provides context for evaluating real-world investment choices.</li>
+        </ul>
+      </div>
+    </div>
+    <p>Our comprehensive analysis has led to several key recommendations tailored to different investment strategies. These insights are designed to guide investors in aligning their portfolio strategies with their individual financial goals and risk appetites:</p>
+    <ul>
+      <li><b>Strategic Allocation:</b> Ideal for stability and capital preservation, suited for long-term horizons with low risk tolerance. Regular reviews are essential.</li>
+      <li><b>Tactical Allocation:</b> Recommended for those comfortable with volatility and proactive management. Optimal for flexible allocations based on market shifts.</li>
+      <li><b>Core/Satellite Strategy:</b> Balances risk and return, combining stable core investments with growth-focused satellite opportunities. Requires diligent monitoring.</li>
     </ul>
-    Compare your own strategy to a wide range of industry benchmarks and BFG solution styles, from aggressive growth to conservative income.
+    <p>Ultimately, investors should choose a strategy based on their unique risk tolerance, investment objectives, and time horizon. Blending different strategies can offer diversified benefits, harnessing the strengths of each approach to achieve comprehensive financial goals.</p>
   </div>
 
-  <!-- OVERVIEW: Core/Satellite, Tactical, Strategic & Benchmarks -->
-  <div style="max-width:690px; margin:0 auto 36px auto; background: #fcfcfa; border-radius:18px; box-shadow: 0 2px 14px #dde5e9; padding:28px 22px;">
-    <div style="font-weight:700; font-size:1.11rem; color:#233954; margin-bottom:20px;">
-      <span style="font-size:1.16rem;">Risk-Adjusted Success: Core/Satellite, Tactical, Strategic, and Benchmarks</span>
-      <br>
-      <span style="font-size:0.96rem; color:#777;">(Representative 5-year data, as of 2025. Higher Success Score = better risk/reward.)</span>
-    </div>
-    <table style="border-collapse:collapse; width:100%; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 1px 7px #e6e6e6; font-size:1.09rem;">
-      <tr style="background:#e3d984; color:#233954; font-weight:700;">
-        <th style="padding:9px 12px; text-align:left;">Portfolio / Benchmark</th>
-        <th style="padding:9px 12px;">5-Year Return</th>
-        <th style="padding:9px 12px;">Volatility (Std Dev)</th>
-        <th style="padding:9px 12px;">Success Score</th>
-      </tr>
-      <tr style="background:#f8f8ee;">
-        <td style="color:#b9c4a8; font-weight:600;">Core/Satellite</td>
-        <td>9.54%</td>
-        <td>8.0%</td>
-        <td><b>1.19</b></td>
-      </tr>
-      <tr>
-        <td style="color:#e3d984; font-weight:600;">Tactical Allocation</td>
-        <td>7.10%</td>
-        <td>3.09%</td>
-        <td><b>2.30</b></td>
-      </tr>
-      <tr style="background:#f8f8ee;">
-        <td style="color:#233954; font-weight:600;">Strategic (Core Series)</td>
-        <td>8.70%</td>
-        <td>1.89%</td>
-        <td><b>4.60</b></td>
-      </tr>
-      <!-- Morningstar Benchmarks -->
-      <tr>
-        <td style="color:#0059b2; font-weight:600;">Morningstar Aggressive</td>
-        <td>12.2%</td>
-        <td>8.5%</td>
-        <td><b>1.44</b></td>
-      </tr>
-      <tr style="background:#f8f8ee;">
-        <td style="color:#1a7e55; font-weight:600;">Morningstar Moderate</td>
-        <td>7.5%</td>
-        <td>4.25%</td>
-        <td><b>1.77</b></td>
-      </tr>
-      <tr>
-        <td style="color:#336699; font-weight:600;">Morningstar Conservative</td>
-        <td>2.4%</td>
-        <td>0.81%</td>
-        <td><b>2.95</b></td>
-      </tr>
-    </table>
-    <div style="font-size:1.01rem; color:#888; margin-top:18px;">
-      <b>Note:</b> Core/Satellite, Tactical, and Strategic scores are representative composites. Morningstar benchmarks show typical risk/return at each risk level.
-    </div>
-  </div>
-
-  <!-- TOP PERFORMERS: Individual Portfolios by Style -->
-  <div style="max-width:900px; margin:0 auto 28px auto; background: #fcfcfa; border-radius:20px; box-shadow: 0 2px 16px #dde5e9; padding:30px 18px;">
-    <div style="font-weight:700; font-size:1.09rem; color:#233954; margin-bottom:20px;">
-      <span style="font-size:1.16rem;">Top Performing Portfolios by Style</span>
-      <br>
-      <span style="font-size:0.96rem; color:#777;">(Best risk-adjusted scores from BFG, Liberty, and market indexes. All data 5-year annualized as of 2025.)</span>
-    </div>
-    <table style="border-collapse:collapse; width:100%; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 1px 7px #e6e6e6; font-size:1.09rem;">
-      <tr style="background:#e3d984; color:#233954; font-weight:700;">
-        <th style="padding:9px 12px; text-align:left;">Portfolio</th>
-        <th style="padding:9px 12px;">5-Year Return</th>
-        <th style="padding:9px 12px;">Volatility (Std Dev)</th>
-        <th style="padding:9px 12px;">Success Score</th>
-      </tr>
-      <tr style="background:#f8f8ee;">
-        <td style="color:#b9c4a8; font-weight:600;">BFG Accumulation Aggressive</td>
-        <td>9.7%</td>
-        <td>12.45%</td>
-        <td><b>0.78</b></td>
-      </tr>
-      <tr>
-        <td style="color:#e3d984; font-weight:600;">BFG Accumulation Growth</td>
-        <td>7.0%</td>
-        <td>11.03%</td>
-        <td><b>0.63</b></td>
-      </tr>
-      <tr style="background:#f8f8ee;">
-        <td style="color:#233954; font-weight:600;">BFG Growth & Income Moderate</td>
-        <td>5.5%</td>
-        <td>8.27%</td>
-        <td><b>0.67</b></td>
-      </tr>
-      <tr>
-        <td style="color:#b9c4a8; font-weight:600;">BFG Multi-Asset Income Aggressive</td>
-        <td>5.6%</td>
-        <td>7.51%</td>
-        <td><b>0.75</b></td>
-      </tr>
-      <tr style="background:#f8f8ee;">
-        <td style="color:#e3d984; font-weight:600;">BFG Dynamic US Sector ETF</td>
-        <td>13.4%</td>
-        <td>6.12%</td>
-        <td><b>2.19</b></td>
-      </tr>
-      <tr>
-        <td style="color:#233954; font-weight:600;">BFG Institutional US Core Dividend</td>
-        <td>12.1%</td>
-        <td>6.88%</td>
-        <td><b>1.76</b></td>
-      </tr>
-      <tr style="background:#f8f8ee;">
-        <td style="color:#b9c4a8; font-weight:600;">BFG Dynamic Global Focused ETF</td>
-        <td>10.0%</td>
-        <td>4.24%</td>
-        <td><b>2.36</b></td>
-      </tr>
-      <tr>
-        <td style="color:#e3d984; font-weight:600;">BFG Real Assets (Alt)</td>
-        <td>7.7%</td>
-        <td>2.35%</td>
-        <td><b>3.27</b></td>
-      </tr>
-      <!-- Market Indexes -->
-      <tr style="background:#f8f8ee;">
-        <td style="color:#233954; font-weight:600;">S&amp;P 500 Index</td>
-        <td>15.6%</td>
-        <td>9.6%</td>
-        <td><b>1.63</b></td>
-      </tr>
-      <tr>
-        <td style="color:#233954; font-weight:600;">Dow Jones Industrials</td>
-        <td>13.1%</td>
-        <td>7.6%</td>
-        <td><b>1.72</b></td>
-      </tr>
-    </table>
-    <div style="font-size:1.01rem; color:#888; margin-top:22px;">
-      <b>Note:</b> Top portfolios are selected for each style as best-in-class examples from the BFG, Liberty, and major index universes. All scores use latest 5-year data as of 2025.
-    </div>
-  </div>
-  <div style="
-      background: var(--bfg-sky);
-      border-radius:12px;
-      padding:17px 25px;
-      font-size:1.08rem;
-      box-shadow:0 2px 12px #dde5e9;
-      color:#233954;
-      max-width:610px; margin:0 auto;">
-    <h3 style="margin-top:0; font-size:1.11rem; color:#233954; margin-bottom:7px;">About the Success Score</h3>
-    <ul style="margin:10px 0 0 1.2em;">
-      <li><b>Success Score = 5-Year Return ÷ 5-Year Standard Deviation (Volatility)</b></li>
-      <li>This ratio helps investors compare different portfolios by showing how much return they get for each unit of risk.</li>
-      <li>Higher scores mean greater efficiency: more return for the same risk, or less risk for the same return.</li>
-      <li>Mixing composite strategies and benchmarks provides context for evaluating real-world investment choices.</li>
-    </ul>
-  </div>
-</div>
-      <p>Our comprehensive analysis has led to several key recommendations tailored to different investment strategies. These insights are designed to guide investors in aligning their portfolio strategies with their individual financial goals and risk appetites:</p>
-      <ul>
-        <li><b>Strategic Allocation:</b> Ideal for stability and capital preservation, suited for long-term horizons with low risk tolerance. Regular reviews are essential.</li>
-        <li><b>Tactical Allocation:</b> Recommended for those comfortable with volatility and proactive management. Optimal for flexible allocations based on market shifts.</li>
-        <li><b>Core/Satellite Strategy:</b> Balances risk and return, combining stable core investments with growth-focused satellite opportunities. Requires diligent monitoring.</li>
-      </ul>
-      <p>Ultimately, investors should choose a strategy based on their unique risk tolerance, investment objectives, and time horizon. Blending different strategies can offer diversified benefits, harnessing the strengths of each approach to achieve comprehensive financial goals.</p>
-    </div>
-  </div>
   <!-- References -->
   <div class="page" id="references">
     <h2>References</h2>
