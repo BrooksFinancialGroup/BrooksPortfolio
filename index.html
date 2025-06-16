@@ -233,46 +233,252 @@
 
   <!-- Freedom Strategies Evaluation -->
   <div class="page" id="freedom-strategies">
-    <!-- Freedom Foundation Section -->
-<details open>
-  <summary><strong>Freedom Foundation</strong></summary>
-  
-  <details>
-    <summary><strong>Core Series</strong></summary>
-    <ul>
-      <li>Aggressive: Foundation Aggressive, Foundation Aggressive ETF</li>
-      <li>Growth: Foundation Growth, Foundation Growth ETF</li>
-      <li>Moderate Growth: Foundation Moderate Growth, Foundation Moderate Growth ETF</li>
-      <li>Balanced: Foundation Balanced, Foundation Balanced ETF</li>
-      <li>Conservative: Foundation Conservative, Foundation Conservative ETF</li>
-      <li>Defensive: Foundation Defensive, Foundation Defensive ETF</li>
-    </ul>
+<style>
+.portfolio-accordion {
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  max-width: 900px;
+  margin: 2em auto;
+}
+.accordion {
+  background: #f7fafd;
+  border-radius: 8px;
+  margin-bottom: 2em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.accordion summary {
+  padding: 1.1em 1.2em;
+  font-weight: bold;
+  font-size: 1.15em;
+  background: linear-gradient(90deg, #0f2439, #23547b 80%);
+  color: #fff;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.2s;
+}
+.inner-accordion {
+  background: #f7fafd;
+  border-radius: 5px;
+  margin: 1em 0;
+  box-shadow: 0 1px 3px rgba(35,84,123,0.05);
+}
+.inner-accordion summary {
+  padding: 0.9em 1.2em;
+  font-size: 1.07em;
+  background: #23547b;
+  color: #fff;
+  border-radius: 5px 5px 0 0;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+}
+.series-content {
+  padding: 1em 2.5em 1.5em 2.5em;
+}
+.series-purpose {
+  font-size: 1.03em;
+  font-weight: 600;
+  color: #23547b;
+  margin: 0.6em 0 1.1em 0;
+}
+.strategy-list {
+  list-style: decimal;
+  margin: 0 0 1.5em 1.5em;
+  padding: 0;
+}
+.strategy-item {
+  background: #e9f1fb;
+  border-radius: 4px;
+  padding: 0.7em 1em;
+  margin-bottom: 1em;
+  color: #444;
+  font-size: 0.99em;
+}
+.subtype-label {
+  font-weight: 600;
+  color: #0f2439;
+  margin-bottom: 0.17em;
+}
+.core-satellite-header {
+  font-weight: bold;
+  color: #0f2439;
+  margin: 1.3em 0 0.3em 0;
+  font-size: 1.02em;
+}
+.core-satellite-def {
+  font-size: 0.97em;
+  color: #23547b;
+  background: #e3e8ef;
+  border-radius: 4px;
+  padding: 0.5em 0.9em;
+  margin-bottom: 1.2em;
+}
+@media (max-width: 600px) {
+  .portfolio-accordion {max-width: 98vw;}
+  .series-content {padding: 1em 0.7em;}
+}
+</style>
+
+<div class="portfolio-accordion">
+
+  <details class="accordion" open>
+    <summary>Freedom Portfolios</summary>
+    <div class="series-content">
+
+      <!-- Management Risk Series -->
+      <details class="inner-accordion">
+        <summary>Management Risk Series</summary>
+        <div class="series-purpose">
+          Purpose: Risk mitigation seeking long term growth with enhanced downside protection.
+        </div>
+        <ol class="strategy-list">
+          <li class="strategy-item">
+            <span class="subtype-label">Low Volatility Equity:</span>
+            Provide exposure to stocks that have historically had low volatility characteristics.
+          </li>
+          <li class="strategy-item">
+            <span class="subtype-label">Hedged Equity:</span>
+            Provide exposure to growth potential of the stock market while employing an options strategy designed to reduce downside risk.
+          </li>
+          <li class="strategy-item">
+            <span class="subtype-label">Long/Short Equity:</span>
+            Participate in up markets and mitigate risk in down markets by making long and short investments in individual stocks.
+          </li>
+          <li class="strategy-item">
+            <span class="subtype-label">Tactical Allocation:</span>
+            Pursues a growth-focused but balanced approach to investing in equity, fixed income, and cash based around a loss avoidance framework.
+          </li>
+        </ol>
+      </details>
+
+      <!-- Protected Growth Series -->
+      <details class="inner-accordion">
+        <summary>Protected Growth Series</summary>
+        <div class="series-purpose">
+          Purpose: Provide exposure to the growth potential of equity markets while reducing downside risk using buffer ETFs and capped upside potential.
+        </div>
+        <ol class="strategy-list">
+          <li class="strategy-item">
+            <span class="subtype-label">US Protected Growth:</span>
+            Protect against first 10% of losses.
+          </li>
+          <li class="strategy-item">
+            <span class="subtype-label">US Protected Growth Moderate:</span>
+            Protect against 15% of losses.
+          </li>
+          <li class="strategy-item">
+            <span class="subtype-label">US Protected Growth Conservative:</span>
+            Protect against losses between -5% to -30%.
+          </li>
+          <li class="strategy-item">
+            <span class="subtype-label">Global Protected Growth Moderate:</span>
+            Protects against first 15% of losses (diversified instead of basing off S&P 500).
+          </li>
+        </ol>
+      </details>
+
+      <!-- Tactical Allocation Series -->
+      <details class="inner-accordion">
+        <summary>Tactical Allocation Series</summary>
+        <div class="series-purpose">
+          Purpose: Tactical Strategies managed through an objective, evidence based research process to reduce emotional bias.
+        </div>
+        <ol class="strategy-list">
+          <li class="strategy-item">
+            <span class="subtype-label">Tactical US Sector Equity ETF:</span>
+            Weight-of-the-evidence approach seeking to enhance risk-adjusted returns relative to the S&amp;P 500 by over and under-weighting sectors.
+          </li>
+          <li class="strategy-item">
+            <span class="subtype-label">Tactical US Sector Equity ETF with Stop Loss:</span>
+            Same as above but employs a stop loss model that allocates 50% to cash during periods of heightened market risk.
+          </li>
+          <li class="strategy-item">
+            <span class="subtype-label">Tactical Allocation ETF:</span>
+            Growth focused but balanced approach to investing based on a loss avoidance framework (ex: 60% MSCI All Country World Index, 40% Barclays Global Aggregate Bond Index).
+          </li>
+          <li class="strategy-item">
+            <span class="subtype-label">Tactical Fixed Income ETF:</span>
+            Combines macroeconomic and technical indicators in a weight-of-the-evidence approach to allocate across nine fixed income sectors and geographies.
+          </li>
+        </ol>
+      </details>
+
+      <!-- Global Allocation Series -->
+      <details class="inner-accordion">
+        <summary>Global Allocation Series</summary>
+        <div class="series-purpose">
+          Purpose: Capitalize on short-term opportunities.
+        </div>
+        <ol class="strategy-list">
+          <li class="strategy-item">
+            <span class="subtype-label">Global Focused ETF:</span>
+            Maximum long-term growth and appreciation potential (Target Asset Allocation: Equity- 100%, Fixed Income- 0%).
+          </li>
+          <li class="strategy-item">
+            <span class="subtype-label">Global Growth ETF:</span>
+            Long-term growth and appreciation potential (Target AA: Equity- 85%, Fixed Income- 15%).
+          </li>
+          <li class="strategy-item">
+            <span class="subtype-label">Global Moderate ETF:</span>
+            Moderate long-term growth potential and current income (Target AA: Equity- 65%, Fixed Income- 35%).
+          </li>
+          <li class="strategy-item">
+            <span class="subtype-label">Global Conservative ETF:</span>
+            Current income and modest long-term growth potential (Target AA: Equity- 40%, Fixed Income- 60%).
+          </li>
+        </ol>
+      </details>
+
+      <!-- Institutional Equity Series -->
+      <details class="inner-accordion">
+        <summary>Institutional Equity Series</summary>
+        <div class="series-purpose">
+          Purpose: Individual stock based strategies seeking to add value through in depth research and security selection.
+        </div>
+        <ol class="strategy-list">
+          <li class="strategy-item">
+            <span class="subtype-label">US Core Dividend:</span>
+            Total return strategy focused on large capitalization, high-quality companies that pay attractive dividends, and have the ability to grow their dividends.
+          </li>
+          <li class="strategy-item">
+            <span class="subtype-label">US Growth Equity:</span>
+            Focused on leadership companies with sector tailwinds to support multi-year investment opportunities where the market price underestimates the magnitude of future growth potential.
+          </li>
+          <li class="strategy-item">
+            <span class="subtype-label">US Multi Cap Equity:</span>
+            An all-capitalization strategy seeking to benefit from the long-term compounding of earnings and cash flow through investments in select companies that can be held for long time periods.
+          </li>
+          <li class="strategy-item">
+            <span class="subtype-label">Global Value Dividend:</span>
+            A total return strategy focused on global franchise companies that are market leaders in their industry, have historically consistent dividends, and trade at attractive valuations.
+          </li>
+          <li class="strategy-item">
+            <span class="subtype-label">International Growth Equity:</span>
+            Invests in companies with compelling long-term growth characteristics that are trading at a discount to intrinsic value.
+          </li>
+        </ol>
+      </details>
+
+      <!-- Freedom Alternative -->
+      <details class="inner-accordion">
+        <summary>Freedom Alternative</summary>
+        <div class="series-purpose">
+          Purpose: Alternative strategies designed to diversify traditional stock and bond portfolios.
+        </div>
+        <div class="core-satellite-header">Absolute Return Strategy</div>
+        <div class="strategy-item">
+          Diversified exposure to alternative investment strategies that have historically been less correlated with stock and bond markets (hedged equity, event-driven/arbitrage, Global Macro, Opportunistic Credit).
+          <br><span style="color:#23547b;font-size:0.97em;"><i>Risk profile comparable to fixed income, consider using as a diversifier within a conservative allocation.</i></span>
+        </div>
+        <div class="core-satellite-header">Real Assets Strategy</div>
+        <div class="strategy-item">
+          Seeks long-term, inflation adjusted appreciation potential (Real estate, Global infrastructure, Natural resources).
+          <br><span style="color:#23547b;font-size:0.97em;"><i>Risk profile comparable to equities, consider as a diversifier within a growth allocation.</i></span>
+        </div>
+      </details>
+    </div>
   </details>
-  
-  <details>
-    <summary><strong>Tax-Aware Series</strong></summary>
-    <ul>
-      <li>Aggressive: Foundation Tax-Aware Aggressive</li>
-      <li>Balanced: Foundation Tax-Aware Balanced</li>
-      <li>Conservative: Foundation Tax-Aware Conservative</li>
-      <li>Defensive: Foundation Tax-Aware Defensive</li>
-      <li>Growth: Foundation Tax-Aware Growth</li>
-      <li>Moderate Growth: Foundation Tax-Aware Moderate Growth</li>
-    </ul>
-  </details>
-  
-  <details>
-    <summary><strong>Sustainable Series</strong></summary>
-    <ul>
-      <li>Aggressive: Foundation Sustainable Aggressive</li>
-      <li>Balanced: Foundation Sustainable Balanced</li>
-      <li>Conservative: Foundation Sustainable Conservative</li>
-      <li>Growth: Foundation Sustainable Growth</li>
-      <li>Moderate Growth: Foundation Sustainable Moderate Growth</li>
-    </ul>
-  </details>
-</details>
-    <h2>Freedom Strategies Evaluation</h2>
+</div>
     <div class="chart-group">
       <div class="chart-col">
         <div class="chart-title">5-Year Annualized Return by Freedom Series</div>
@@ -409,25 +615,153 @@
   <div class="page" id="liberty-strategies">
     <h2>Liberty Strategies Evaluation</h2>
     <div class="table-caption">Liberty Strategies Breakdown</div>
-<!-- Liberty Portfolios Section -->
-<details open>
-  <summary><strong>Liberty Portfolios</strong></summary>
-  <ul>
-    <li>Aggressive Accumulation: Liberty Aggressive Accumulation</li>
-    <li>Aggressive Income: Liberty Aggressive Income</li>
-    <li>Balanced Growth &amp; Income: Liberty Balanced Growth &amp; Income</li>
-    <li>Conservative Income: Liberty Conservative Income</li>
-    <li>Growth Accumulation: Liberty Growth Accumulation</li>
-    <li>Moderate Growth &amp; Income: Liberty Moderate Growth &amp; Income</li>
-    <li>Moderate Income: Liberty Moderate Income</li>
-    <li>Real Income 4%: Liberty Real Income 4%</li>
-    <li>Real Income 5%: Liberty Real Income 5%</li>
-    <li>Real Income 6%: Liberty Real Income 6%</li>
-    <li>Risk Mitigated Accumulation: Liberty Risk Mitigated Accumulation</li>
-    <li>Risk Mitigated Growth &amp; Inc: Liberty Risk Mitigated Growth &amp; Inc</li>
-    <li>Short-Term Income: Liberty Short-Term Income</li>
-  </ul>
-</details>
+<style>
+.portfolio-accordion {
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  max-width: 900px;
+  margin: 2em auto;
+}
+.accordion {
+  background: #f7fafd;
+  border-radius: 8px;
+  margin-bottom: 2em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.accordion summary {
+  padding: 1.1em 1.2em;
+  font-weight: bold;
+  font-size: 1.15em;
+  background: linear-gradient(90deg, #0f2439, #23547b 80%);
+  color: #fff;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.2s;
+}
+.inner-accordion {
+  background: #f7fafd;
+  border-radius: 5px;
+  margin: 1em 0;
+  box-shadow: 0 1px 3px rgba(35,84,123,0.05);
+}
+.inner-accordion summary {
+  padding: 0.9em 1.2em;
+  font-size: 1.07em;
+  background: #23547b;
+  color: #fff;
+  border-radius: 5px 5px 0 0;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+}
+.series-content {
+  padding: 1em 2.5em 1.5em 2.5em;
+}
+.subtype-desc {
+  background: #e9f1fb;
+  border-radius: 4px;
+  padding: 0.7em 1em;
+  margin-bottom: 1.1em;
+  color: #444;
+  font-size: 0.99em;
+  margin-top: 0.2em;
+}
+.core-satellite-header {
+  font-weight: bold;
+  color: #0f2439;
+  margin: 1.3em 0 0.3em 0;
+  font-size: 1.02em;
+}
+.core-satellite-def {
+  font-size: 0.97em;
+  color: #23547b;
+  background: #e3e8ef;
+  border-radius: 4px;
+  padding: 0.5em 0.9em;
+  margin-bottom: 1.2em;
+}
+@media (max-width: 600px) {
+  .portfolio-accordion {max-width: 98vw;}
+  .series-content {padding: 1em 0.7em;}
+}
+</style>
+
+<div class="portfolio-accordion">
+
+  <details class="accordion" open>
+    <summary>Liberty Portfolios</summary>
+    <div class="series-content">
+
+      <!-- Accumulation Series -->
+      <details class="inner-accordion">
+        <summary>Accumulation Series</summary>
+        <div class="core-satellite-header">Core/Satellite Definition</div>
+        <div class="core-satellite-def">
+          Core = global equity with some fixed income. Satellite = high-conviction actively managed equity funds for diversification and enhanced long-term return.
+        </div>
+        <div class="subtype-desc">
+          <b>Aggressive Accumulation:</b> Designed to grow and compound assets over the long term through an equity-centered portfolio.
+        </div>
+        <div class="subtype-desc">
+          <b>Growth Accumulation:</b> Designed to grow and compound assets over the long term through an equity-centered portfolio.
+        </div>
+      </details>
+
+      <!-- Growth & Income Series -->
+      <details class="inner-accordion">
+        <summary>Growth &amp; Income Series</summary>
+        <div class="core-satellite-header">Core/Satellite Definition</div>
+        <div class="core-satellite-def">
+          Core = global equity and fixed income. Satellite = active funds offering dividends, real estate, preferreds, and convertibles for growth and income.
+        </div>
+        <div class="subtype-desc">
+          <b>Moderate G+I:</b> Combines long-term capital appreciation with current income.
+        </div>
+        <div class="subtype-desc">
+          <b>Balanced G+I:</b> Combines long-term capital appreciation with current income.
+        </div>
+      </details>
+
+      <!-- Risk-Mitigation Series -->
+      <details class="inner-accordion">
+        <summary>Risk-Mitigation Series</summary>
+        <div class="core-satellite-header">Core/Satellite Definition</div>
+        <div class="core-satellite-def">
+          Core = diversified equity/fixed income. Satellite = hedged equity, stop-loss funds for downside protection.
+        </div>
+        <div class="subtype-desc">
+          <b>RM Allocation:</b> Reduces risk while maintaining equity exposure.
+        </div>
+        <div class="subtype-desc">
+          <b>RM G+I:</b> Reduces risk while maintaining growth and income objective.
+        </div>
+      </details>
+
+      <!-- Multi-Asset Income -->
+      <details class="inner-accordion">
+        <summary>Multi-Asset Income</summary>
+        <div class="core-satellite-header">Core/Satellite Definition</div>
+        <div class="core-satellite-def">
+          Core = diversified core fixed income. Satellite = high-conviction active funds investing in credit and equity income-producing assets (e.g., HY bonds, preferreds, REITs).
+        </div>
+        <div class="subtype-desc">
+          <b>Aggressive Income:</b> Generates income with high exposure to satellites.
+        </div>
+        <div class="subtype-desc">
+          <b>Moderate Income:</b> Blended income with balanced allocation.
+        </div>
+        <div class="subtype-desc">
+          <b>Conservative Income:</b> Focuses on income and stability.
+        </div>
+        <div class="subtype-desc">
+          <b>Short-Term Income:</b> Focuses on capital preservation and short-term income.
+        </div>
+      </details>
+
+    </div>
+  </details>
+</div>
+
     <div class="chart-group">
       <div class="chart-col">
         <div class="chart-title">5-Year Annualized Return by Liberty Series</div>
