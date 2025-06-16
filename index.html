@@ -554,8 +554,181 @@
   <!-- Recommendations & Final Thoughts -->
   <div class="page" id="recommendations">
     <h2>Recommendations & Final Thoughts</h2>
-    <!-- ... Matrix section unchanged ... -->
-    <div class="summary-box">
+<div id="investment-success-matrix" style="margin-top:36px;">
+  <h3 style="font-size:1.35rem; color:#233954; letter-spacing:0.5px; margin-bottom:18px;">
+    Success Score Matrix: Risk-Adjusted Performance
+  </h3>
+  <div class="matrix-description" style="
+    margin-bottom:24px;
+    background: linear-gradient(90deg,#e3d984 0%, #dde5e9 100%);
+    padding:22px 32px;
+    border-radius:16px;
+    font-size:1.12rem;
+    box-shadow: 0 2px 10px #dde5e9;">
+    <b>How to understand this chart:</b><br>
+    Each bar shows the <b>Success Score</b> for a portfolio or benchmark, calculated as <code>5-year Annualized Return ÷ 5-year Volatility (Std Dev)</code>. 
+    <ul style="margin:8px 0 0 1.2em;">
+      <li><b>Returns</b> reflect annualized growth over 5 years.</li>
+      <li><b>Volatility</b> (standard deviation) quantifies the typical yearly ups and downs—lower is smoother, higher is bumpier.</li>
+      <li><b>Success Score</b> (higher is better): Indicates how much return is generated per unit of risk. This is a key measure of risk-adjusted performance.</li>
+    </ul>
+    Compare your own strategy to a wide range of industry benchmarks and BFG solution styles, from aggressive growth to conservative income.
+  </div>
+
+  <!-- OVERVIEW: Core/Satellite, Tactical, Strategic & Benchmarks -->
+  <div style="max-width:690px; margin:0 auto 36px auto; background: #fcfcfa; border-radius:18px; box-shadow: 0 2px 14px #dde5e9; padding:28px 22px;">
+    <div style="font-weight:700; font-size:1.11rem; color:#233954; margin-bottom:20px;">
+      <span style="font-size:1.16rem;">Risk-Adjusted Success: Core/Satellite, Tactical, Strategic, and Benchmarks</span>
+      <br>
+      <span style="font-size:0.96rem; color:#777;">(Representative 5-year data, as of 2025. Higher Success Score = better risk/reward.)</span>
+    </div>
+    <table style="border-collapse:collapse; width:100%; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 1px 7px #e6e6e6; font-size:1.09rem;">
+      <tr style="background:#e3d984; color:#233954; font-weight:700;">
+        <th style="padding:9px 12px; text-align:left;">Portfolio / Benchmark</th>
+        <th style="padding:9px 12px;">5-Year Return</th>
+        <th style="padding:9px 12px;">Volatility (Std Dev)</th>
+        <th style="padding:9px 12px;">Success Score</th>
+      </tr>
+      <tr style="background:#f8f8ee;">
+        <td style="color:#b9c4a8; font-weight:600;">Core/Satellite</td>
+        <td>9.54%</td>
+        <td>8.0%</td>
+        <td><b>1.19</b></td>
+      </tr>
+      <tr>
+        <td style="color:#e3d984; font-weight:600;">Tactical Allocation</td>
+        <td>7.10%</td>
+        <td>3.09%</td>
+        <td><b>2.30</b></td>
+      </tr>
+      <tr style="background:#f8f8ee;">
+        <td style="color:#233954; font-weight:600;">Strategic (Core Series)</td>
+        <td>8.70%</td>
+        <td>1.89%</td>
+        <td><b>4.60</b></td>
+      </tr>
+      <!-- Morningstar Benchmarks -->
+      <tr>
+        <td style="color:#0059b2; font-weight:600;">Morningstar Aggressive</td>
+        <td>12.2%</td>
+        <td>8.5%</td>
+        <td><b>1.44</b></td>
+      </tr>
+      <tr style="background:#f8f8ee;">
+        <td style="color:#1a7e55; font-weight:600;">Morningstar Moderate</td>
+        <td>7.5%</td>
+        <td>4.25%</td>
+        <td><b>1.77</b></td>
+      </tr>
+      <tr>
+        <td style="color:#336699; font-weight:600;">Morningstar Conservative</td>
+        <td>2.4%</td>
+        <td>0.81%</td>
+        <td><b>2.95</b></td>
+      </tr>
+    </table>
+    <div style="font-size:1.01rem; color:#888; margin-top:18px;">
+      <b>Note:</b> Core/Satellite, Tactical, and Strategic scores are representative composites. Morningstar benchmarks show typical risk/return at each risk level.
+    </div>
+  </div>
+
+  <!-- TOP PERFORMERS: Individual Portfolios by Style -->
+  <div style="max-width:900px; margin:0 auto 28px auto; background: #fcfcfa; border-radius:20px; box-shadow: 0 2px 16px #dde5e9; padding:30px 18px;">
+    <div style="font-weight:700; font-size:1.09rem; color:#233954; margin-bottom:20px;">
+      <span style="font-size:1.16rem;">Top Performing Portfolios by Style</span>
+      <br>
+      <span style="font-size:0.96rem; color:#777;">(Best risk-adjusted scores from BFG, Liberty, and market indexes. All data 5-year annualized as of 2025.)</span>
+    </div>
+    <table style="border-collapse:collapse; width:100%; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 1px 7px #e6e6e6; font-size:1.09rem;">
+      <tr style="background:#e3d984; color:#233954; font-weight:700;">
+        <th style="padding:9px 12px; text-align:left;">Portfolio</th>
+        <th style="padding:9px 12px;">5-Year Return</th>
+        <th style="padding:9px 12px;">Volatility (Std Dev)</th>
+        <th style="padding:9px 12px;">Success Score</th>
+      </tr>
+      <tr style="background:#f8f8ee;">
+        <td style="color:#b9c4a8; font-weight:600;">BFG Accumulation Aggressive</td>
+        <td>9.7%</td>
+        <td>12.45%</td>
+        <td><b>0.78</b></td>
+      </tr>
+      <tr>
+        <td style="color:#e3d984; font-weight:600;">BFG Accumulation Growth</td>
+        <td>7.0%</td>
+        <td>11.03%</td>
+        <td><b>0.63</b></td>
+      </tr>
+      <tr style="background:#f8f8ee;">
+        <td style="color:#233954; font-weight:600;">BFG Growth & Income Moderate</td>
+        <td>5.5%</td>
+        <td>8.27%</td>
+        <td><b>0.67</b></td>
+      </tr>
+      <tr>
+        <td style="color:#b9c4a8; font-weight:600;">BFG Multi-Asset Income Aggressive</td>
+        <td>5.6%</td>
+        <td>7.51%</td>
+        <td><b>0.75</b></td>
+      </tr>
+      <tr style="background:#f8f8ee;">
+        <td style="color:#e3d984; font-weight:600;">BFG Dynamic US Sector ETF</td>
+        <td>13.4%</td>
+        <td>6.12%</td>
+        <td><b>2.19</b></td>
+      </tr>
+      <tr>
+        <td style="color:#233954; font-weight:600;">BFG Institutional US Core Dividend</td>
+        <td>12.1%</td>
+        <td>6.88%</td>
+        <td><b>1.76</b></td>
+      </tr>
+      <tr style="background:#f8f8ee;">
+        <td style="color:#b9c4a8; font-weight:600;">BFG Dynamic Global Focused ETF</td>
+        <td>10.0%</td>
+        <td>4.24%</td>
+        <td><b>2.36</b></td>
+      </tr>
+      <tr>
+        <td style="color:#e3d984; font-weight:600;">BFG Real Assets (Alt)</td>
+        <td>7.7%</td>
+        <td>2.35%</td>
+        <td><b>3.27</b></td>
+      </tr>
+      <!-- Market Indexes -->
+      <tr style="background:#f8f8ee;">
+        <td style="color:#233954; font-weight:600;">S&amp;P 500 Index</td>
+        <td>15.6%</td>
+        <td>9.6%</td>
+        <td><b>1.63</b></td>
+      </tr>
+      <tr>
+        <td style="color:#233954; font-weight:600;">Dow Jones Industrials</td>
+        <td>13.1%</td>
+        <td>7.6%</td>
+        <td><b>1.72</b></td>
+      </tr>
+    </table>
+    <div style="font-size:1.01rem; color:#888; margin-top:22px;">
+      <b>Note:</b> Top portfolios are selected for each style as best-in-class examples from the BFG, Liberty, and major index universes. All scores use latest 5-year data as of 2025.
+    </div>
+  </div>
+  <div style="
+      background: var(--bfg-sky);
+      border-radius:12px;
+      padding:17px 25px;
+      font-size:1.08rem;
+      box-shadow:0 2px 12px #dde5e9;
+      color:#233954;
+      max-width:610px; margin:0 auto;">
+    <h3 style="margin-top:0; font-size:1.11rem; color:#233954; margin-bottom:7px;">About the Success Score</h3>
+    <ul style="margin:10px 0 0 1.2em;">
+      <li><b>Success Score = 5-Year Return ÷ 5-Year Standard Deviation (Volatility)</b></li>
+      <li>This ratio helps investors compare different portfolios by showing how much return they get for each unit of risk.</li>
+      <li>Higher scores mean greater efficiency: more return for the same risk, or less risk for the same return.</li>
+      <li>Mixing composite strategies and benchmarks provides context for evaluating real-world investment choices.</li>
+    </ul>
+  </div>
+</div>
       <p>Our comprehensive analysis has led to several key recommendations tailored to different investment strategies. These insights are designed to guide investors in aligning their portfolio strategies with their individual financial goals and risk appetites:</p>
       <ul>
         <li><b>Strategic Allocation:</b> Ideal for stability and capital preservation, suited for long-term horizons with low risk tolerance. Regular reviews are essential.</li>
