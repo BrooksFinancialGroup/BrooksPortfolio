@@ -503,134 +503,134 @@
         </div>
         <div class="chart-label">Core Series led Freedom 5-year returns, with alternatives offering diversification.</div>
       </div>
+      <div class="chart-col">
+        <div class="chart-title">Variance Analysis by Series</div>
+        <canvas id="varianceHeatmap" height="750"></canvas>
+        <div style="margin-top:1em;color:#666;font-size:1.01em;">
+          <b>What is variance?</b> Variance measures how much a portfolio's performance fluctuates over time. Higher variance means more ups and downs (riskier, less stable returns). Lower variance means steadier, more predictable performance.<br><br>
+          <b>How to use this chart:</b> Each colored bar shows the risk (variance) for a series. Green means more stable; red means more volatile. This helps you compare risk across all options at a glance.
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script>
+    const data = [
+        ['Aggressive', 5.7, 5.7, 9.7],
+        ['Growth', 5.8, 4.9, 7.0],
+        ['Moderate Growth', 6.0, 4.4, 5.5],
+        ['Balanced', 6.1, 3.9, 4.3],
+        ['Conservative', 6.3, 3.2, 2.6],
+        ['Defensive', 6.3, 1.9, 0.1],
+        ['Aggressive ETF', 6.1, 5.9, 9.4],
+        ['Growth ETF', 6.4, 5.1, 7.4],
+        ['Moderate Growth ETF', 6.4, 4.5, 5.6],
+        ['Balanced ETF', 6.4, 3.7, 4.0],
+        ['Conservative ETF', 6.4, 2.8, 1.8],
+        ['U.S. Core Equity', 6.7, null, null],
+        ['Aggressive Tax', 5.5, 6.0, null],
+        ['Growth Tax', 5.0, 5.1, null],
+        ['Moderate Growth Tax', 4.7, 4.4, null],
+        ['Balanced Tax', 4.5, 3.8, null],
+        ['Conservative Tax', 3.4, 2.6, null],
+        ['Defensive Tax', 2.2, 1.0, null],
+        ['Aggressive Sustain', 5.3, 5.4, 8.5],
+        ['Growth Sustain', 5.5, 4.4, 6.5],
+        ['Moderate Growth Sustain', 5.9, 3.9, 5.0],
+        ['Balanced Sustain', 6.1, 3.2, 3.6],
+        ['Conservative Sustain', 6.2, 2.5, 1.6],
+        ['ETF', 4.1, 0.9, 5.6],
+        ['US Sector Equity ETF', 9.2, 8.4, 13.4],
+        ['US Sector Equity ETF w/ Stop Loss', 9.2, 7.0, 12.3],
+        ['Fixed Income ETF', 5.5, -0.1, -1.7],
+        ['Growth Risk', 8.4, 5.6, 7.9],
+        ['Moderate Growth Risk', 8.1, 4.0, 6.0],
+        ['Conservative Growth Risk', 8.1, 4.6, 5.2],
+        ['US Growth Protected', 5.0, null, null],
+        ['US Growth Moderate Protected', 4.4, null, null],
+        ['Global Growth Moderate Protected', 4.3, null, null],
+        ['US Growth Conservative Protected', 4.4, null, null],
+        ['Focused ETF Global', 4.5, 5.7, 10.0],
+        ['Growth ETF Global', 4.6, 5.0, 8.3],
+        ['Moderate ETF Global', 4.8, 3.9, 6.0],
+        ['Conservative ETF Global', 4.9, 2.5, 3.3],
+        ['US Core Dividend', 11.2, 8.0, 12.1],
+        ['US Growth Equity', 9.5, 13.1, 12.2],
+        ['US MultiCap Equity', 8.2, 5.3, 8.3],
+        ['Global Value Dividend', 4.3, 3.2, 8.1],
+        ['International Growth Equity', 11.5, 7.5, 7.0],
+        ['Absolute Return', 5.3, 3.2, 3.7],
+        ['Real Assets', 9.3, 1.7, 7.7],
+    ];
 
-<div class="chart-col">
-  <div class="chart-title">Variance Analysis by Series</div>
-  <canvas id="varianceHeatmap" height="750"></canvas>
-  <div style="margin-top:1em;color:#666;font-size:1.01em;">
-    <b>What is variance?</b> Variance measures how much a portfolio's performance fluctuates over time. Higher variance means more ups and downs (riskier, less stable returns). Lower variance means steadier, more predictable performance.<br><br>
-    <b>How to use this chart:</b> Each colored bar shows the risk (variance) for a series. Green means more stable; red means more volatile. This helps you compare risk across all options at a glance.
-  </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-<script>
-const data = [
-    ['Aggressive', 5.7, 5.7, 9.7],
-    ['Growth', 5.8, 4.9, 7.0],
-    ['Moderate Growth', 6.0, 4.4, 5.5],
-    ['Balanced', 6.1, 3.9, 4.3],
-    ['Conservative', 6.3, 3.2, 2.6],
-    ['Defensive', 6.3, 1.9, 0.1],
-    ['Aggressive ETF', 6.1, 5.9, 9.4],
-    ['Growth ETF', 6.4, 5.1, 7.4],
-    ['Moderate Growth ETF', 6.4, 4.5, 5.6],
-    ['Balanced ETF', 6.4, 3.7, 4.0],
-    ['Conservative ETF', 6.4, 2.8, 1.8],
-    ['U.S. Core Equity', 6.7, null, null],
-    ['Aggressive Tax', 5.5, 6.0, null],
-    ['Growth Tax', 5.0, 5.1, null],
-    ['Moderate Growth Tax', 4.7, 4.4, null],
-    ['Balanced Tax', 4.5, 3.8, null],
-    ['Conservative Tax', 3.4, 2.6, null],
-    ['Defensive Tax', 2.2, 1.0, null],
-    ['Aggressive Sustain', 5.3, 5.4, 8.5],
-    ['Growth Sustain', 5.5, 4.4, 6.5],
-    ['Moderate Growth Sustain', 5.9, 3.9, 5.0],
-    ['Balanced Sustain', 6.1, 3.2, 3.6],
-    ['Conservative Sustain', 6.2, 2.5, 1.6],
-    ['ETF', 4.1, 0.9, 5.6],
-    ['US Sector Equity ETF', 9.2, 8.4, 13.4],
-    ['US Sector Equity ETF w/ Stop Loss', 9.2, 7.0, 12.3],
-    ['Fixed Income ETF', 5.5, -0.1, -1.7],
-    ['Growth Risk', 8.4, 5.6, 7.9],
-    ['Moderate Growth Risk', 8.1, 4.0, 6.0],
-    ['Conservative Growth Risk', 8.1, 4.6, 5.2],
-    ['US Growth Protected', 5.0, null, null],
-    ['US Growth Moderate Protected', 4.4, null, null],
-    ['Global Growth Moderate Protected', 4.3, null, null],
-    ['US Growth Conservative Protected', 4.4, null, null],
-    ['Focused ETF Global', 4.5, 5.7, 10.0],
-    ['Growth ETF Global', 4.6, 5.0, 8.3],
-    ['Moderate ETF Global', 4.8, 3.9, 6.0],
-    ['Conservative ETF Global', 4.9, 2.5, 3.3],
-    ['US Core Dividend', 11.2, 8.0, 12.1],
-    ['US Growth Equity', 9.5, 13.1, 12.2],
-    ['US MultiCap Equity', 8.2, 5.3, 8.3],
-    ['Global Value Dividend', 4.3, 3.2, 8.1],
-    ['International Growth Equity', 11.5, 7.5, 7.0],
-    ['Absolute Return', 5.3, 3.2, 3.7],
-    ['Real Assets', 9.3, 1.7, 7.7],
-];
+    function variance(arr) {
+        let clean = arr.filter(x => x !== null);
+        if (clean.length < 2) return clean[0] || 0;
+        let mean = clean.reduce((acc, val) => acc + val, 0) / clean.length;
+        return clean.reduce((acc, val) => acc + (val - mean) ** 2, 0) / clean.length;
+    }
+    const labels = data.map(item => item[0]);
+    const variances = data.map(item => variance(item.slice(1)));
 
-function variance(arr) {
-    let clean = arr.filter(x => x !== null);
-    if (clean.length < 2) return clean[0] || 0;
-    let mean = clean.reduce((acc, val) => acc + val, 0) / clean.length;
-    return clean.reduce((acc, val) => acc + (val - mean) ** 2, 0) / clean.length;
-}
-const labels = data.map(item => item[0]);
-const variances = data.map(item => variance(item.slice(1)));
+    function getColor(val, min, max) {
+        // Green for low, yellow for medium, red for high
+        const percent = (val - min) / (max - min);
+        if (percent < 0.33) return '#38b000';
+        if (percent < 0.66) return '#ffd600';
+        return '#ff4d4d';
+    }
+    const minVar = Math.min(...variances);
+    const maxVar = Math.max(...variances);
 
-function getColor(val, min, max) {
-    // Green for low, yellow for medium, red for high
-    const percent = (val - min) / (max - min);
-    if (percent < 0.33) return '#38b000';
-    if (percent < 0.66) return '#ffd600';
-    return '#ff4d4d';
-}
-const minVar = Math.min(...variances);
-const maxVar = Math.max(...variances);
-
-const ctx = document.getElementById('varianceHeatmap').getContext('2d');
-new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels,
-        datasets: [{
-            label: 'Variance',
-            data: variances,
-            backgroundColor: variances.map(v => getColor(v, minVar, maxVar)),
-            borderWidth: 1,
-            borderRadius: 7,
-        }]
-    },
-    options: {
-        indexAxis: 'y',
-        plugins: {
-            legend: { display: false },
-            datalabels: {
-                anchor: 'end',
-                align: 'right',
-                color: '#333',
-                font: {
-                  weight: 'bold'
+    const ctx = document.getElementById('varianceHeatmap').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels,
+            datasets: [{
+                label: 'Variance',
+                data: variances,
+                backgroundColor: variances.map(v => getColor(v, minVar, maxVar)),
+                borderWidth: 1,
+                borderRadius: 7,
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            plugins: {
+                legend: { display: false },
+                datalabels: {
+                    anchor: 'end',
+                    align: 'right',
+                    color: '#333',
+                    font: {
+                      weight: 'bold'
+                    },
+                    formatter: (value) => value.toFixed(2)
                 },
-                formatter: (value) => value.toFixed(2)
+                tooltip: {
+                    callbacks: {
+                        label: ctx => `Variance: ${ctx.raw.toFixed(2)}`
+                    }
+                }
             },
-            tooltip: {
-                callbacks: {
-                    label: ctx => `Variance: ${ctx.raw.toFixed(2)}`
+            responsive: true,
+            scales: {
+                x: {
+                    title: {display: true, text: 'Variance'},
+                    beginAtZero: true,
+                    grid: { color: '#e3e8ef' }
+                },
+                y: {
+                    title: {display: true, text: 'Series'},
+                    ticks: { font: { size: 12 }},
+                    grid: { color: '#e3e8ef' }
                 }
             }
         },
-        responsive: true,
-        scales: {
-            x: {
-                title: {display: true, text: 'Variance'},
-                beginAtZero: true,
-                grid: { color: '#e3e8ef' }
-            },
-            y: {
-                title: {display: true, text: 'Series'},
-                ticks: { font: { size: 12 }},
-                grid: { color: '#e3e8ef' }
-            }
-        }
-    },
-    plugins: [ChartDataLabels]
-});
-</script>
+        plugins: [ChartDataLabels]
+    });
+    </script>
   </div>
 
   <!-- Liberty Strategies Evaluation -->
@@ -802,24 +802,25 @@ new Chart(ctx, {
         </div>
         <div class="chart-label">Aggressive Accumulation led Liberty 5-year returns, with income strategies offering steady growth.</div>
       </div>
-<div class="chart-col">
-  <div class="chart-title">5-Year Variance by Liberty Series</div>
-  <svg width="600" height="300">
-    <!-- Calculated variance for each series over the last 5 years -->
-    <rect x="50" y="130" width="80" height="170" fill="#6c8998"></rect>
-    <text x="90" y="125" fill="#233954" font-size="1rem" text-anchor="middle">56.13</text> <!-- Accumulation Series Variance -->
-    <rect x="150" y="170" width="80" height="130" fill="#b9c4a8"></rect>
-    <text x="190" y="165" fill="#233954" font-size="1rem" text-anchor="middle">41.66</text> <!-- Growth and Income Series Variance -->
-    <rect x="250" y="220" width="80" height="80" fill="#e3d984"></rect>
-    <text x="290" y="215" fill="#233954" font-size="1rem" text-anchor="middle">12.56</text> <!-- Multi-Asset Income Series Variance -->
-  </svg>
-  <div class="chart-legend">
-    <div class="legend-item"><span class="legend-color" style="background:#6c8998"></span> Accumulation Series</div>
-    <div class="legend-item"><span class="legend-color" style="background:#b9c4a8"></span> Growth and Income Series</div>
-    <div class="legend-item"><span class="legend-color" style="background:#e3d984"></span> Multi-Asset Income Series</div>
-  </div>
-  <div class="chart-label">Variance calculated based on recent 5-year performance for each series, representing fluctuation intensity.</div>
-</div>
+      <div class="chart-col">
+        <div class="chart-title">5-Year Variance by Liberty Series</div>
+        <svg width="600" height="300">
+          <!-- Calculated variance for each series over the last 5 years -->
+          <rect x="50" y="130" width="80" height="170" fill="#6c8998"></rect>
+          <text x="90" y="125" fill="#233954" font-size="1rem" text-anchor="middle">56.13</text> <!-- Accumulation Series Variance -->
+          <rect x="150" y="170" width="80" height="130" fill="#b9c4a8"></rect>
+          <text x="190" y="165" fill="#233954" font-size="1rem" text-anchor="middle">41.66</text> <!-- Growth and Income Series Variance -->
+          <rect x="250" y="220" width="80" height="80" fill="#e3d984"></rect>
+          <text x="290" y="215" fill="#233954" font-size="1rem" text-anchor="middle">12.56</text> <!-- Multi-Asset Income Series Variance -->
+        </svg>
+        <div class="chart-legend">
+          <div class="legend-item"><span class="legend-color" style="background:#6c8998"></span> Accumulation Series</div>
+          <div class="legend-item"><span class="legend-color" style="background:#b9c4a8"></span> Growth and Income Series</div>
+          <div class="legend-item"><span class="legend-color" style="background:#e3d984"></span> Multi-Asset Income Series</div>
+        </div>
+        <div class="chart-label">Variance calculated based on recent 5-year performance for each series, representing fluctuation intensity.</div>
+      </div>
+    </div>
   </div>
 <!-- Risk Evaluation -->
 <div class="page" id="risk-evaluation">
@@ -1043,7 +1044,6 @@ new Chart(ctx, {
         <li><b>Final Score:</b> We average the return and the risk numbers to get one easy-to-read score for each portfolio.</li>
     </div>
   </div>
-</div>
   <!-- Recommendations Content -->
   <div class="summary-box">
     <p>Our comprehensive analysis has led to several key recommendations tailored to different investment strategies. These insights are designed to guide investors in aligning their portfolio strategies with their individual financial goals and risk appetites:</p>
@@ -1067,3 +1067,5 @@ new Chart(ctx, {
     &mdash; Jaden Dahan &amp; James London, 2025
   </div>
 </div>
+</body>
+</html>
