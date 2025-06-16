@@ -461,143 +461,375 @@
         </div>
         <div class="chart-label">Core Series led Freedom 5-year returns, with alternatives offering diversification.</div>
       </div>
-      <!-- Volatility Chart (Chart.js) -->
-      <div class="chart-col">
-        <div class="chart-title">Freedom Portfolio Volatility (Standard Deviation of Annual Returns)</div>
-        <div class="chart-container">
-          <canvas id="freedomChart" height="620"></canvas>
-          <div class="legend-box">
-            <div class="legend-item"><div class="legend-color" style="background:#23547b;"></div>Core Series</div>
-            <div class="legend-item"><div class="legend-color" style="background:#3a7ca5;"></div>Core ETF</div>
-            <div class="legend-item"><div class="legend-color" style="background:#b9c4a8;"></div>Tax-Aware</div>
-            <div class="legend-item"><div class="legend-color" style="background:#6c8998;"></div>Sustainable</div>
-            <div class="legend-item"><div class="legend-color" style="background:#e3d984;"></div>Tactical</div>
-            <div class="legend-item"><div class="legend-color" style="background:#57CC99;"></div>Managed Risk</div>
-            <div class="legend-item"><div class="legend-color" style="background:#a6a6a6;"></div>Other/Alternative</div>
-            <div class="legend-item"><div class="legend-color" style="background:#dddddd;"></div>Not enough information</div>
-          </div>
-        </div>
-        <script>
-          // Series color coding
-          const seriesColors = {
-            "Core": "#23547b",
-            "Core ETF": "#3a7ca5",
-            "Tax-Aware": "#b9c4a8",
-            "Sustainable": "#6c8998",
-            "Tactical": "#e3d984",
-            "Managed Risk": "#57CC99",
-            "Other": "#a6a6a6",
-            "Missing": "#dddddd"
-          };
-          // Data: [Series, Portfolio Name, StdDev (null = missing)]
-          const data = [
-            ["Core", "Aggressive", 1.89],
-            ["Core", "Growth", 0.86],
-            ["Core", "Moderate Growth", 0.67],
-            ["Core", "Balanced", 0.96],
-            ["Core", "Conservative", 1.62],
-            ["Core", "Defensive", 2.60],
-            ["Core ETF", "Aggressive", 1.60],
-            ["Core ETF", "Growth", 0.94],
-            ["Core ETF", "Moderate Growth", 0.78],
-            ["Core ETF", "Balanced", 1.21],
-            ["Core ETF", "Conservative", 1.98],
-            ["Core ETF", "Defensive", null],
-            ["Core ETF", "US Core Equity", null],
-            ["Tax-Aware", "Aggressive", 0.25],
-            ["Tax-Aware", "Growth", 0.05],
-            ["Tax-Aware", "Moderate Growth", 0.15],
-            ["Tax-Aware", "Balanced", 0.35],
-            ["Tax-Aware", "Conservative", 0.40],
-            ["Tax-Aware", "Defensive", 0.60],
-            ["Sustainable", "Aggressive", 1.49],
-            ["Sustainable", "Growth", 0.86],
-            ["Sustainable", "Moderate Growth", 0.82],
-            ["Sustainable", "Balanced", 1.28],
-            ["Sustainable", "Conservative", 1.99],
-            ["Tactical", "ETF", 1.96],
-            ["Tactical", "US Sector Equity ETF", 2.19],
-            ["Tactical", "US Sector Equity ETF w/ Stop Loss", 2.17],
-            ["Tactical", "Fixed Income ETF", 3.09],
-            ["Managed Risk", "Growth", 1.22],
-            ["Managed Risk", "Moderate Growth", 1.67],
-            ["Managed Risk", "Conservative Growth", 1.53],
-            ["Other", "Focused ETF", 2.36],
-            ["Other", "Growth ETF", 1.66],
-            ["Other", "Moderate ETF", 0.86],
-            ["Other", "Conservative ETF", 1.00]
-          ];
-          // Chart labels (Y axis)
-          const yLabels = data.map(([series, port]) => `${series}: ${port}`);
-          // Data values
-          const stddevs = data.map(d => d[2]);
-          // Background color per bar
-          const barColors = data.map(([series, _, val]) => val == null ? seriesColors["Missing"] : seriesColors[series]);
-          // Custom plugin for portfolio name on bar
-          const barLabelPlugin = {
-            id: 'barLabelPlugin',
-            afterDatasetsDraw: chart => {
-              const {ctx} = chart;
-              ctx.save();
-              chart.getDatasetMeta(0).data.forEach((bar, i) => {
-                const [series, port, val] = data[i];
-                const label = val == null ? `${port}: Not enough information` : `${port}: ${val}%`;
-                ctx.font = "bold 13px Segoe UI, Arial";
-                ctx.textBaseline = "middle";
-                ctx.textAlign = "left";
-                ctx.fillStyle = "#1c2636";
-                let textX = bar.x + (val == null ? 10 : 8);
-                let textY = bar.y;
-                ctx.fillText(label, textX, textY);
-              });
-              ctx.restore();
-            }
-          };
-          new Chart(document.getElementById('freedomChart').getContext('2d'), {
-            type: 'bar',
-            data: {
-              labels: yLabels,
-              datasets: [{
-                data: stddevs,
-                backgroundColor: barColors,
-                borderColor: '#fff',
-                borderWidth: 1.5,
-                borderRadius: 7,
-                barPercentage: 0.75,
-                categoryPercentage: 0.98,
-              }]
-            },
-            options: {
-              indexAxis: 'y',
-              plugins: {
-                legend: { display: false },
-                tooltip: {
-                  callbacks: {
-                    label: ctx => {
-                      const [series, port, val] = data[ctx.dataIndex];
-                      return val == null ? `${port}: Not enough information` : `${port}: ${val}%`;
-                    }
-                  }
-                }
-              },
-              scales: {
-                x: {
-                  beginAtZero: true,
-                  max: 4,
-                  title: { display: true, text: 'Standard Deviation (%)', font: { size: 14, weight: 'bold'} },
-                  ticks: { callback: v => v + '%' }
-                },
-                y: {
-                  ticks: { color: '#233954', font: { size: 13 } }
+<!-- BEGIN: Sharpe Ratio Faceted Chart Component -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Segoe+UI:400,700&display=swap">
+<style>
+  .br-sharpe-container {
+    max-width: 1220px;
+    margin: 40px auto 0 auto;
+    background: rgba(255,255,255,0.97);
+    border-radius: 18px;
+    box-shadow: 0 8px 36px rgba(40,60,120,0.13);
+    padding: 36px 34px 28px 34px;
+    border: 2px solid #f4f7fa;
+    font-family: 'Segoe UI', Arial, sans-serif;
+  }
+  .br-sharpe-title {
+    color: #194087;
+    text-align: center;
+    font-size: 2.25rem;
+    margin-bottom: 0.2em;
+    letter-spacing: 1px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+  }
+  .br-sharpe-note {
+    text-align: center;
+    color: #34495e;
+    font-size: 1.12em;
+    margin-bottom: 17px;
+    background: #f3f8ff;
+    border-radius: 8px;
+    padding: 9px 0 11px 0;
+    box-shadow: 0 2px 8px 0 rgba(60,90,140,0.06);
+  }
+  .br-sharpe-controls {
+    text-align: center;
+    margin-bottom: 19px;
+  }
+  .br-sharpe-controls select {
+    font-size: 1rem;
+    padding: 6px 15px;
+    border-radius: 7px;
+    border: 1.5px solid #b7d0ee;
+    margin: 0 10px;
+    background: #fafdff;
+    color: #222;
+    transition: border 0.2s;
+  }
+  .br-sharpe-controls select:focus {
+    border: 1.5px solid #194087;
+    outline: none;
+  }
+  .br-sharpe-controls label {
+    font-size: 1.10rem;
+    color: #25344b;
+    margin-right: 10px;
+    font-weight: 500;
+  }
+  .br-sharpe-legend {
+    margin: 0 auto 2px auto;
+    max-width: 1100px;
+    font-size: 1.07em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px 22px;
+    justify-content: center;
+    background: #f8fafb;
+    border-radius: 8px;
+    padding: 7px 0 7px 0;
+    border: 1px solid #e4eefe;
+    font-family: 'Segoe UI', Arial, sans-serif;
+  }
+  .br-sharpe-legend-pair {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-right: 18px;
+  }
+  .br-sharpe-dot-outer {
+    width: 20px; height: 20px; border-radius: 50%;
+    margin-right: 0;
+    border-width: 3px;
+    border-style: solid;
+    display: inline-block;
+    vertical-align: middle;
+    background: transparent;
+  }
+  .br-sharpe-dot-inner {
+    width: 12px; height: 12px; border-radius: 50%;
+    display: inline-block;
+    margin-left: 2px;
+    margin-right: 8px;
+    vertical-align: middle;
+    border: 1.5px solid #ddd;
+    box-shadow: 0 0 4px #eee;
+  }
+  .br-sharpe-star {
+    color: #ffbe32;
+    font-size: 20px;
+    vertical-align: middle;
+    text-shadow: 0 2px 4px #fff7;
+    margin-right: 2px;
+  }
+  #br-sharpe-chart {
+    background: linear-gradient(125deg, #f5faff 70%, #fdf7ee 100%);
+    border-radius: 13px;
+    border: 2px solid #eaeaea;
+    margin-bottom: 14px;
+    box-shadow: 0 4px 25px 0 rgba(90,110,160,0.09);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+<div class="br-sharpe-container">
+  <div class="br-sharpe-title">Sharpe Ratio: Risk vs Return</div>
+  <div class="br-sharpe-note">
+    <b>X:</b> Risk (3Y Std Dev, %) &nbsp;|&nbsp; <b>Y:</b> Excess Return (3Y, %) <br>
+    <b>Circle Outline:</b> Main Category &nbsp;|&nbsp; <b>Circle Fill:</b> Subcategory <br>
+    <span class="br-sharpe-star">★</span> = Best Sharpe Ratio in current filter. <br>
+    <span style="color:#888;">Filter with the dropdowns to focus on a subgroup.</span>
+  </div>
+  <div class="br-sharpe-controls">
+    <label for="br-sharpe-mainCat">Main Category:</label>
+    <select id="br-sharpe-mainCat">
+      <option value="All">All</option>
+      <option value="Freedom Foundation">Freedom Foundation</option>
+      <option value="Freedom Dynamic">Freedom Dynamic</option>
+      <option value="Freedom Alternative">Freedom Alternative</option>
+      <option value="Benchmark">Benchmark</option>
+    </select>
+    <label for="br-sharpe-subCat">Subcategory:</label>
+    <select id="br-sharpe-subCat">
+      <option value="All">All</option>
+    </select>
+  </div>
+  <canvas id="br-sharpe-chart" width="1040" height="580"></canvas>
+  <div class="br-sharpe-legend" id="br-sharpe-legend"></div>
+</div>
+<script>
+(function() {
+  // Chart.js loader if not present
+  function loadChartJs(cb) {
+    if (window.Chart) return cb();
+    var s = document.createElement("script");
+    s.src = "https://cdn.jsdelivr.net/npm/chart.js";
+    s.onload = cb;
+    document.head.appendChild(s);
+  }
+  loadChartJs(function() {
+    // --- DATA ---
+    const categoryColors = {
+      "Freedom Foundation": "#3778c2",
+      "Freedom Dynamic": "#1cb495",
+      "Freedom Alternative": "#ffae34",
+      "Benchmark": "#222"
+    };
+    const subcategoryColors = {
+      "Core": "#b8d3fa",
+      "Core ETF": "#6fb3f2",
+      "Tax Aware": "#f7c3e6",
+      "Sustainable": "#8ad995",
+      "Tactical Allocation": "#e8c36f",
+      "Managed Risk": "#48d1cc",
+      "Protected Growth": "#9c85e2",
+      "Global Allocation": "#ffd480",
+      "Institutional Equity": "#ca8cff",
+      "Absolute Return": "#ffe99d",
+      "Real Assets": "#f7b267",
+      "Morningstar": "#d9d9d9"
+    };
+    const portfolios = [
+      // Freedom Foundation: Core Series
+      {main:"Freedom Foundation", sub:"Core", name:"Aggressive", risk:4.33, ret:0.67, sharpe:0.153748723},
+      {main:"Freedom Foundation", sub:"Core", name:"Growth", risk:3.73, ret:0.97, sharpe:0.258803648},
+      {main:"Freedom Foundation", sub:"Core", name:"Moderate Growth", risk:3.34, ret:1.27, sharpe:0.37889929},
+      {main:"Freedom Foundation", sub:"Core", name:"Balanced", risk:2.92, ret:1.59, sharpe:0.542921502},
+      {main:"Freedom Foundation", sub:"Core", name:"Conservative", risk:2.47, ret:2.01, sharpe:0.813112586},
+      {main:"Freedom Foundation", sub:"Core", name:"Defensive", risk:2.03, ret:2.49, sharpe:1.225121176},
+      // Core ETF
+      {main:"Freedom Foundation", sub:"Core ETF", name:"Aggressive", risk:4.74, ret:0.45, sharpe:0.094138928},
+      {main:"Freedom Foundation", sub:"Core ETF", name:"Growth", risk:4.05, ret:0.95, sharpe:0.233529709},
+      {main:"Freedom Foundation", sub:"Core ETF", name:"Moderate Growth", risk:3.57, ret:1.23, sharpe:0.343666884},
+      {main:"Freedom Foundation", sub:"Core ETF", name:"Balanced", risk:3.03, ret:1.53, sharpe:0.503698947},
+      {main:"Freedom Foundation", sub:"Core ETF", name:"Conservative", risk:2.51, ret:1.89, sharpe:0.750590661},
+      {main:"Freedom Foundation", sub:"Core ETF", name:"Defensive", risk:2.29, ret:2.35, sharpe:1.022236779},
+      {main:"Freedom Foundation", sub:"Core ETF", name:"US Core Equity ETF", risk:5.56, ret:-1.79, sharpe:-0.322498126},
+      // Tax Aware
+      {main:"Freedom Foundation", sub:"Tax Aware", name:"Aggressive", risk:4.87, ret:0.11, sharpe:0.021768897},
+      {main:"Freedom Foundation", sub:"Tax Aware", name:"Growth", risk:4.09, ret:0.27, sharpe:0.065044646},
+      {main:"Freedom Foundation", sub:"Tax Aware", name:"Moderate Growth", risk:3.53, ret:0.39, sharpe:0.109310289},
+      {main:"Freedom Foundation", sub:"Tax Aware", name:"Balanced", risk:2.96, ret:0.61, sharpe:0.204767127},
+      {main:"Freedom Foundation", sub:"Tax Aware", name:"Conservative", risk:2.14, ret:0.43, sharpe:0.19935293},
+      {main:"Freedom Foundation", sub:"Tax Aware", name:"Defensive", risk:1.01, ret:0.43, sharpe:0.421307489},
+      // Sustainable
+      {main:"Freedom Foundation", sub:"Sustainable", name:"Aggressive", risk:4.54, ret:0.31, sharpe:0.06743557},
+      {main:"Freedom Foundation", sub:"Sustainable", name:"Growth", risk:3.75, ret:0.73, sharpe:0.193408234},
+      {main:"Freedom Foundation", sub:"Sustainable", name:"Moderate Growth", risk:3.31, ret:1.13, sharpe:0.340021477},
+      {main:"Freedom Foundation", sub:"Sustainable", name:"Balanced", risk:2.87, ret:1.43, sharpe:0.49669831},
+      {main:"Freedom Foundation", sub:"Sustainable", name:"Conservative", risk:2.38, ret:1.85, sharpe:0.775822026},
+      // Freedom Dynamic: Tactical Allocation
+      {main:"Freedom Dynamic", sub:"Tactical Allocation", name:"ETF", risk:3.18, ret:-0.65, sharpe:-0.205364092},
+      {main:"Freedom Dynamic", sub:"Tactical Allocation", name:"US Sector Equity ETF", risk:6.54, ret:1.09, sharpe:0.166074461},
+      {main:"Freedom Dynamic", sub:"Tactical Allocation", name:"US Sector Equity ETF w/ Stop Loss", risk:6.24, ret:0.81, sharpe:0.12906594},
+      {main:"Freedom Dynamic", sub:"Tactical Allocation", name:"Fixed Income ETF", risk:2.05, ret:1.59, sharpe:0.773373347},
+      // Managed Risk
+      {main:"Freedom Dynamic", sub:"Managed Risk", name:"Managed Risk", risk:1.3, ret:-1.67, sharpe:-1.280461192},
+      {main:"Freedom Dynamic", sub:"Managed Risk", name:"Growth", risk:4.16, ret:2.09, sharpe:0.501210663},
+      {main:"Freedom Dynamic", sub:"Managed Risk", name:"Moderate Growth", risk:3.84, ret:1.71, sharpe:0.444560355},
+      {main:"Freedom Dynamic", sub:"Managed Risk", name:"Conservative Growth", risk:3.66, ret:2.11, sharpe:0.57466387},
+      // Protected Growth
+      {main:"Freedom Dynamic", sub:"Protected Growth", name:"US Growth", risk:3.86, ret:-1.16, sharpe:-0.300387368},
+      {main:"Freedom Dynamic", sub:"Protected Growth", name:"US Growth Moderate", risk:3.16, ret:-0.73, sharpe:-0.232518444},
+      {main:"Freedom Dynamic", sub:"Protected Growth", name:"Global Growth Moderate", risk:2.81, ret:-0.23, sharpe:-0.083385507},
+      {main:"Freedom Dynamic", sub:"Protected Growth", name:"US Growth Conservative", risk:3.32, ret:-0.91, sharpe:-0.273615579},
+      // Global Allocation
+      {main:"Freedom Dynamic", sub:"Global Allocation", name:"Focused ETF", risk:4.67, ret:-0.07, sharpe:-0.01585546},
+      {main:"Freedom Dynamic", sub:"Global Allocation", name:"Growth ETF", risk:4.14, ret:0.11, sharpe:0.025625703},
+      {main:"Freedom Dynamic", sub:"Global Allocation", name:"Moderate ETF", risk:3.42, ret:0.39, sharpe:0.112975664},
+      {main:"Freedom Dynamic", sub:"Global Allocation", name:"Conservative ETF", risk:2.6, ret:0.71, sharpe:0.27124971},
+      // Institutional Equity
+      {main:"Freedom Dynamic", sub:"Institutional Equity", name:"US Core Dividend", risk:5.77, ret:2.69, sharpe:0.465842299},
+      {main:"Freedom Dynamic", sub:"Institutional Equity", name:"US Growth Equity", risk:9.00, ret:1.13, sharpe:0.125099992},
+      {main:"Freedom Dynamic", sub:"Institutional Equity", name:"US MultiCap Equity", risk:6.19, ret:0.93, sharpe:0.149693238},
+      {main:"Freedom Dynamic", sub:"Institutional Equity", name:"Global Value Dividend", risk:3.43, ret:-0.05, sharpe:-0.01573495},
+      {main:"Freedom Dynamic", sub:"Institutional Equity", name:"International Growth Equity", risk:3.25, ret:6.59, sharpe:2.02616423},
+      // Freedom Alternative
+      {main:"Freedom Alternative", sub:"Absolute Return", name:"Absolute Return", risk:2.36, ret:1.51, sharpe:0.639008148},
+      {main:"Freedom Alternative", sub:"Real Assets", name:"Real Assets", risk:3.24, ret:3.31, sharpe:1.020331492},
+      // Benchmark
+      {main:"Benchmark", sub:"Morningstar", name:"Morning Star Conservative", risk:2.84, ret:3.73, sharpe:1.312557809}
+    ];
+    // Helper: Get all unique subcategories for a main category
+    function getSubcategories(mainCat) {
+      const subs = portfolios.filter(p => mainCat === "All" || p.main === mainCat).map(p => p.sub);
+      return [...new Set(subs)];
+    }
+    // Chart rendering logic
+    let facetChart, lastStarIdx = -1;
+    function renderChart(mainCat = "All", subCat = "All") {
+      if (facetChart) facetChart.destroy();
+      // Filter portfolios
+      let dataToShow = portfolios.filter(p =>
+        (mainCat === "All" || p.main === mainCat) &&
+        (subCat === "All" || p.sub === subCat)
+      );
+      // Find the "best" (highest Sharpe) for a star
+      let bestSharpe = Math.max(...dataToShow.map(d => d.sharpe));
+      let bestIdx = dataToShow.findIndex(d => d.sharpe === bestSharpe);
+
+      // Prepare chart data
+      const chartData = dataToShow.map((p, idx) => ({
+        label: `${p.name}`,
+        data: [{x: p.risk, y: p.ret, r: 18}],
+        backgroundColor: subcategoryColors[p.sub] || "#eee",
+        borderColor: categoryColors[p.main] || "#222",
+        borderWidth: 4,
+        pointStyle: "circle",
+        hoverBorderColor: "#333",
+        hoverBorderWidth: 3
+      }));
+
+      // Draw chart
+      const ctx = document.getElementById('br-sharpe-chart').getContext('2d');
+      facetChart = new Chart(ctx, {
+        type: 'bubble',
+        data: { datasets: chartData },
+        options: {
+          scales: {
+            x: { title: { display: true, text: "Risk (3Y Std Dev, %)", font:{weight:"bold"} }, min: 0, max: 10, grid: {color:'#e6e6e6'} },
+            y: { title: { display: true, text: "Excess Return (3Y, %)", font:{weight:"bold"} }, min: -2.5, max: 7.5, grid: {color:'#e6e6e6'} }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: "#fafdff",
+              titleColor: "#1b2c3a",
+              bodyColor: "#194087",
+              borderColor: "#b7d0ee",
+              borderWidth: 1.5,
+              callbacks: {
+                label: function(ctx) {
+                  const p = dataToShow[ctx.datasetIndex];
+                  return [
+                    `${p.main} / ${p.sub}`,
+                    `Portfolio: ${p.name}`,
+                    `Risk (Std Dev): ${p.risk}%`,
+                    `Excess Return: ${p.ret}%`,
+                    `Sharpe Ratio: ${p.sharpe.toFixed(2)}`
+                  ];
                 }
               }
-            },
-            plugins: [barLabelPlugin]
-          });
-        </script>
-        <div class="chart-label" style="margin-top:24px;">Standard deviation is a key measure of portfolio risk. Lower values indicate less volatility. Freedom's broad platform allows for solutions with varying risk levels across series.</div>
-      </div>
-    </div>
+            }
+          },
+          animation: false
+        },
+        plugins: [{
+          // Draw the Sharpe Ratio value above each bubble, with a star for the best
+          id: 'bubbleLabels',
+          afterDatasetDraw(chart, args, pluginOptions) {
+            const {ctx, data, chartArea: area, scales} = chart;
+            ctx.save();
+            data.datasets.forEach((dataset, i) => {
+              const d = dataset.data[0];
+              const meta = chart.getDatasetMeta(i).data[0];
+              if (!meta) return;
+              const pos = meta.getProps(['x', 'y'], true);
+              ctx.font = "bold 15px Segoe UI, Arial";
+              ctx.textAlign = 'center';
+              ctx.textBaseline = 'bottom';
+              ctx.strokeStyle = "#fff";
+              ctx.lineWidth = 5.5;
+              let label = dataToShow[i].sharpe.toFixed(2);
+              // Star for the best
+              if (i === bestIdx) label = "★ " + label;
+              ctx.strokeText(label, pos.x, pos.y - d.r - 2);
+              ctx.fillStyle = i === bestIdx ? "#d4941d" : "#25446b";
+              ctx.fillText(label, pos.x, pos.y - d.r - 2);
+            });
+            ctx.restore();
+          }
+        }]
+      });
+      lastStarIdx = bestIdx;
+    }
+    // Populate subcategory dropdown based on main category
+    function updateSubCatOptions() {
+      const mainCat = document.getElementById('br-sharpe-mainCat').value;
+      const subCatSel = document.getElementById('br-sharpe-subCat');
+      const subcats = getSubcategories(mainCat);
+      subCatSel.innerHTML = `<option value="All">All</option>` + subcats.map(s => `<option value="${s}">${s}</option>`).join("");
+    }
+    // Legend for category outline and subcategory fill
+    function renderLegend() {
+      const legendDiv = document.getElementById('br-sharpe-legend');
+      let legendHTML = '';
+      // Main Category + Subcategory pairs
+      const legendCombos = [
+        {main:"Freedom Foundation", subs:["Core", "Core ETF", "Tax Aware", "Sustainable"]},
+        {main:"Freedom Dynamic", subs:["Tactical Allocation", "Managed Risk", "Protected Growth", "Global Allocation", "Institutional Equity"]},
+        {main:"Freedom Alternative", subs:["Absolute Return", "Real Assets"]},
+        {main:"Benchmark", subs:["Morningstar"]}
+      ];
+      legendCombos.forEach(pair => {
+        pair.subs.forEach(sub => {
+          legendHTML += `<span class="br-sharpe-legend-pair">
+            <span class="br-sharpe-dot-outer" style="border-color:${categoryColors[pair.main]};">
+              <span class="br-sharpe-dot-inner" style="background:${subcategoryColors[sub]};"></span>
+            </span>
+            ${pair.main} / ${sub}
+          </span>`;
+        });
+      });
+      legendHTML += `<span><span class="br-sharpe-star">★</span> Best Sharpe in view</span>`;
+      legendDiv.innerHTML = legendHTML;
+    }
+    // On change handlers
+    document.getElementById('br-sharpe-mainCat').addEventListener('change', function() {
+      updateSubCatOptions();
+      renderChart(this.value, "All");
+    });
+    document.getElementById('br-sharpe-subCat').addEventListener('change', function() {
+      renderChart(document.getElementById('br-sharpe-mainCat').value, this.value);
+    });
+    // Initial render
+    renderLegend();
+    updateSubCatOptions();
+    renderChart("All", "All");
+  });
+})();
+</script>
+<!-- END: Sharpe Ratio Faceted Chart Component -->
   </div>
 
   <!-- Liberty Strategies Evaluation -->
