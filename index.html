@@ -1148,6 +1148,42 @@
 <!-- Right for You -->
 <div class="page" id="right-for-you">
   <h2>Which Portfolio is Right for You?</h2>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: #f8f9fb; color: #232323; }
+    header { background: #23395d; padding: 2.5rem 1rem 1.5rem 1rem; color: #fff; text-align: center; }
+    header h1 { margin: 0; font-size: 2.6rem; letter-spacing: 0.03em; }
+    header p { font-size: 1.3rem; margin-top: 0.6rem; }
+    .phase-section { margin: 2.5rem auto 2.5rem auto; max-width: 1100px; background: #fff; border-radius: 16px; box-shadow: 0 6px 30px 0 rgba(30,40,90,0.07); padding: 2.4rem 2.2rem; }
+    .phase-header { font-size: 2.1rem; margin-bottom: 0.6rem; color: #23395d; font-weight: 600; }
+    .phase-desc { margin-bottom: 1.2rem; color: #555; }
+    .quick-summary { background: #f0f4fa; border-left: 5px solid #23395d; padding: 1rem 1.5rem; border-radius: 8px; margin-bottom: 2rem; }
+    .journey-arrow { font-size: 2.2rem; text-align: center; color: #b0b0b0; margin: 2.5rem 0 2.5rem 0; user-select: none; }
+    .portfolio-cards { display: flex; flex-wrap: wrap; gap: 1.8rem; }
+    .portfolio-card {
+      flex: 1 1 440px;
+      min-width: 330px;
+      background: #f8fafd;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px 0 rgba(40,60,130,0.06);
+      padding: 1.8rem 1.2rem 1.6rem 1.2rem;
+      margin-bottom: 1.3rem;
+      display: flex;
+      flex-direction: column;
+      border-left: 6px solid #23395d22;
+      transition: box-shadow 0.16s;
+    }
+    .portfolio-card:hover { box-shadow: 0 4px 24px 0 rgba(40,60,130,0.13); }
+    .portfolio-title { font-size: 1.25rem; font-weight: 600; color: #23395d; margin-bottom: 0.2rem; }
+    .portfolio-risk { font-size: 0.97rem; color: #23395d; margin-bottom: 0.3rem; font-weight: 500; }
+    .portfolio-profile { font-size: 1.05rem; margin-bottom: 0.5rem; color: #555; }
+    .portfolio-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.2rem; font-size: 0.96rem; }
+    .portfolio-label { color: #888; min-width: 100px; font-weight: 500; }
+    .portfolio-value { color: #222; }
+    @media (max-width: 800px) {
+      .portfolio-cards { flex-direction: column; }
+      .phase-section { padding: 1.2rem 0.5rem; }
+    }
+  </style>
   <section class="phase-section" id="growth-phase">
     <div class="phase-header">1. Growth Phase</div>
     <div class="phase-desc">
