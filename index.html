@@ -1169,21 +1169,50 @@
       margin-bottom: 1.3rem;
       display: flex;
       flex-direction: column;
-      border-left: 6px solid #23395d22;
-      transition: box-shadow 0.16s;
+      border-left: 10px solid #23395d22; /* will be overridden by risk */
+      transition: box-shadow 0.16s, border-color 0.3s;
     }
-    .portfolio-card:hover { box-shadow: 0 4px 24px 0 rgba(40,60,130,0.13); }
     .portfolio-title { font-size: 1.25rem; font-weight: 600; color: #23395d; margin-bottom: 0.2rem; }
     .portfolio-risk { font-size: 0.97rem; color: #23395d; margin-bottom: 0.3rem; font-weight: 500; }
     .portfolio-profile { font-size: 1.05rem; margin-bottom: 0.5rem; color: #555; }
     .portfolio-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.2rem; font-size: 0.96rem; }
     .portfolio-label { color: #888; min-width: 100px; font-weight: 500; }
     .portfolio-value { color: #222; }
+    /* Risk border color classes */
+    .risk-red    { border-left-color: #e53935 !important; background: #fff5f5; }
+    .risk-orange { border-left-color: #fbc02d !important; background: #fffbe5; }
+    .risk-yellow { border-left-color: #ffeb3b !important; background: #fffff2; }
+    .risk-green  { border-left-color: #43a047 !important; background: #f2fff2; }
     @media (max-width: 800px) {
       .portfolio-cards { flex-direction: column; }
       .phase-section { padding: 1.2rem 0.5rem; }
     }
   </style>
+  <script>
+    // Assign color based on risk
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelectorAll('.portfolio-card').forEach(function(card) {
+        var risk = parseInt(card.getAttribute('data-risk')) || 0;
+        if (risk >= 80) {
+          card.classList.add('risk-red');
+        } else if (risk >= 60) {
+          card.classList.add('risk-orange');
+        } else if (risk >= 40) {
+          card.classList.add('risk-yellow');
+        } else {
+          card.classList.add('risk-green');
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Which Portfolio Is Right For You?</h1>
+    <p>Your investment journey with Brooks Portfolio</p>
+  </header>
+
+  <!-- Growth Phase -->
   <section class="phase-section" id="growth-phase">
     <div class="phase-header">1. Growth Phase</div>
     <div class="phase-desc">
@@ -1197,7 +1226,7 @@
       You need a flexible, growth-oriented portfolio that’s active, cost-conscious, and built for long-term compounding.
     </div>
     <div class="portfolio-cards">
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="90">
         <div class="portfolio-title">U.S. Multi-Cap Equity</div>
         <div class="portfolio-risk">Risk Level: 90</div>
         <div class="portfolio-profile">All-cap strategy focused on long-term compounding via select, high-quality U.S. and non-U.S. companies (95.6% U.S. Equity).</div>
@@ -1206,8 +1235,7 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Low turnover; tax-efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Taxable</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="85">
         <div class="portfolio-title">Global Focused ETF</div>
         <div class="portfolio-risk">Risk Level: 85</div>
         <div class="portfolio-profile">Actively managed global allocation strategy investing in ETFs (61.6% U.S. Equity, 38.3% Non-U.S. Equity).</div>
@@ -1216,8 +1244,7 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">High turnover; not tax-efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Tax-Deferred</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="85">
         <div class="portfolio-title">U.S. Growth Equity</div>
         <div class="portfolio-risk">Risk Level: 85</div>
         <div class="portfolio-profile">Invests in leadership companies with multi-year growth potential (92.7% U.S. Equity, minimal cash).</div>
@@ -1226,8 +1253,7 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Moderate to high turnover; moderate tax efficiency</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Tax-Deferred or Roth</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="80">
         <div class="portfolio-title">Aggressive Accumulation</div>
         <div class="portfolio-risk">Risk Level: 80</div>
         <div class="portfolio-profile">Broad exposure to global equities with a satellite in actively managed equity (99% equities, no bonds).</div>
@@ -1236,8 +1262,7 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">High turnover; not tax-efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Tax-Deferred</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="75">
         <div class="portfolio-title">Tactical U.S. Sector Equity ETF</div>
         <div class="portfolio-risk">Risk Level: 75</div>
         <div class="portfolio-profile">Uses quantitative and macro indicators to tactically allocate among the 11 U.S. equity sectors (99.3% U.S. Equity).</div>
@@ -1246,8 +1271,7 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">High turnover; not tax-efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Tax-Deferred</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="70">
         <div class="portfolio-title">Growth Accumulation</div>
         <div class="portfolio-risk">Risk Level: 70</div>
         <div class="portfolio-profile">Diversified global equity exposure with a satellite of actively managed equity (84% equity, ~10% fixed income).</div>
@@ -1256,8 +1280,7 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Moderate turnover; moderately tax-efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Tax-Deferred</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="60">
         <div class="portfolio-title">Risk Mitigated Accumulation</div>
         <div class="portfolio-risk">Risk Level: 60</div>
         <div class="portfolio-profile">Globally diversified with equity hedging and stop-loss tools (~84% equities) to proactively manage downside risk.</div>
@@ -1266,8 +1289,7 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Moderate turnover; moderately tax efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Tax-Deferred</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="60">
         <div class="portfolio-title">Moderate Growth & Income</div>
         <div class="portfolio-risk">Risk Level: 60</div>
         <div class="portfolio-profile">Core-satellite blend (~63% equities / ~20% fixed income) with globally diversified exposure.</div>
@@ -1276,8 +1298,7 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Moderately high turnover; tax efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Taxable</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="55">
         <div class="portfolio-title">Tactical Allocation ETF</div>
         <div class="portfolio-risk">Risk Level: 55</div>
         <div class="portfolio-profile">Top-down tactical ETF approach across global equities, fixed income, and cash (approx. 60/40 equity/fixed income).</div>
@@ -1286,8 +1307,7 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Low turnover; tax-efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Taxable</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="50">
         <div class="portfolio-title">Balanced Growth & Income (G+I)</div>
         <div class="portfolio-risk">Risk Level: 50</div>
         <div class="portfolio-profile">Globally diversified 50/50 equity and fixed income with active satellite exposure.</div>
@@ -1296,8 +1316,7 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Moderate turnover; moderate tax efficiency</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Tax-Deferred</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="40">
         <div class="portfolio-title">Aggressive Income</div>
         <div class="portfolio-risk">Risk Level: 40</div>
         <div class="portfolio-profile">Core fixed income plus satellite high-yield and equity income (~27% equities, ~56% income-generating assets).</div>
@@ -1306,8 +1325,7 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">High turnover; not tax efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Tax-Deferred</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="35">
         <div class="portfolio-title">Moderate Income</div>
         <div class="portfolio-risk">Risk Level: 35</div>
         <div class="portfolio-profile">Core fixed income plus diversified satellite income assets (~40% high-yield/credit satellites).</div>
@@ -1316,8 +1334,7 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Low turnover; tax efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Taxable</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="30">
         <div class="portfolio-title">Conservative Income</div>
         <div class="portfolio-risk">Risk Level: 30</div>
         <div class="portfolio-profile">Core fixed income (~60%) with high-conviction satellite income exposure (~40%).</div>
@@ -1326,8 +1343,7 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Low turnover; Tax efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Taxable</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="5">
         <div class="portfolio-title">Short-Term Income</div>
         <div class="portfolio-risk">Risk Level: 5</div>
         <div class="portfolio-profile">Primarily investment-grade short-term bonds (90% bonds, 10% cash); capital preservation focused.</div>
@@ -1338,9 +1354,9 @@
       </div>
     </div>
   </section>
-
   <div class="journey-arrow">&#8595;</div>
 
+  <!-- Preretirement Phase -->
   <section class="phase-section" id="preretirement-phase">
     <div class="phase-header">2. Preretirement Phase</div>
     <div class="phase-desc">
@@ -1354,27 +1370,25 @@
       You need a growth-oriented portfolio that’s balanced, cost-conscious, and semi-liquid.
     </div>
     <div class="portfolio-cards">
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="75">
         <div class="portfolio-title">U.S. Core Dividend</div>
         <div class="portfolio-risk">Risk Level: 75</div>
         <div class="portfolio-profile">Large-cap U.S. dividend-focused equity strategy emphasizing total return and dividend growth. (~97% equities / 3% cash)</div>
-        <div class="portfolio-row"><span class="portfolio-label">Best Fit For:</span><span class="portfolio-value">Income and stability satellites in growth-oriented portfolio</span></div>
+        <div class="portfolio-row"><span class="portfolio-label">Best Fit For:</span><span class="portfolio-value">Investors using satellites for income and stability within a growth-oriented portfolio</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Fees:</span><span class="portfolio-value">0.90%</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Low turnover; moderately tax efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Tax-Deferred</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="75">
         <div class="portfolio-title">Real Assets Strategy</div>
         <div class="portfolio-risk">Risk Level: 75</div>
         <div class="portfolio-profile">Diversified exposure to real estate, infrastructure, and natural resources as an equity-like inflation hedge. (~86% equities / 12% cash)</div>
-        <div class="portfolio-row"><span class="portfolio-label">Best Fit For:</span><span class="portfolio-value">Growth diversification with inflation protection</span></div>
+        <div class="portfolio-row"><span class="portfolio-label">Best Fit For:</span><span class="portfolio-value">Investors seeking growth diversification with inflation protection</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Fees:</span><span class="portfolio-value">1.35%</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Low turnover; moderately tax efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Tax-Deferred</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="70">
         <div class="portfolio-title">Tax-Aware Growth</div>
         <div class="portfolio-risk">Risk Level: 70</div>
         <div class="portfolio-profile">Tax-efficient allocation using municipal bonds and ETFs (~75% equities / 20% bonds), focusing on after-tax returns and stability.</div>
@@ -1383,38 +1397,34 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Low turnover; tax efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Taxable</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="65">
         <div class="portfolio-title">Global Moderate ETF</div>
         <div class="portfolio-risk">Risk Level: 65</div>
         <div class="portfolio-profile">Globally diversified ETF portfolio targeting ~65% equities and 35% fixed income. Balances income and growth with reduced volatility.</div>
         <div class="portfolio-row"><span class="portfolio-label">Best Fit For:</span><span class="portfolio-value">Pre-retirees needing steady growth with income and lower volatility</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Fees:</span><span class="portfolio-value">0.92%</span></div>
-        <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Moderate turnover; tax efficient</span></div>
+        <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Moderate turnover; Tax efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Taxable</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="60">
         <div class="portfolio-title">Tactical U.S. Sector ETF with Stop-Loss</div>
         <div class="portfolio-risk">Risk Level: 60</div>
         <div class="portfolio-profile">U.S. sector rotation strategy using trend, macro, behavioral, and fundamental indicators. Moves to 50% cash if stop-loss is triggered. (~99% equities)</div>
-        <div class="portfolio-row"><span class="portfolio-label">Best Fit For:</span><span class="portfolio-value">Tactical growth exposure with defined loss protection</span></div>
+        <div class="portfolio-row"><span class="portfolio-label">Best Fit For:</span><span class="portfolio-value">Investors wanting tactical growth exposure with defined loss protection</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Fees:</span><span class="portfolio-value">0.84%</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">High turnover; tactical equity strategy; not tax-efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Tax-Deferred</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="60">
         <div class="portfolio-title">Risk Mitigated Accumulation</div>
         <div class="portfolio-risk">Risk Level: 60</div>
         <div class="portfolio-profile">Globally diversified with equity hedging and stop-loss tools (~84% equities) to proactively manage downside risk.</div>
         <div class="portfolio-row"><span class="portfolio-label">Best Fit For:</span><span class="portfolio-value">Growth investors seeking proactive downside risk management</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Fees:</span><span class="portfolio-value">0.79%</span></div>
-        <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Moderate turnover; moderately tax efficient</span></div>
+        <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Moderate turnover; Moderately tax efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Tax-Deferred</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="60">
         <div class="portfolio-title">Moderate Growth & Income</div>
         <div class="portfolio-risk">Risk Level: 60</div>
         <div class="portfolio-profile">Core-satellite blend (~63% equities / ~20% fixed income) with globally diversified exposure.</div>
@@ -1423,8 +1433,7 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Moderately high turnover; tax efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Taxable</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="55">
         <div class="portfolio-title">Tactical Allocation ETF</div>
         <div class="portfolio-risk">Risk Level: 55</div>
         <div class="portfolio-profile">Top-down tactical approach using ETFs across global equities, fixed income, and cash. (~60/40 allocation).</div>
@@ -1433,8 +1442,7 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Low turnover; tax-efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Taxable</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="50">
         <div class="portfolio-title">Balanced Growth & Income (G+I)</div>
         <div class="portfolio-risk">Risk Level: 50</div>
         <div class="portfolio-profile">Globally diversified 50/50 equity and fixed income portfolio with active satellite exposure.</div>
@@ -1443,8 +1451,7 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Moderate turnover; moderately tax efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Tax-Deferred</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="50">
         <div class="portfolio-title">Foundation Balanced ETF</div>
         <div class="portfolio-risk">Risk Level: 50</div>
         <div class="portfolio-profile">Balanced long-term growth and income via a global strategic asset allocation process. (~50/50 split between equities and bonds)</div>
@@ -1453,31 +1460,29 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Moderate turnover; tax efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Taxable</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="50">
         <div class="portfolio-title">Risk Mitigated Growth & Income</div>
         <div class="portfolio-risk">Risk Level: 50</div>
         <div class="portfolio-profile">Globally diversified (~70% equities / 30% bonds) with risk-mitigated equity satellite exposure. Seeks long-term capital appreciation and income.</div>
-        <div class="portfolio-row"><span class="portfolio-label">Best Fit For:</span><span class="portfolio-value">Growth with downside risk management and income generation</span></div>
+        <div class="portfolio-row"><span class="portfolio-label">Best Fit For:</span><span class="portfolio-value">Investors wanting growth with downside risk management and income generation</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Fees:</span><span class="portfolio-value">0.82%</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Moderate turnover; tax efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Taxable</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="45">
         <div class="portfolio-title">Protected Growth Moderate</div>
         <div class="portfolio-risk">Risk Level: 45</div>
         <div class="portfolio-profile">U.S.-focused strategy using target outcome/buffer ETFs to seek equity-like growth while managing downside via options-based protection. (~99% equities)</div>
-        <div class="portfolio-row"><span class="portfolio-label">Best Fit For:</span><span class="portfolio-value">Equity upside with downside protection</span></div>
+        <div class="portfolio-row"><span class="portfolio-label">Best Fit For:</span><span class="portfolio-value">Risk-aware investors seeking equity upside with downside protection</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Fees:</span><span class="portfolio-value">1.25%</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Moderate turnover; tax efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Taxable</span></div>
       </div>
     </div>
   </section>
-    
   <div class="journey-arrow">&#8595;</div>
 
+  <!-- Retirement Phase -->
   <section class="phase-section" id="retirement-phase">
     <div class="phase-header">3. Retirement Phase</div>
     <div class="phase-desc">
@@ -1491,7 +1496,7 @@
       You need a conservative, income-generating portfolio that’s cost-conscious, tax-efficient, and built to preserve capital.
     </div>
     <div class="portfolio-cards">
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="60">
         <div class="portfolio-title">RM Accumulation</div>
         <div class="portfolio-risk">Risk Level: 60</div>
         <div class="portfolio-profile">Globally diversified portfolio with equity hedging and stop-loss tools (~84% equities).</div>
@@ -1500,8 +1505,7 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Moderate turnover; moderate tax efficiency</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Tax-Deferred</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="60">
         <div class="portfolio-title">Managed Risk Growth</div>
         <div class="portfolio-risk">Risk Level: 60</div>
         <div class="portfolio-profile">Seeks LT Growth with an enhanced emphasis on downside protection by allocating to a mix of risk mitigated equities. (~95% equities and 5% cash)</div>
@@ -1510,8 +1514,7 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Moderate turnover; moderate tax efficiency</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Tax-Deferred</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="60">
         <div class="portfolio-title">Moderate Growth & Income</div>
         <div class="portfolio-risk">Risk Level: 60</div>
         <div class="portfolio-profile">Core-satellite blend (~63% equities / ~20% fixed income) with globally diversified exposure.</div>
@@ -1520,8 +1523,7 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Moderately high turnover; tax efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Taxable</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="55">
         <div class="portfolio-title">Tactical Allocation ETF</div>
         <div class="portfolio-risk">Risk Level: 55</div>
         <div class="portfolio-profile">Top-down tactical ETF approach across global equities, fixed income, and cash (approx. 60/40 equity/fixed income).</div>
@@ -1530,28 +1532,25 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Low  turnover; tax-efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Taxable</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="55">
         <div class="portfolio-title">Real Income 4%</div>
         <div class="portfolio-risk">Risk Level: 55</div>
         <div class="portfolio-profile">Comprised of Income Reserve, Investment allocation, and risk mitigation overlay (~65% equities ~25% bonds ~10% cash)</div>
-        <div class="portfolio-row"><span class="portfolio-label">Best Fit For:</span><span class="portfolio-value">Consistent returns at a 4% annual income distribution that grows with inflation over the long term</span></div>
+        <div class="portfolio-row"><span class="portfolio-label">Best Fit For:</span><span class="portfolio-value">Investors who look to maintain consistent returns at a 4% annual income distribution that grows with inflation over the long term</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Fees:</span><span class="portfolio-value">0.78%</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Low turnover; tax efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Taxable</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="50">
         <div class="portfolio-title">Balanced Growth & Income (G+I)</div>
         <div class="portfolio-risk">Risk Level: 50</div>
         <div class="portfolio-profile">Globally diversified 50/50 equity and fixed income with active satellite exposure.</div>
-        <div class="portfolio-row"><span class="portfolio-label">Best Fit For:</span><span class="portfolio-value">Balanced returns with capital stability</span></div>
+        <div class="portfolio-row"><span class="portfolio-label">Best Fit For:</span><span class="portfolio-value">Investors seeking balanced returns with capital stability</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Fees:</span><span class="portfolio-value">0.91%</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Low turnover; tax efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Taxable</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="50">
         <div class="portfolio-title">Foundation Balanced ETF</div>
         <div class="portfolio-risk">Risk Level: 50</div>
         <div class="portfolio-profile">Balanced long-term growth and income via a global strategic asset allocation process. (~50/50 split between equities and bonds)</div>
@@ -1560,8 +1559,7 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Low turnover; tax efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Taxable</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="40">
         <div class="portfolio-title">Aggressive Income</div>
         <div class="portfolio-risk">Risk Level: 40</div>
         <div class="portfolio-profile">Core fixed income plus satellite high-yield and equity income (~27% equities, ~56% income-generating assets).</div>
@@ -1570,38 +1568,34 @@
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">High turnover; not tax efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Tax-Deferred</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="35">
         <div class="portfolio-title">Moderate Income</div>
         <div class="portfolio-risk">Risk Level: 35</div>
         <div class="portfolio-profile">Core fixed income plus diversified satellite income assets (~40% high-yield/credit satellites).</div>
-        <div class="portfolio-row"><span class="portfolio-label">Best Fit For:</span><span class="portfolio-value">Stable, consistent income</span></div>
+        <div class="portfolio-row"><span class="portfolio-label">Best Fit For:</span><span class="portfolio-value">Investors seeking stable, consistent income</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Fees:</span><span class="portfolio-value">0.92%</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Low turnover; tax efficient</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Taxable</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="30">
         <div class="portfolio-title">Conservative Income</div>
         <div class="portfolio-risk">Risk Level: 30</div>
         <div class="portfolio-profile">Core fixed income (~60%) with high-conviction satellite income exposure (~40%).</div>
-        <div class="portfolio-row"><span class="portfolio-label">Best Fit For:</span><span class="portfolio-value">Capital preservation with dependable income</span></div>
+        <div class="portfolio-row"><span class="portfolio-label">Best Fit For:</span><span class="portfolio-value">Investors prioritizing capital preservation with dependable income</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Fees:</span><span class="portfolio-value">0.90%</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">Low turnover; stable income from taxable fixed income</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Taxable</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="30">
         <div class="portfolio-title">Defensive</div>
         <div class="portfolio-risk">Risk Level: 30</div>
-        <div class="portfolio-profile">Diversified assets across government, corporate, securitized, and cash-like income producing investments and is allocated to both passive and active mutual funds. (~99% bonds ~1% cash)</div>
-        <div class="portfolio-row"><span class="portfolio-label">Best Fit For:</span><span class="portfolio-value">Extremely reliable income with little growth</span></div>
+        <div class="portfolio-profile">Diversified assets across government, corporate, securitized, and cash like income producing investments and is allocated to both passive and active mutual funds. (~99% bonds ~1% cash)</div>
+        <div class="portfolio-row"><span class="portfolio-label">Best Fit For:</span><span class="portfolio-value">Investors looking for extremely reliable income with little growth</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Fees:</span><span class="portfolio-value">0.95%</span></div>
         <div class="portfolio-row"><span class="portfolio-label">Turnover / Tax Efficiency:</span><span class="portfolio-value">High turnover; not tax efficient</span></div>
-        <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Tax-Deferred</span></div>
+        <div class="portfolio-row"><span class="portfolio-label">Account Type:</span><span class="portfolio-value">Tax-deferred</span></div>
       </div>
-
-      <div class="portfolio-card">
+      <div class="portfolio-card" data-risk="5">
         <div class="portfolio-title">Short-Term Income</div>
         <div class="portfolio-risk">Risk Level: 5</div>
         <div class="portfolio-profile">Primarily investment-grade short-term bonds (90% bonds, 10% cash); capital preservation focused.</div>
@@ -1612,7 +1606,6 @@
       </div>
     </div>
   </section>
-  <!-- How to Use This Guide Section -->
   <section class="phase-section" style="background:#f0f4fa;">
     <div class="phase-header" style="color:#1b283d;">How to Use This Guide</div>
     <ol style="font-size:1.08rem; color:#444; margin-top:0.6rem;">
@@ -1621,8 +1614,11 @@
       <li>Scan the portfolio cards for your phase and risk level.</li>
       <li>Review strategy summaries to find your best fit.</li>
     </ol>
+    <div style="margin-top:1.2rem;font-size:1.08rem;color:#444;">
+      <strong>Questions?</strong> Reach out for a personalized consultation.<br>
+      <span style="color:#23395d;">Brooks Portfolio: Your journey, your route, your future.</span>
+    </div>
   </section>
-</div>
   <!-- Recommendations & Final Thoughts -->
   <div class="page" id="recommendations">
     <h2>Recommendations & Final Thoughts</h2>
