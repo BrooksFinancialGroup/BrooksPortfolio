@@ -298,8 +298,7 @@
   <a href="#executive-summary" data-page="executive-summary">Executive Summary</a>
   <a href="#overview" data-page="overview">Overview of Investment Strategies</a>
   <a href="#fcms-portfolio" data-page="fcms-portfolio">FCMS Portfolio Translation</a>
-  <a href="#freedom-strategies" data-page="freedom-strategies">Freedom Strategies Evaluation</a>
-  <a href="#liberty-strategies" data-page="liberty-strategies">Liberty Strategies Evaluation</a>
+  <a href="#comparisons" data-page="comparisons"> Strategies Evaluation</a>
   <a href="#risk-evaluation" data-page="risk-evaluation">Risk Evaluation</a>
   <a href="#right-for-you" data-page="right-for-you">Which Portfolio is Right for You?</a>
   <a href="#recommendations" data-page="recommendations">Recommendations</a>
@@ -434,698 +433,198 @@
     </div>
   </div>
 
-  <!-- Freedom Strategies Evaluation -->
-  <div class="page" id="freedom-strategies">
-    <h2>Freedom Strategies Evaluation</h2>
-<!-- BEGIN: Sharpe Ratio Faceted Chart Component -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Segoe+UI:400,700&display=swap">
-<style>
-  .br-sharpe-container {
-    max-width: 1220px;
-    margin: 40px auto 0 auto;
-    background: rgba(255,255,255,0.97);
-    border-radius: 18px;
-    box-shadow: 0 8px 36px rgba(40,60,120,0.13);
-    padding: 36px 34px 28px 34px;
-    border: 2px solid #f4f7fa;
-    font-family: 'Segoe UI', Arial, sans-serif;
-  }
-  .br-sharpe-title {
-    color: #194087;
-    text-align: center;
-    font-size: 2.25rem;
-    margin-bottom: 0.2em;
-    letter-spacing: 1px;
-    font-family: 'Segoe UI', Arial, sans-serif;
-  }
-  .br-sharpe-note {
-    text-align: center;
-    color: #34495e;
-    font-size: 1.12em;
-    margin-bottom: 17px;
-    background: #f3f8ff;
-    border-radius: 8px;
-    padding: 9px 0 11px 0;
-    box-shadow: 0 2px 8px 0 rgba(60,90,140,0.06);
-  }
-  .br-sharpe-controls {
-    text-align: center;
-    margin-bottom: 19px;
-  }
-  .br-sharpe-controls select {
-    font-size: 1rem;
-    padding: 6px 15px;
-    border-radius: 7px;
-    border: 1.5px solid #b7d0ee;
-    margin: 0 10px;
-    background: #fafdff;
-    color: #222;
-    transition: border 0.2s;
-  }
-  .br-sharpe-controls select:focus {
-    border: 1.5px solid #194087;
-    outline: none;
-  }
-  .br-sharpe-controls label {
-    font-size: 1.10rem;
-    color: #25344b;
-    margin-right: 10px;
-    font-weight: 500;
-  }
-  .br-sharpe-legend {
-    margin: 0 auto 2px auto;
-    max-width: 1100px;
-    font-size: 1.07em;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 17px 22px;
-    justify-content: center;
-    background: #f8fafb;
-    border-radius: 8px;
-    padding: 7px 0 7px 0;
-    border: 1px solid #e4eefe;
-    font-family: 'Segoe UI', Arial, sans-serif;
-  }
-  .br-sharpe-legend-pair {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-    margin-right: 18px;
-  }
-  .br-sharpe-dot-outer {
-    width: 20px; height: 20px; border-radius: 50%;
-    margin-right: 0;
-    border-width: 3px;
-    border-style: solid;
-    display: inline-block;
-    vertical-align: middle;
-    background: transparent;
-  }
-  .br-sharpe-dot-inner {
-    width: 12px; height: 12px; border-radius: 50%;
-    display: inline-block;
-    margin-left: 2px;
-    margin-right: 8px;
-    vertical-align: middle;
-    border: 1.5px solid #ddd;
-    box-shadow: 0 0 4px #eee;
-  }
-  .br-sharpe-star {
-    color: #ffbe32;
-    font-size: 20px;
-    vertical-align: middle;
-    text-shadow: 0 2px 4px #fff7;
-    margin-right: 2px;
-  }
-  #br-sharpe-chart {
-    background: linear-gradient(125deg, #f5faff 70%, #fdf7ee 100%);
-    border-radius: 13px;
-    border: 2px solid #eaeaea;
-    margin-bottom: 14px;
-    box-shadow: 0 4px 25px 0 rgba(90,110,160,0.09);
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-</style>
-<div class="br-sharpe-container">
-  <div class="br-sharpe-title">Sharpe Ratio: Risk vs Return</div>
-  <div class="br-sharpe-note">
-    <b>X:</b> Risk (3Y Std Dev, %) &nbsp;|&nbsp; <b>Y:</b> Excess Return (3Y, %) <br>
-    <b>Circle Outline:</b> Main Category &nbsp;|&nbsp; <b>Circle Fill:</b> Subcategory <br>
-    <span class="br-sharpe-star">★</span> = Best Sharpe Ratio in current filter. <br>
-    <span style="color:#888;">Filter with the dropdowns to focus on a subgroup.</span>
-  </div>
-  <div class="br-sharpe-controls">
-    <label for="br-sharpe-mainCat">Main Category:</label>
-    <select id="br-sharpe-mainCat">
-      <option value="All">All</option>
-      <option value="Freedom Foundation">Freedom Foundation</option>
-      <option value="Freedom Dynamic">Freedom Dynamic</option>
-      <option value="Freedom Alternative">Freedom Alternative</option>
-      <option value="Benchmark">Benchmark</option>
-    </select>
-    <label for="br-sharpe-subCat">Subcategory:</label>
-    <select id="br-sharpe-subCat">
-      <option value="All">All</option>
-    </select>
-  </div>
-  <canvas id="br-sharpe-chart" width="1040" height="580"></canvas>
-  <div class="br-sharpe-legend" id="br-sharpe-legend"></div>
-</div>
-<script>
-(function() {
-  // Chart.js loader if not present
-  function loadChartJs(cb) {
-    if (window.Chart) return cb();
-    var s = document.createElement("script");
-    s.src = "https://cdn.jsdelivr.net/npm/chart.js";
-    s.onload = cb;
-    document.head.appendChild(s);
-  }
-  loadChartJs(function() {
-    // --- DATA ---
-    const categoryColors = {
-      "Freedom Foundation": "#3778c2",
-      "Freedom Dynamic": "#1cb495",
-      "Freedom Alternative": "#ffae34",
-      "Benchmark": "#222"
-    };
-    const subcategoryColors = {
-      "Core": "#b8d3fa",
-      "Core ETF": "#6fb3f2",
-      "Tax Aware": "#f7c3e6",
-      "Sustainable": "#8ad995",
-      "Tactical Allocation": "#e8c36f",
-      "Managed Risk": "#48d1cc",
-      "Protected Growth": "#9c85e2",
-      "Global Allocation": "#ffd480",
-      "Institutional Equity": "#ca8cff",
-      "Absolute Return": "#ffe99d",
-      "Real Assets": "#f7b267",
-      "Morningstar": "#d9d9d9"
-    };
-    const portfolios = [
-      // Freedom Foundation: Core Series
-      {main:"Freedom Foundation", sub:"Core", name:"Aggressive", risk:4.33, ret:0.67, sharpe:0.153748723},
-      {main:"Freedom Foundation", sub:"Core", name:"Growth", risk:3.73, ret:0.97, sharpe:0.258803648},
-      {main:"Freedom Foundation", sub:"Core", name:"Moderate Growth", risk:3.34, ret:1.27, sharpe:0.37889929},
-      {main:"Freedom Foundation", sub:"Core", name:"Balanced", risk:2.92, ret:1.59, sharpe:0.542921502},
-      {main:"Freedom Foundation", sub:"Core", name:"Conservative", risk:2.47, ret:2.01, sharpe:0.813112586},
-      {main:"Freedom Foundation", sub:"Core", name:"Defensive", risk:2.03, ret:2.49, sharpe:1.225121176},
-      // Core ETF
-      {main:"Freedom Foundation", sub:"Core ETF", name:"Aggressive", risk:4.74, ret:0.45, sharpe:0.094138928},
-      {main:"Freedom Foundation", sub:"Core ETF", name:"Growth", risk:4.05, ret:0.95, sharpe:0.233529709},
-      {main:"Freedom Foundation", sub:"Core ETF", name:"Moderate Growth", risk:3.57, ret:1.23, sharpe:0.343666884},
-      {main:"Freedom Foundation", sub:"Core ETF", name:"Balanced", risk:3.03, ret:1.53, sharpe:0.503698947},
-      {main:"Freedom Foundation", sub:"Core ETF", name:"Conservative", risk:2.51, ret:1.89, sharpe:0.750590661},
-      {main:"Freedom Foundation", sub:"Core ETF", name:"Defensive", risk:2.29, ret:2.35, sharpe:1.022236779},
-      {main:"Freedom Foundation", sub:"Core ETF", name:"US Core Equity ETF", risk:5.56, ret:-1.79, sharpe:-0.322498126},
-      // Tax Aware
-      {main:"Freedom Foundation", sub:"Tax Aware", name:"Aggressive", risk:4.87, ret:0.11, sharpe:0.021768897},
-      {main:"Freedom Foundation", sub:"Tax Aware", name:"Growth", risk:4.09, ret:0.27, sharpe:0.065044646},
-      {main:"Freedom Foundation", sub:"Tax Aware", name:"Moderate Growth", risk:3.53, ret:0.39, sharpe:0.109310289},
-      {main:"Freedom Foundation", sub:"Tax Aware", name:"Balanced", risk:2.96, ret:0.61, sharpe:0.204767127},
-      {main:"Freedom Foundation", sub:"Tax Aware", name:"Conservative", risk:2.14, ret:0.43, sharpe:0.19935293},
-      {main:"Freedom Foundation", sub:"Tax Aware", name:"Defensive", risk:1.01, ret:0.43, sharpe:0.421307489},
-      // Sustainable
-      {main:"Freedom Foundation", sub:"Sustainable", name:"Aggressive", risk:4.54, ret:0.31, sharpe:0.06743557},
-      {main:"Freedom Foundation", sub:"Sustainable", name:"Growth", risk:3.75, ret:0.73, sharpe:0.193408234},
-      {main:"Freedom Foundation", sub:"Sustainable", name:"Moderate Growth", risk:3.31, ret:1.13, sharpe:0.340021477},
-      {main:"Freedom Foundation", sub:"Sustainable", name:"Balanced", risk:2.87, ret:1.43, sharpe:0.49669831},
-      {main:"Freedom Foundation", sub:"Sustainable", name:"Conservative", risk:2.38, ret:1.85, sharpe:0.775822026},
-      // Freedom Dynamic: Tactical Allocation
-      {main:"Freedom Dynamic", sub:"Tactical Allocation", name:"ETF", risk:3.18, ret:-0.65, sharpe:-0.205364092},
-      {main:"Freedom Dynamic", sub:"Tactical Allocation", name:"US Sector Equity ETF", risk:6.54, ret:1.09, sharpe:0.166074461},
-      {main:"Freedom Dynamic", sub:"Tactical Allocation", name:"US Sector Equity ETF w/ Stop Loss", risk:6.24, ret:0.81, sharpe:0.12906594},
-      {main:"Freedom Dynamic", sub:"Tactical Allocation", name:"Fixed Income ETF", risk:2.05, ret:1.59, sharpe:0.773373347},
-      // Managed Risk
-      {main:"Freedom Dynamic", sub:"Managed Risk", name:"Managed Risk", risk:1.3, ret:-1.67, sharpe:-1.280461192},
-      {main:"Freedom Dynamic", sub:"Managed Risk", name:"Growth", risk:4.16, ret:2.09, sharpe:0.501210663},
-      {main:"Freedom Dynamic", sub:"Managed Risk", name:"Moderate Growth", risk:3.84, ret:1.71, sharpe:0.444560355},
-      {main:"Freedom Dynamic", sub:"Managed Risk", name:"Conservative Growth", risk:3.66, ret:2.11, sharpe:0.57466387},
-      // Protected Growth
-      {main:"Freedom Dynamic", sub:"Protected Growth", name:"US Growth", risk:3.86, ret:-1.16, sharpe:-0.300387368},
-      {main:"Freedom Dynamic", sub:"Protected Growth", name:"US Growth Moderate", risk:3.16, ret:-0.73, sharpe:-0.232518444},
-      {main:"Freedom Dynamic", sub:"Protected Growth", name:"Global Growth Moderate", risk:2.81, ret:-0.23, sharpe:-0.083385507},
-      {main:"Freedom Dynamic", sub:"Protected Growth", name:"US Growth Conservative", risk:3.32, ret:-0.91, sharpe:-0.273615579},
-      // Global Allocation
-      {main:"Freedom Dynamic", sub:"Global Allocation", name:"Focused ETF", risk:4.67, ret:-0.07, sharpe:-0.01585546},
-      {main:"Freedom Dynamic", sub:"Global Allocation", name:"Growth ETF", risk:4.14, ret:0.11, sharpe:0.025625703},
-      {main:"Freedom Dynamic", sub:"Global Allocation", name:"Moderate ETF", risk:3.42, ret:0.39, sharpe:0.112975664},
-      {main:"Freedom Dynamic", sub:"Global Allocation", name:"Conservative ETF", risk:2.6, ret:0.71, sharpe:0.27124971},
-      // Institutional Equity
-      {main:"Freedom Dynamic", sub:"Institutional Equity", name:"US Core Dividend", risk:5.77, ret:2.69, sharpe:0.465842299},
-      {main:"Freedom Dynamic", sub:"Institutional Equity", name:"US Growth Equity", risk:9.00, ret:1.13, sharpe:0.125099992},
-      {main:"Freedom Dynamic", sub:"Institutional Equity", name:"US MultiCap Equity", risk:6.19, ret:0.93, sharpe:0.149693238},
-      {main:"Freedom Dynamic", sub:"Institutional Equity", name:"Global Value Dividend", risk:3.43, ret:-0.05, sharpe:-0.01573495},
-      {main:"Freedom Dynamic", sub:"Institutional Equity", name:"International Growth Equity", risk:3.25, ret:6.59, sharpe:2.02616423},
-      // Freedom Alternative
-      {main:"Freedom Alternative", sub:"Absolute Return", name:"Absolute Return", risk:2.36, ret:1.51, sharpe:0.639008148},
-      {main:"Freedom Alternative", sub:"Real Assets", name:"Real Assets", risk:3.24, ret:3.31, sharpe:1.020331492},
-      // Benchmark
-      {main:"Benchmark", sub:"Morningstar", name:"Morning Star Conservative", risk:2.84, ret:3.73, sharpe:1.312557809}
-    ];
-    // Helper: Get all unique subcategories for a main category
-    function getSubcategories(mainCat) {
-      const subs = portfolios.filter(p => mainCat === "All" || p.main === mainCat).map(p => p.sub);
-      return [...new Set(subs)];
-    }
-    // Chart rendering logic
-    let facetChart, lastStarIdx = -1;
-    function renderChart(mainCat = "All", subCat = "All") {
-      if (facetChart) facetChart.destroy();
-      // Filter portfolios
-      let dataToShow = portfolios.filter(p =>
-        (mainCat === "All" || p.main === mainCat) &&
-        (subCat === "All" || p.sub === subCat)
-      );
-      // Find the "best" (highest Sharpe) for a star
-      let bestSharpe = Math.max(...dataToShow.map(d => d.sharpe));
-      let bestIdx = dataToShow.findIndex(d => d.sharpe === bestSharpe);
-
-      // Prepare chart data
-      const chartData = dataToShow.map((p, idx) => ({
-        label: `${p.name}`,
-        data: [{x: p.risk, y: p.ret, r: 18}],
-        backgroundColor: subcategoryColors[p.sub] || "#eee",
-        borderColor: categoryColors[p.main] || "#222",
-        borderWidth: 4,
-        pointStyle: "circle",
-        hoverBorderColor: "#333",
-        hoverBorderWidth: 3
-      }));
-
-      // Draw chart
-      const ctx = document.getElementById('br-sharpe-chart').getContext('2d');
-      facetChart = new Chart(ctx, {
-        type: 'bubble',
-        data: { datasets: chartData },
-        options: {
-          scales: {
-            x: { title: { display: true, text: "Risk (3Y Std Dev, %)", font:{weight:"bold"} }, min: 0, max: 10, grid: {color:'#e6e6e6'} },
-            y: { title: { display: true, text: "Excess Return (3Y, %)", font:{weight:"bold"} }, min: -2.5, max: 7.5, grid: {color:'#e6e6e6'} }
-          },
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              backgroundColor: "#fafdff",
-              titleColor: "#1b2c3a",
-              bodyColor: "#194087",
-              borderColor: "#b7d0ee",
-              borderWidth: 1.5,
-              callbacks: {
-                label: function(ctx) {
-                  const p = dataToShow[ctx.datasetIndex];
-                  return [
-                    `${p.main} / ${p.sub}`,
-                    `Portfolio: ${p.name}`,
-                    `Risk (Std Dev): ${p.risk}%`,
-                    `Excess Return: ${p.ret}%`,
-                    `Sharpe Ratio: ${p.sharpe.toFixed(2)}`
-                  ];
-                }
-              }
-            }
-          },
-          animation: false
-        },
-        plugins: [{
-          // Draw the Sharpe Ratio value above each bubble, with a star for the best
-          id: 'bubbleLabels',
-          afterDatasetDraw(chart, args, pluginOptions) {
-            const {ctx, data, chartArea: area, scales} = chart;
-            ctx.save();
-            data.datasets.forEach((dataset, i) => {
-              const d = dataset.data[0];
-              const meta = chart.getDatasetMeta(i).data[0];
-              if (!meta) return;
-              const pos = meta.getProps(['x', 'y'], true);
-              ctx.font = "bold 15px Segoe UI, Arial";
-              ctx.textAlign = 'center';
-              ctx.textBaseline = 'bottom';
-              ctx.strokeStyle = "#fff";
-              ctx.lineWidth = 5.5;
-              let label = dataToShow[i].sharpe.toFixed(2);
-              // Star for the best
-              if (i === bestIdx) label = "★ " + label;
-              ctx.strokeText(label, pos.x, pos.y - d.r - 2);
-              ctx.fillStyle = i === bestIdx ? "#d4941d" : "#25446b";
-              ctx.fillText(label, pos.x, pos.y - d.r - 2);
-            });
-            ctx.restore();
-          }
-        }]
-      });
-      lastStarIdx = bestIdx;
-    }
-    // Populate subcategory dropdown based on main category
-    function updateSubCatOptions() {
-      const mainCat = document.getElementById('br-sharpe-mainCat').value;
-      const subCatSel = document.getElementById('br-sharpe-subCat');
-      const subcats = getSubcategories(mainCat);
-      subCatSel.innerHTML = `<option value="All">All</option>` + subcats.map(s => `<option value="${s}">${s}</option>`).join("");
-    }
-    // Legend for category outline and subcategory fill
-    function renderLegend() {
-      const legendDiv = document.getElementById('br-sharpe-legend');
-      let legendHTML = '';
-      // Main Category + Subcategory pairs
-      const legendCombos = [
-        {main:"Freedom Foundation", subs:["Core", "Core ETF", "Tax Aware", "Sustainable"]},
-        {main:"Freedom Dynamic", subs:["Tactical Allocation", "Managed Risk", "Protected Growth", "Global Allocation", "Institutional Equity"]},
-        {main:"Freedom Alternative", subs:["Absolute Return", "Real Assets"]},
-        {main:"Benchmark", subs:["Morningstar"]}
-      ];
-      legendCombos.forEach(pair => {
-        pair.subs.forEach(sub => {
-          legendHTML += `<span class="br-sharpe-legend-pair">
-            <span class="br-sharpe-dot-outer" style="border-color:${categoryColors[pair.main]};">
-              <span class="br-sharpe-dot-inner" style="background:${subcategoryColors[sub]};"></span>
-            </span>
-            ${pair.main} / ${sub}
-          </span>`;
-        });
-      });
-      legendHTML += `<span><span class="br-sharpe-star">★</span> Best Sharpe in view</span>`;
-      legendDiv.innerHTML = legendHTML;
-    }
-    // On change handlers
-    document.getElementById('br-sharpe-mainCat').addEventListener('change', function() {
-      updateSubCatOptions();
-      renderChart(this.value, "All");
-    });
-    document.getElementById('br-sharpe-subCat').addEventListener('change', function() {
-      renderChart(document.getElementById('br-sharpe-mainCat').value, this.value);
-    });
-    // Initial render
-    renderLegend();
-    updateSubCatOptions();
-    renderChart("All", "All");
-  });
-})();
-</script>
-<!-- END: Sharpe Ratio Faceted Chart Component -->
-  </div>
-  </div>
-  <!-- Liberty Strategies Evaluation -->
-  <div class="page" id="liberty-strategies">
-    <h2>Liberty Strategies Evaluation</h2>
-<!-- BEGIN: Liberty Sharpe Ratio Chart Component -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Segoe+UI:400,700&display=swap">
-<style>
-  .lib-sharpe-container {
-    max-width: 920px;
-    margin: 40px auto 0 auto;
-    background: rgba(255,255,255,0.97);
-    border-radius: 18px;
-    box-shadow: 0 8px 36px rgba(40,60,120,0.13);
-    padding: 36px 34px 28px 34px;
-    border: 2px solid #f4f7fa;
-    font-family: 'Segoe UI', Arial, sans-serif;
-  }
-  .lib-sharpe-title {
-    color: #194087;
-    text-align: center;
-    font-size: 2.25rem;
-    margin-bottom: 0.2em;
-    letter-spacing: 1px;
-    font-family: 'Segoe UI', Arial, sans-serif;
-  }
-  .lib-sharpe-note {
-    text-align: center;
-    color: #34495e;
-    font-size: 1.12em;
-    margin-bottom: 17px;
-    background: #f3f8ff;
-    border-radius: 8px;
-    padding: 9px 0 11px 0;
-    box-shadow: 0 2px 8px 0 rgba(60,90,140,0.06);
-  }
-  .lib-sharpe-controls {
-    text-align: center;
-    margin-bottom: 19px;
-  }
-  .lib-sharpe-controls select {
-    font-size: 1rem;
-    padding: 6px 15px;
-    border-radius: 7px;
-    border: 1.5px solid #b7d0ee;
-    margin: 0 10px;
-    background: #fafdff;
-    color: #222;
-    transition: border 0.2s;
-  }
-  .lib-sharpe-controls select:focus {
-    border: 1.5px solid #194087;
-    outline: none;
-  }
-  .lib-sharpe-controls label {
-    font-size: 1.10rem;
-    color: #25344b;
-    margin-right: 10px;
-    font-weight: 500;
-  }
-  .lib-sharpe-legend {
-    margin: 0 auto 2px auto;
-    max-width: 900px;
-    font-size: 1.07em;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 17px 22px;
-    justify-content: center;
-    background: #f8fafb;
-    border-radius: 8px;
-    padding: 7px 0 7px 0;
-    border: 1px solid #e4eefe;
-    font-family: 'Segoe UI', Arial, sans-serif;
-  }
-  .lib-sharpe-legend-pair {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-    margin-right: 18px;
-  }
-  .lib-sharpe-dot-outer {
-    width: 20px; height: 20px; border-radius: 50%;
-    margin-right: 0;
-    border-width: 3px;
-    border-style: solid;
-    display: inline-block;
-    vertical-align: middle;
-    background: transparent;
-  }
-  .lib-sharpe-dot-inner {
-    width: 12px; height: 12px; border-radius: 50%;
-    display: inline-block;
-    margin-left: 2px;
-    margin-right: 8px;
-    vertical-align: middle;
-    border: 1.5px solid #ddd;
-    box-shadow: 0 0 4px #eee;
-  }
-  .lib-sharpe-star {
-    color: #ffbe32;
-    font-size: 20px;
-    vertical-align: middle;
-    text-shadow: 0 2px 4px #fff7;
-    margin-right: 2px;
-  }
-  #lib-sharpe-chart {
-    background: linear-gradient(125deg, #f5faff 70%, #fdf7ee 100%);
-    border-radius: 13px;
-    border: 2px solid #eaeaea;
-    margin-bottom: 14px;
-    box-shadow: 0 4px 25px 0 rgba(90,110,160,0.09);
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-</style>
-<div class="lib-sharpe-container">
-  <div class="lib-sharpe-title">Sharpe Ratio: Liberty Portfolios</div>
-  <div class="lib-sharpe-note">
-    <b>X:</b> Standard Deviation (%) &nbsp;|&nbsp; <b>Y:</b> Excess Return (%) <br>
-    <b>Circle Outline:</b> Series &nbsp;|&nbsp; <b>Circle Fill:</b> Portfolio Type <br>
-    <span class="lib-sharpe-star">★</span> = Best Sharpe Ratio in current filter.<br>
-    <span style="color:#888;">Filter with the dropdowns to focus on a subgroup.</span>
-  </div>
-  <div class="lib-sharpe-controls">
-    <label for="lib-sharpe-mainCat">Series:</label>
-    <select id="lib-sharpe-mainCat">
-      <option value="All">All</option>
-      <option value="Accumulation Series">Accumulation Series</option>
-      <option value="Growth and Income Series">Growth and Income Series</option>
-      <option value="Multi-Asset Income">Multi-Asset Income</option>
-    </select>
-    <label for="lib-sharpe-subCat">Portfolio Type:</label>
-    <select id="lib-sharpe-subCat">
-      <option value="All">All</option>
-    </select>
-  </div>
-  <canvas id="lib-sharpe-chart" width="800" height="510"></canvas>
-  <div class="lib-sharpe-legend" id="lib-sharpe-legend"></div>
-</div>
-<script>
-(function() {
-  // Chart.js loader if not present
-  function loadChartJsLib(cb) {
-    if (window.Chart) return cb();
-    var s = document.createElement("script");
-    s.src = "https://cdn.jsdelivr.net/npm/chart.js";
-    s.onload = cb;
-    document.head.appendChild(s);
-  }
-  loadChartJsLib(function() {
-    // --- DATA ---
-    const seriesColors = {
-      "Accumulation Series": "#4682b4",
-      "Growth and Income Series": "#39b37a",
-      "Multi-Asset Income": "#f1b44c"
-    };
-    const typeColors = {
-      "Aggressive": "#b8d3fa",
-      "Growth": "#6fb3f2",
-      "Risk Mitigated": "#f7c3e6",
-      "Moderate": "#8ad995",
-      "Balanced": "#e8c36f",
-      "Conservative": "#ffd480"
-    };
-    // All portfolios, accurate
-    const portfolios = [
-      // Accumulation Series
-      {series:"Accumulation Series", type:"Aggressive", risk:12.45253209, excess:4.466666667, sharpe:0.358695455},
-      {series:"Accumulation Series", type:"Growth", risk:11.02770186, excess:2.825, sharpe:0.256173048},
-      {series:"Accumulation Series", type:"Risk Mitigated", risk:10.9838012, excess:2.766666667, sharpe:0.251886083},
-      // Growth and Income Series
-      {series:"Growth and Income Series", type:"Moderate", risk:9.289689625, excess:1.6, sharpe:0.172233957},
-      {series:"Growth and Income Series", type:"Balanced", risk:8.268497781, excess:0.583333333, sharpe:0.070548889},
-      {series:"Growth and Income Series", type:"Risk Mitigated", risk:8.705789102, excess:1.208333333, sharpe:0.138796532},
-      // Multi-Asset Income
-      {series:"Multi-Asset Income", type:"Aggressive", risk:7.512434137, excess:0.2, sharpe:0.02662253},
-      {series:"Multi-Asset Income", type:"Moderate", risk:5.638428416, excess:-1.075, sharpe:-0.190655963},
-      {series:"Multi-Asset Income", type:"Conservative", risk:5.277013834, excess:-2.275, sharpe:-0.431115034}
-    ];
-    // Helper: Get all unique types for a main series
-    function getTypes(mainCat) {
-      const types = portfolios.filter(p => mainCat === "All" || p.series === mainCat).map(p => p.type);
-      return [...new Set(types)];
-    }
-    // Chart rendering logic
-    let facetChart, lastStarIdx = -1;
-    function renderChart(mainCat = "All", subCat = "All") {
-      if (facetChart) facetChart.destroy();
-      // Filter portfolios
-      let dataToShow = portfolios.filter(p =>
-        (mainCat === "All" || p.series === mainCat) &&
-        (subCat === "All" || p.type === subCat)
-      );
-      // Find the "best" (highest Sharpe) for a star
-      let bestSharpe = Math.max(...dataToShow.map(d => d.sharpe));
-      let bestIdx = dataToShow.findIndex(d => d.sharpe === bestSharpe);
-
-      // Prepare chart data
-      const chartData = dataToShow.map((p, idx) => ({
-        label: `${p.type}`,
-        data: [{x: p.risk, y: p.excess, r: 18}],
-        backgroundColor: typeColors[p.type] || "#eee",
-        borderColor: seriesColors[p.series] || "#555",
-        borderWidth: 4,
-        pointStyle: "circle",
-        hoverBorderColor: "#333",
-        hoverBorderWidth: 3
-      }));
-
-      // Draw chart
-      const ctx = document.getElementById('lib-sharpe-chart').getContext('2d');
-      facetChart = new Chart(ctx, {
-        type: 'bubble',
-        data: { datasets: chartData },
-        options: {
-          scales: {
-            x: { title: { display: true, text: "Standard Deviation (%)", font:{weight:"bold"} }, min: 0, max: 15, grid: {color:'#e6e6e6'} },
-            y: { title: { display: true, text: "Excess Return (%)", font:{weight:"bold"} }, min: -3, max: 6, grid: {color:'#e6e6e6'} }
-          },
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              backgroundColor: "#fafdff",
-              titleColor: "#1b2c3a",
-              bodyColor: "#194087",
-              borderColor: "#b7d0ee",
-              borderWidth: 1.5,
-              callbacks: {
-                label: function(ctx) {
-                  const p = dataToShow[ctx.datasetIndex];
-                  return [
-                    `${p.series} / ${p.type}`,
-                    `Standard Deviation: ${p.risk.toFixed(2)}%`,
-                    `Excess Return: ${p.excess.toFixed(2)}%`,
-                    `Sharpe Ratio: ${p.sharpe.toFixed(2)}`
-                  ];
-                }
-              }
-            }
-          },
-          animation: false
-        },
-        plugins: [{
-          // Draw the Sharpe Ratio value above each bubble, with a star for the best
-          id: 'bubbleLabels',
-          afterDatasetDraw(chart, args, pluginOptions) {
-            const {ctx, data, chartArea: area, scales} = chart;
-            ctx.save();
-            data.datasets.forEach((dataset, i) => {
-              const d = dataset.data[0];
-              const meta = chart.getDatasetMeta(i).data[0];
-              if (!meta) return;
-              const pos = meta.getProps(['x', 'y'], true);
-              ctx.font = "bold 15px Segoe UI, Arial";
-              ctx.textAlign = 'center';
-              ctx.textBaseline = 'bottom';
-              ctx.strokeStyle = "#fff";
-              ctx.lineWidth = 5.5;
-              let label = dataToShow[i].sharpe.toFixed(2);
-              // Star for the best
-              if (i === bestIdx) label = "★ " + label;
-              ctx.strokeText(label, pos.x, pos.y - d.r - 2);
-              ctx.fillStyle = i === bestIdx ? "#d4941d" : "#25446b";
-              ctx.fillText(label, pos.x, pos.y - d.r - 2);
-            });
-            ctx.restore();
-          }
-        }]
-      });
-      lastStarIdx = bestIdx;
-    }
-    // Populate type dropdown based on main series
-    function updateTypeOptions() {
-      const mainCat = document.getElementById('lib-sharpe-mainCat').value;
-      const typeSel = document.getElementById('lib-sharpe-subCat');
-      const types = getTypes(mainCat);
-      typeSel.innerHTML = `<option value="All">All</option>` + types.map(s => `<option value="${s}">${s}</option>`).join("");
-    }
-    // Legend for series outline and type fill
-    function renderLegend() {
-      const legendDiv = document.getElementById('lib-sharpe-legend');
-      let legendHTML = '';
-      // Series + Type pairs
-      const legendCombos = [
-        {series:"Accumulation Series", types:["Aggressive", "Growth", "Risk Mitigated"]},
-        {series:"Growth and Income Series", types:["Moderate", "Balanced", "Risk Mitigated"]},
-        {series:"Multi-Asset Income", types:["Aggressive", "Moderate", "Conservative"]}
-      ];
-      legendCombos.forEach(pair => {
-        pair.types.forEach(type => {
-          legendHTML += `<span class="lib-sharpe-legend-pair">
-            <span class="lib-sharpe-dot-outer" style="border-color:${seriesColors[pair.series]};">
-              <span class="lib-sharpe-dot-inner" style="background:${typeColors[type]};"></span>
-            </span>
-            ${pair.series} / ${type}
-          </span>`;
-        });
-      });
-      legendHTML += `<span><span class="lib-sharpe-star">★</span> Best Sharpe in view</span>`;
-      legendDiv.innerHTML = legendHTML;
-    }
-    // On change handlers
-    document.getElementById('lib-sharpe-mainCat').addEventListener('change', function() {
-      updateTypeOptions();
-      renderChart(this.value, "All");
-    });
-    document.getElementById('lib-sharpe-subCat').addEventListener('change', function() {
-      renderChart(document.getElementById('lib-sharpe-mainCat').value, this.value);
-    });
-    // Initial render
-    renderLegend();
-    updateTypeOptions();
-    renderChart("All", "All");
-  });
-})();
-</script>
-<!-- END: Liberty Sharpe Ratio Chart Component -->
+  <!--  Strategies Evaluation -->
+  <div class="page" id="comparisons">
+    <h2> Strategies Evaluation</h2>
+<div class="container">
+    <div class="section-title">1. Enter Investment Amount</div>
+    <div style="margin-bottom:1.5rem;">
+        <label for="investment-amount" style="font-weight:600;">Total Invested:</label>
+        <input type="number" id="investment-amount" value="100000" min="1000" step="1000">
+        <span style="color:#555;">(All calculations and future values will use this base amount)</span>
     </div>
-  </div>
+    <div class="section-title">2. Allocate Strategies to Each Model</div>
+    <div class="allocation-table" id="allocation-tables">
+        <!-- Allocation tables will be injected here -->
+    </div>
+    <button onclick="calculateResults()">Compare Portfolios</button>
+    <div class="section-title" style="margin-top:2.5rem;">3. Portfolio Comparison Results</div>
+    <div class="compare-section">
+        <div class="model-box">
+            <h3 id="model1-title">Model 1</h3>
+            <div id="results-model1" class="results"></div>
+        </div>
+        <div class="model-box">
+            <h3 id="model2-title">Model 2</h3>
+            <div id="results-model2" class="results"></div>
+        </div>
+    </div>
+</div>
+<script>
+const strategies = [
+  { name: "Alternative Absolute Return", risk: 30, drawdown: null, stddev: null, yr5: null, yr3: null, yr1: null, y2020: null, y2021: null, y2022: null, y2023: null, y2024: null, ytd: null, fee: 1.38 },
+  { name: "Alternative Real Assets", risk: 75, drawdown: -25.1, stddev: 14.3, yr5: 11, yr3: 2.3, yr1: 7.7, y2020: -5.9, y2021: 23.6, y2022: -7.8, y2023: 8, y2024: 4.9, ytd: 4.4, fee: 1.35 },
+  { name: "Cash Model", risk: null, drawdown: null, stddev: null, yr5: null, yr3: null, yr1: null, y2020: null, y2021: null, y2022: null, y2023: null, y2024: null, ytd: null, fee: 0.07 },
+  { name: "Dynamic Global Conservative ETF", risk: 50, drawdown: -18.3, stddev: 7.1, yr5: 6.5, yr3: 2.6, yr1: 4.1, y2020: 13.4, y2021: 8.5, y2022: -14.5, y2023: 10.8, y2024: 7.1, ytd: 0.1, fee: 0.96 },
+  { name: "Dynamic Global Focused ETF", risk: 85, drawdown: -23.5, stddev: 13.8, yr5: 14.5, yr3: 4.9, yr1: 2.1, y2020: 19.3, y2021: 21.9, y2022: -15.8, y2023: 17.8, y2024: 13.9, ytd: -3.3, fee: 0.88 },
+  { name: "Dynamic Global Growth ETF", risk: 75, drawdown: -22.2, stddev: 12, yr5: 12.5, yr3: 4.5, yr1: 2.6, y2020: 17.6, y2021: 18.3, y2022: -15.3, y2023: 16.2, y2024: 12.2, ytd: -2.5, fee: 0.90 },
+  { name: "Dynamic Global Moderate ETF", risk: 65, drawdown: -20.4, stddev: 9.7, yr5: 9.7, yr3: 3.7, yr1: 3.3, y2020: 15.6, y2021: 13.8, y2022: -15, y2023: 13.8, y2024: 9.9, ytd: -1.4, fee: 0.92 },
+  { name: "Dynamic Global Protected Growth Moderate", risk: 50, drawdown: -2.8, stddev: 5.7, yr5: null, yr3: null, yr1: 4.2, y2020: null, y2021: null, y2022: null, y2023: null, y2024: null, ytd: -1.2, fee: 1.21 },
+  { name: "Dynamic Inst Global Value Dividend", risk: 75, drawdown: -22.1, stddev: 12.9, yr5: 12.6, yr3: 5.6, yr1: 6.7, y2020: -4.9, y2021: 23.6, y2022: -1.1, y2023: 5.4, y2024: 11.4, ytd: 3.6, fee: 0.90 },
+  { name: "Dynamic Inst International Growth Equity", risk: 85, drawdown: -33.1, stddev: 14.5, yr5: 9.9, yr3: 5.5, yr1: 4, y2020: 24.6, y2021: 3.3, y2022: -20, y2023: 14.8, y2024: 7, ytd: 4.6, fee: 0.90 },
+  { name: "Dynamic Inst U.S. Core Dividend", risk: 75, drawdown: -21.1, stddev: 12.5, yr5: 16.7, yr3: 8.6, yr1: 10.4, y2020: 6.9, y2021: 26.2, y2022: -6.6, y2023: 14.5, y2024: 17.2, ytd: 1.2, fee: 0.90 },
+  { name: "Dynamic Inst U.S. Growth Equity", risk: 85, drawdown: -33.6, stddev: 15.6, yr5: 17.2, yr3: 10.1, yr1: 5.1, y2020: 30.7, y2021: 22.3, y2022: -30.5, y2023: 43.9, y2024: 27.7, ytd: -6.9, fee: 0.90 },
+  { name: "Dynamic Inst U.S. Multi-Cap Equity", risk: 90, drawdown: -26.2, stddev: 16.5, yr5: 11.7, yr3: 3.3, yr1: 0.8, y2020: -23.4, y2021: 12.1, y2022: -22.1, y2023: 24.6, y2024: 12.2, ytd: -6.5, fee: 0.90 },
+  { name: "Dynamic Managed Risk Conservative Growth", risk: 45, drawdown: -14.6, stddev: 7.8, yr5: 7, yr3: 4.7, yr1: 6.7, y2020: 4.2, y2021: 11.3, y2022: -12.5, y2023: 11.1, y2024: 10.2, ytd: 0.5, fee: 0.93 },
+  { name: "Dynamic Managed Risk Growth", risk: 60, drawdown: -17.6, stddev: 10.7, yr5: 9.8, yr3: 5.2, yr1: 7, y2020: 4.1, y2021: 17.8, y2022: -15.1, y2023: 14.2, y2024: 13.6, ytd: -0.5, fee: 0.96 },
+  { name: "Dynamic Managed Risk Moderate Growth", risk: 52, drawdown: -17.8, stddev: 10, yr5: 7.9, yr3: 3.6, yr1: 6.7, y2020: 5.3, y2021: 14.4, y2022: -16.1, y2023: 12.1, y2024: 11.8, ytd: 0, fee: 0.95 },
+  { name: "Dynamic Tactical Allocation ETF", risk: 55, drawdown: -24.5, stddev: 11.4, yr5: 8.6, yr3: 0.4, yr1: 2.4, y2020: 18.8, y2021: 19.7, y2022: -21.5, y2023: 12.1, y2024: 12.2, ytd: -2.6, fee: 0.83 },
+  { name: "Dynamic Tactical Fixed Income ETF", risk: 40, drawdown: -18, stddev: 6.5, yr5: 0.3, yr3: 0.3, yr1: 4.9, y2020: 4.3, y2021: 0.9, y2022: -15.7, y2023: 7, y2024: 2.8, ytd: 2.2, fee: 0.91 },
+  { name: "Dynamic Tactical U.S. Sector Equity ETF", risk: 75, drawdown: -21.4, stddev: 16.5, yr5: 18.4, yr3: 7.8, yr1: 7.4, y2020: 20.2, y2021: 28.3, y2022: -15, y2023: 23.8, y2024: 19.6, ytd: -2.8, fee: 0.84 },
+  { name: "Dynamic Tactical US Sec Equity Stop Loss", risk: 60, drawdown: -20.3, stddev: 14.3, yr5: 16, yr3: 6.3, yr1: 7.3, y2020: 19.6, y2021: 28.3, y2022: -17.2, y2023: 20.2, y2024: 19.7, ytd: -2.8, fee: 0.84 },
+  { name: "Dynamic US Protected Growth", risk: 60, drawdown: -4.1, stddev: 6.3, yr5: null, yr3: null, yr1: 6.1, y2020: null, y2021: null, y2022: null, y2023: null, y2024: null, ytd: -2.4, fee: 1.25 },
+  { name: "Dynamic US Protected Growth Conservative", risk: 40, drawdown: -3.5, stddev: 5.3, yr5: null, yr3: null, yr1: 5.6, y2020: null, y2021: null, y2022: null, y2023: null, y2024: null, ytd: -2.1, fee: 1.25 },
+  { name: "Dynamic US Protected Growth Moderate", risk: 45, drawdown: -3, stddev: 4.7, yr5: null, yr3: null, yr1: 5.8, y2020: null, y2021: null, y2022: null, y2023: null, y2024: null, ytd: -1.6, fee: 1.25 },
+  { name: "Foundation Aggressive", risk: 80, drawdown: -25.2, stddev: 13.1, yr5: 7.1, yr3: 2.4, yr1: 11.7, y2020: 12, y2021: 17, y2022: -18.1, y2023: 17.5, y2024: 11.7, ytd: 11.7, fee: 0.91 },
+  { name: "Foundation Aggressive ETF", risk: 80, drawdown: 22.4, stddev: 13, yr5: 13.2, yr3: 5.1, yr1: 4.7, y2020: 11.2, y2021: 18.7, y2022: -15.4, y2023: 16.9, y2024: 13.7, ytd: -1.6, fee: 0.49 },
+  { name: "Foundation Balanced", risk: 50, drawdown: -19.9, stddev: 8, yr5: 7.2, yr3: 3.6, yr1: 5.1, y2020: 9.6, y2021: 8.6, y2022: -15.1, y2023: 12.7, y2024: 7.7, ytd: 0.9, fee: 0.93 },
+  { name: "Foundation Balanced ETF", risk: 50, drawdown: -19.1, stddev: 10.5, yr5: 6.8, yr3: 3.4, yr1: 5.2, y2020: 9, y2021: 8.6, y2022: -14.4, y2023: 11.9, y2024: 8.2, ytd: 0.7, fee: 0.58 },
+  { name: "Foundation Conservative", risk: 40, drawdown: -17.8, stddev: 6, yr5: 5, yr3: 3.2, yr1: 5.4, y2020: 8, y2021: 5.2, y2022: -13.7, y2023: 10.9, y2024: 6.1, ytd: 1.6, fee: 0.94 },
+  { name: "Foundation Conservative ETF", risk: 40, drawdown: -17.6, stddev: 8.6, yr5: 4.2, yr3: 2.7, yr1: 5.3, y2020: 6.7, y2021: 4.2, y2022: -13.8, y2023: 10.1, y2024: 5.9, ytd: 1.6, fee: 0.62 },
+  { name: "Foundation Defensive", risk: 30, drawdown: -15.6, stddev: 4.2, yr5: 2, yr3: 2.3, yr1: 5.6, y2020: 7.4, y2021: 0, y2022: -11.8, y2023: 8, y2024: 3.5, ytd: 2.6, fee: 0.95 },
+  { name: "Foundation Defensive ETF", risk: 30, drawdown: -7.4, stddev: 7.4, yr5: null, yr3: null, yr1: 5.4, y2020: null, y2021: null, y2022: null, y2023: 6.7, y2024: 2.4, ytd: 2.9, fee: 0.68 },
+  { name: "Foundation Growth", risk: 70, drawdown: -23.2, stddev: 12.3, yr5: 10.6, yr3: 4.3, yr1: 4.6, y2020: 11.4, y2021: 13.7, y2022: -17, y2023: 15.5, y2024: 10, ytd: -0.1, fee: 0.92 },
+  { name: "Foundation Growth ETF", risk: 70, drawdown: -21, stddev: 12.1, yr5: 10.9, yr3: 4.5, yr1: 5.1, y2020: 11, y2021: 14.7, y2022: -14.9, y2023: 14.9, y2024: 11.6, ytd: -0.6, fee: 0.52 },
+  { name: "Foundation Moderate Growth", risk: 60, drawdown: -21.7, stddev: 9.5, yr5: 8.8, yr3: 3.9, yr1: 4.8, y2020: 10.1, y2021: 11.2, y2022: -16.2, y2023: 14.1, y2024: 8.9, ytd: 0.3, fee: 0.93 },
+  { name: "Foundation Moderate Growth ETF", risk: 60, drawdown: -20, stddev: 10.5, yr5: 8.7, yr3: 4, yr1: 5.1, y2020: 9.1, y2021: 11.5, y2022: -14.5, y2023: 13.5, y2024: 9.8, ytd: 0, fee: 0.55 },
+  { name: "Foundation Sustainable Aggressive", risk: 80, drawdown: -25.2, stddev: 16, yr5: 12.3, yr3: 4, yr1: 2.4, y2020: 15.7, y2021: 17, y2022: -18.4, y2023: 16.5, y2024: 12.3, ytd: -2.4, fee: 0.95 },
+  { name: "Foundation Sustainable Balanced", risk: 50, drawdown: -19.3, stddev: 9.7, yr5: 6.4, yr3: 2.7, yr1: 4.1, y2020: 11.7, y2021: 7.7, y2022: -15.2, y2023: 10.8, y2024: 7.6, ytd: 0.2, fee: 0.91 },
+  { name: "Foundation Sustainable Conservative", risk: 40, drawdown: -17.1, stddev: 7.5, yr5: 4.1, yr3: 2.3, yr1: 4.7, y2020: 9.5, y2021: 4.1, y2022: -13.8, y2023: 9.1, y2024: 5.6, ytd: 1.3, fee: 0.89 },
+  { name: "Foundation Sustainable Growth", risk: 70, drawdown: -22.8, stddev: 13.3, yr5: 9.9, yr3: 3.4, yr1: 3.1, y2020: 15.7, y2021: 13.1, y2022: -17.1, y2023: 13.9, y2024: 10.3, ytd: -1.3, fee: 0.93 },
+  { name: "Foundation Sustainable Moderate Growth", risk: 60, drawdown: -21.1, stddev: 11.5, yr5: 8.1, yr3: 3.1, yr1: 3.6, y2020: 12.9, y2021: 10.5, y2022: -16.1, y2023: 12.4, y2024: 9, ytd: -0.6, fee: 0.92 },
+  { name: "Foundation Tax-Aware Aggressive", risk: 80, drawdown: -22.3, stddev: 14.2, yr5: null, yr3: 5.3, yr1: 4.2, y2020: null, y2021: null, y2022: -15.2, y2023: 16.9, y2024: 14.4, ytd: -2.3, fee: 0.47 },
+  { name: "Foundation Tax-Aware Balanced", risk: 50, drawdown: -17.1, stddev: 9.6, yr5: null, yr3: 3.8, yr1: 4.1, y2020: null, y2021: null, y2022: -12.1, y2023: 11.6, y2024: 8.5, ytd: -0.5, fee: 0.57 },
+  { name: "Foundation Tax-Aware Conservative", risk: 40, drawdown: -15.1, stddev: 8, yr5: null, yr3: 2.9, yr1: 3.5, y2020: null, y2021: null, y2022: -11, y2023: 9.3, y2024: 6, ytd: -0.1, fee: 0.60 },
+  { name: "Foundation Tax-Aware Defensive", risk: 30, drawdown: -12.4, stddev: 4.5, yr5: 1.6, yr3: 1.7, yr1: 3, y2020: 4.7, y2021: 2.3, y2022: -9.1, y2023: 6.1, y2024: 2.5, ytd: 0.7, fee: 0.66 },
+  { name: "Foundation Tax-Aware Growth", risk: 70, drawdown: -20.3, stddev: 12.3, yr5: null, yr3: 4.7, yr1: 4.1, y2020: null, y2021: null, y2022: -14.1, y2023: 14.7, y2024: 12.1, ytd: -1.6, fee: 0.51 },
+  { name: "Foundation Tax-Aware Moderate Growth", risk: 60, drawdown: -18.6, stddev: 11, yr5: null, yr3: 4.2, yr1: 4, y2020: null, y2021: null, y2022: -13, y2023: 13, y2024: 10.4, ytd: -1.2, fee: 0.53 },
+  { name: "Foundation US Core ETF", risk: 80, drawdown: -8.4, stddev: 13.6, yr5: null, yr3: null, yr1: 5.5, y2020: null, y2021: null, y2022: null, y2023: 20.5, y2024: 18.2, ytd: -3.2, fee: 0.49 },
+  { name: "Liberty Aggressive Income", risk: 40, drawdown: -15.8, stddev: 7.6, yr5: 5.7, yr3: 3.6, yr1: 6.7, y2020: 5.4, y2021: 7.2, y2022: -11, y2023: 8.9, y2024: 7.5, ytd: 2.1, fee: 0.96 },
+  { name: "Liberty Balanced Growth & Income", risk: 55, drawdown: -19, stddev: 8.6, yr5: 8.5, yr3: 3.9, yr1: 7.1, y2020: 7.3, y2021: 11.5, y2022: -14.3, y2023: 12.2, y2024: 9.5, ytd: 1.1, fee: 0.91 },
+  { name: "Liberty Conservative Income", risk: 30, drawdown: -13.2, stddev: 4.7, yr5: 3.6, yr3: 2.9, yr1: 6, y2020: 7.6, y2021: 3, y2022: -10.2, y2023: 7.9, y2024: 5.1, ytd: 2.4, fee: 0.90 },
+  { name: "Liberty Growth Accumulation", risk: 70, drawdown: -24, stddev: 12.1, yr5: 10.6, yr3: 4.1, yr1: 3.5, y2020: 13, y2021: 11.2, y2022: -17.1, y2023: 17.9, y2024: 9.8, ytd: -1.6, fee: 0.87 },
+  { name: "Liberty Moderate Income", risk: 35, drawdown: -14.5, stddev: 5.5, yr5: 4.6, yr3: 3.3, yr1: 6.3, y2020: 6.2, y2021: 4.9, y2022: -10.6, y2023: 8.4, y2024: 6.4, ytd: 2.2, fee: 0.92 },
+  { name: "Liberty Real Income 4%", risk: 55, drawdown: -17.2, stddev: 9.1, yr5: 7.6, yr3: 3.8, yr1: 6.4, y2020: 2.3, y2021: 13.7, y2022: -15.2, y2023: 12, y2024: 11.6, ytd: 0.5, fee: 0.78 },
+  { name: "Liberty Real Income 5%", risk: 60, drawdown: -17.5, stddev: 9.7, yr5: 8.3, yr3: 4, yr1: 6.5, y2020: 1.6, y2021: 15.2, y2022: -15.5, y2023: 12.7, y2024: 12.6, ytd: 0.2, fee: 0.78 },
+  { name: "Liberty Real Income 6%", risk: 65, drawdown: -19.1, stddev: 10.4, yr5: 8.8, yr3: 4, yr1: 6.6, y2020: 1.5, y2021: 16.5, y2022: -16.5, y2023: 13.8, y2024: 13.5, ytd: 0, fee: 0.78 },
+  { name: "Liberty Risk Mitigated Accumulation", risk: 60, drawdown: -19.5, stddev: 10.9, yr5: 10, yr3: 5.3, yr1: 5.7, y2020: 4.5, y2021: 17, y2022: -14.6, y2023: 15.9, y2024: 13.2, ytd: -1.2, fee: 0.79 },
+  { name: "Liberty Risk Mitigated Growth & Income", risk: 50, drawdown: -17.6, stddev: 8.4, yr5: 8.1, yr3: 4.9, yr1: 6.1, y2020: 5, y2021: 12.6, y2022: -13.4, y2023: 13.8, y2024: 11.5, ytd: -0.3, fee: 0.82 },
+  { name: "Liberty Short Term Income", risk: 5, drawdown: -0.4, stddev: 1.6, yr5: null, yr3: null, yr1: 6, y2020: null, y2021: null, y2022: null, y2023: null, y2024: null, ytd: 1.9, fee: 0.49 }
+];
+
+
+function renderAllocationTables() {
+    let html = '<div style="display:flex;gap:2.5rem;flex-wrap: wrap;">';
+    html += `<div style="flex:1;"><div style="font-weight:600;margin-bottom:0.4rem;">Model 1</div><table><tr><th>Strategy</th><th>Allocation (%)</th></tr>`;
+    strategies.forEach((s, idx) => {
+        html += `<tr>
+            <td>${s.name}</td>
+            <td><input type="number" min="0" max="100" step="1" value="0" id="model1-alloc-${idx}" onchange="syncSum('model1')"></td>
+        </tr>`;
+    });
+    html += `<tr><td style="font-weight:bold;">Total</td><td id="model1-total" style="font-weight:bold;">0%</td></tr></table></div>`;
+
+    html += `<div style="flex:1;"><div style="font-weight:600;margin-bottom:0.4rem;">Model 2</div><table><tr><th>Strategy</th><th>Allocation (%)</th></tr>`;
+    strategies.forEach((s, idx) => {
+        html += `<tr>
+            <td>${s.name}</td>
+            <td><input type="number" min="0" max="100" step="1" value="0" id="model2-alloc-${idx}" onchange="syncSum('model2')"></td>
+        </tr>`;
+    });
+    html += `<tr><td style="font-weight:bold;">Total</td><td id="model2-total" style="font-weight:bold;">0%</td></tr></table></div>`;
+    html += '</div>';
+    document.getElementById("allocation-tables").innerHTML = html;
+}
+function syncSum(modelId) {
+    let sum = 0;
+    strategies.forEach((s, idx) => {
+        sum += Number(document.getElementById(`${modelId}-alloc-${idx}`).value) || 0;
+    });
+    document.getElementById(`${modelId}-total`).innerText = sum + "%";
+    if (sum > 100) document.getElementById(`${modelId}-total`).style.color = "#e53935";
+    else document.getElementById(`${modelId}-total`).style.color = "#23395d";
+}
+function calcPortfolio(modelId) {
+    let total = 0;
+    let w = { risk: 0, drawdown: 0, stddev: 0, yr5: 0, yr3: 0, yr1: 0, y2020: 0, y2021: 0, y2022: 0, y2023: 0, y2024: 0, ytd: 0, fee: 0 };
+    strategies.forEach((s, idx) => {
+        let alloc = Number(document.getElementById(`${modelId}-alloc-${idx}`).value) || 0;
+        total += alloc;
+        for (let key of Object.keys(w)) {
+            let val = s[key];
+            w[key] += ((val === undefined || val === null || isNaN(val)) ? 0 : val * alloc);
+        }
+    });
+    if (total === 0) return { error: "No allocation" };
+    for (let key of Object.keys(w)) {
+        w[key] = (w[key] / total).toFixed(2);
+    }
+    let pv = parseFloat(document.getElementById('investment-amount').value) || 100000;
+    let mu = parseFloat(w.yr5) / 100;
+    let sigma = parseFloat(w.stddev) / 100;
+    let n = 10;
+    let fv_mean = pv * Math.pow(1 + mu, n);
+    let fv_upper = pv * Math.pow(1 + mu + sigma, n);
+    let fv_lower = pv * Math.pow(1 + mu - sigma, n);
+    w.fv_mean = fv_mean;
+    w.fv_upper = fv_upper;
+    w.fv_lower = fv_lower;
+    w.n = n;
+    w.amount = pv;
+    return { ...w, total };
+}
+function resultTable(r) {
+    if (r.error) return `<div class="summary" style="color:#e53935;">Please enter allocations greater than 0.</div>`;
+    return `
+    <table class="result-table">
+        <tr><th>Risk Score</th><td>${r.risk}</td></tr>
+        <tr><th>Fee (Weighted %)</th><td>${r.fee}</td></tr>
+        <tr><th>Max Drawdown</th><td>${r.drawdown}%</td></tr>
+        <tr><th>Std Dev</th><td>${r.stddev}%</td></tr>
+        <tr><th>5 Yr Annualized</th><td>${r.yr5}%</td></tr>
+        <tr><th>3 Yr Annualized</th><td>${r.yr3}%</td></tr>
+        <tr><th>1 Yr Annualized</th><td>${r.yr1}%</td></tr>
+        <tr><th>2020</th><td>${r.y2020}%</td></tr>
+        <tr><th>2021</th><td>${r.y2021}%</td></tr>
+        <tr><th>2022</th><td>${r.y2022}%</td></tr>
+        <tr><th>2023</th><td>${r.y2023}%</td></tr>
+        <tr><th>2024</th><td>${r.y2024}%</td></tr>
+        <tr><th>YTD</th><td>${r.ytd}%</td></tr>
+    </table>
+    <div class="summary"><strong>Total Allocation:</strong> ${r.total}%<br>
+    <span style="color:#1b804a;font-weight:600;">${r.total == 100 ? "Portfolio Fully Allocated" : (r.total < 100 ? "Under-allocated" : "Over-allocated")}</span>
+    </div>
+    <div class="future-value-table">
+        <table>
+            <tr><th colspan="2" style="text-align:left;">Future Value Projection (${r.n} Years, $${Number(r.amount).toLocaleString(undefined, {maximumFractionDigits:0})} Initial)</th></tr>
+            <tr><th>Mean Return</th><td><b>$${Number(r.fv_mean).toLocaleString(undefined, {maximumFractionDigits:0})}</b></td></tr>
+            <tr><th>+1 Std Dev (Optimistic)</th><td><b>$${Number(r.fv_upper).toLocaleString(undefined, {maximumFractionDigits:0})}</b></td></tr>
+            <tr><th>-1 Std Dev (Pessimistic)</th><td><b>$${Number(r.fv_lower).toLocaleString(undefined, {maximumFractionDigits:0})}</b></td></tr>
+            <tr><td colspan="2" style="font-size:0.98em;color:#5a5a5a;text-align:right;">(Compounded using 5yr annualized return & std dev)</td></tr>
+        </table>
+    </div>
+    `;
+}
+function calculateResults() {
+    let r1 = calcPortfolio('model1');
+    let r2 = calcPortfolio('model2');
+    document.getElementById('results-model1').innerHTML = resultTable(r1);
+    document.getElementById('results-model2').innerHTML = resultTable(r2);
+    document.getElementById('model1-title').innerText = "Model 1";
+    document.getElementById('model2-title').innerText = "Model 2";
+}
+renderAllocationTables();
+</script>
 
   <!-- Risk Evaluation -->
   <div class="page" id="risk-evaluation">
